@@ -60,9 +60,19 @@ test('state round-trips through the query string in both modes', () => {
 
 test('long but valid values survive the URL round trip (OpenClaw repro)', () => {
   const st = { mode: 'sens', g: 'cs', dpi: '800', s: '2.1234567890123456789012345', to: '800', cm: '' };
-  assert.deepEqual(parseState(serializeState(st), ids), st);
+  const back = parseState(serializeState(st), ids);
+  assert.equal(Number(back.s), Number(st.s));
+  assert.deepEqual({ ...back, s: st.s }, st);
   const cm = { mode: 'cm', g: 'ow', dpi: '800', s: '4', to: '800', cm: String(cm360(800, 0.185, 0.0066)) };
   assert.equal(parseState(serializeState(cm), ids).cm, cm.cm);
+});
+
+test('any length of valid number reads back as the same number (OpenClaw repro)', () => {
+  for (const sv of ['2.' + '1'.repeat(70), '0' .repeat(80) + '1.5', '1.50000000000000000000000000000000000000000000000000000000000000000000001']) {
+    const st = { mode: 'sens', g: 'cs', dpi: '800', s: sv, to: '800', cm: '' };
+    const back = parseState(serializeState(st), ids);
+    assert.equal(Number(back.s), Number(sv));
+  }
 });
 
 test('switching modes with full-precision cm keeps every row (OpenClaw repro: OW 800 / 0.185)', () => {

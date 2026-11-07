@@ -32,6 +32,11 @@
         "value": 0.0066,
         "checked": "2026-11-08",
         "note": "hipfire FOV 103 (16:9)"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
       }
     ],
     "inGameVerified": null,
@@ -67,6 +72,11 @@
       },
       {
         "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
         "value": 0.022,
         "checked": "2026-11-08"
       }
@@ -106,6 +116,11 @@
         "url": "https://game-sens.jor.dev/",
         "value": 0.07,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
       }
     ],
     "inGameVerified": null,
@@ -143,6 +158,11 @@
         "url": "https://game-sens.jor.dev/",
         "value": 0.022,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
       }
     ],
     "inGameVerified": null,
@@ -151,8 +171,8 @@
   {
     "id": "cod",
     "name": {
-      "ko": "콜 오브 듀티 (레거시)",
-      "en": "Call of Duty (legacy)"
+      "ko": "콜 오브 듀티: 워존 · MW3 · BO6 (레거시)",
+      "en": "Call of Duty: Warzone · MW3 · BO6 (legacy)"
     },
     "yaw": 0.0066,
     "decimals": 2,
@@ -177,6 +197,12 @@
         "url": "https://webcode.tools/converters/game-sensitivity-converter/",
         "value": 0.0066,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "MW3, Warzone, Black Ops 6"
       }
     ],
     "inGameVerified": null,
@@ -208,6 +234,11 @@
       },
       {
         "url": "https://dcprosens.com/blog/pubg-sensitivity-converter-guide/",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
         "value": 0.005555,
         "checked": "2026-11-08"
       }
@@ -247,6 +278,11 @@
         "url": "https://sensconverter.vercel.app/guides/what-is-mouse-yaw",
         "value": 0.00572957795,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.00572957795,
+        "checked": "2026-11-08"
       }
     ],
     "inGameVerified": null,
@@ -284,22 +320,20 @@
         "url": "https://mansone.com/tools/sensitivity-converter",
         "value": 0.0175,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0219999,
+        "checked": "2026-11-08"
       }
     ],
     "inGameVerified": null,
-    "caveat": {
-      "ko": "확인한 출처는 0.0175와 0.017453(π/180)으로 0.3% 차이예요. 0.022라는 값은 다른 사이트의 전언일 뿐 원문을 확인하지 않았어요. 원문이 확인되면 충돌로 보고 계산에서 뺄 거예요.",
-      "en": "Checked sources give 0.0175 and 0.017453 (pi/180), a 0.3% difference. A value of 0.022 is only reported second-hand and has not been checked; if confirmed, the game will be treated as conflicting and left out."
-    },
     "independence": "unverified",
-    "reports": [
-      {
-        "value": 0.022,
-        "via": "https://game-sens.jor.dev/",
-        "status": "hearsay",
-        "note": "the page says some converters list 0.022; no such source was checked directly"
-      }
-    ]
+    "reports": [],
+    "conflict": {
+      "ko": "출처마다 0.0175(π/180)와 0.022로 약 26% 차이가 나서, 확인될 때까지 계산에서 뺐어요.",
+      "en": "Sources disagree by about 26% (0.0175 = pi/180 vs 0.022), so it is left out until checked."
+    }
   },
   {
     "id": "dl",
@@ -328,6 +362,11 @@
       {
         "url": "https://mansone.com/tools/sensitivity-converter",
         "value": 0.044,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
         "checked": "2026-11-08"
       }
     ],
@@ -383,6 +422,11 @@
         "url": "https://webcode.tools/converters/game-sensitivity-converter/",
         "value": 0.022,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
       }
     ],
     "notes": {
@@ -410,6 +454,11 @@
         "url": "https://webcode.tools/converters/game-sensitivity-converter/",
         "value": 0.022,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
       }
     ],
     "notes": {
@@ -430,6 +479,16 @@
     "sources": [
       {
         "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://mousesensitivityconverters.com/",
         "value": 0.022,
         "checked": "2026-11-08"
       }
@@ -459,6 +518,11 @@
         "url": "https://senslab.pro/sensitivity",
         "value": 0.0066,
         "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
       }
     ],
     "notes": {
@@ -467,5 +531,331 @@
     },
     "inGameVerified": null,
     "independence": "unverified"
+  },
+  {
+    "id": "csgo",
+    "name": {
+      "ko": "CS:GO",
+      "en": "CS:GO"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cs16",
+    "name": {
+      "ko": "카운터 스트라이크 1.6",
+      "en": "Counter-Strike 1.6"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "css",
+    "name": {
+      "ko": "카운터 스트라이크: 소스",
+      "en": "Counter-Strike: Source"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "hl2",
+    "name": {
+      "ko": "하프라이프 2",
+      "en": "Half-Life 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08",
+        "note": "listed as Half-Life 2 / Garry's Mod"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "gmod",
+    "name": {
+      "ko": "개리 모드",
+      "en": "Garry's Mod"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08",
+        "note": "listed as Half-Life 2 / Garry's Mod"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "l4d2",
+    "name": {
+      "ko": "레프트 4 데드 2",
+      "en": "Left 4 Dead 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "portal2",
+    "name": {
+      "ko": "포탈 2",
+      "en": "Portal 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "ql",
+    "name": {
+      "ko": "퀘이크 라이브",
+      "en": "Quake Live"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "doom",
+    "name": {
+      "ko": "둠 이터널",
+      "en": "Doom Eternal"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tarkov",
+    "name": {
+      "ko": "이스케이프 프롬 타르코프",
+      "en": "Escape from Tarkov"
+    },
+    "yaw": 0.125,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.125,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.125,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "맨몸 기준 값이에요. 타르코프는 장비 무게·헬멧·무기 인체공학에 따라 회전 속도가 달라져서, 실제 레이드에서는 체감이 달라질 수 있어요.",
+      "en": "Base value without gear. In Tarkov, armor, helmets and weapon ergonomics change turn speed, so it can feel different in raid."
+    }
+  },
+  {
+    "id": "rust",
+    "name": {
+      "ko": "러스트",
+      "en": "Rust"
+    },
+    "yaw": 0.1125,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.1125,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.11247,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "확인한 두 출처는 0.1125와 0.11247로 0.03% 차이예요. 일부 블로그형 변환 페이지는 0.072나 0.0486을 쓰지만 근거를 밝히지 않아 출처로 세지 않았어요.",
+      "en": "The two checked sources give 0.1125 and 0.11247, a 0.03% difference. Some blog-style converter pages use 0.072 or 0.0486 without stating a basis, so they are not counted as sources."
+    },
+    "reports": [
+      {
+        "value": 0.072,
+        "via": "https://sens-converter-0422.pages.dev/",
+        "status": "unsupported",
+        "note": "no basis given"
+      },
+      {
+        "value": 0.0486,
+        "via": "https://west-games.com/rust-aim-sensitivity-converter/",
+        "status": "unsupported",
+        "note": "no basis given"
+      }
+    ]
   }
 ]

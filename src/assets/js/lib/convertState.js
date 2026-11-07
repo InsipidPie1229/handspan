@@ -32,18 +32,25 @@ export function parseState(search, gameIds, fallbackGame = DEFAULTS.g) {
   };
 }
 
+/** Finite numbers are written in their shortest exact form (any length typed reads back the same). */
+export function normNum(v) {
+  const t = String(v ?? '').trim();
+  const n = Number(t);
+  return t !== '' && Number.isFinite(n) ? String(n) : t;
+}
+
 /** Query string for a state. Only the keys the current mode uses are written. */
 export function serializeState(st) {
   const p = new URLSearchParams();
   if (st.mode === 'cm') {
     p.set('m', 'cm');
-    p.set('cm', st.cm);
+    p.set('cm', normNum(st.cm));
   } else {
     p.set('g', st.g);
-    p.set('dpi', st.dpi);
-    p.set('s', st.s);
+    p.set('dpi', normNum(st.dpi));
+    p.set('s', normNum(st.s));
   }
-  p.set('to', st.to);
+  p.set('to', normNum(st.to));
   return p.toString();
 }
 
