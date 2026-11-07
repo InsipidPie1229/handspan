@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.head{padding-block:32px 20px;display:grid;gap:8px}
+.arena{position:relative;width:100%;height:min(64vh,540px);min-height:380px;background:var(--arena);border-radius:var(--r);overflow:hidden;color:var(--arena-ink);touch-action:none;user-select:none;-webkit-user-select:none}
+.arena .stage{position:absolute;inset:0}
+.hud{position:absolute;z-index:3;left:0;right:0;top:0;display:flex;gap:20px;align-items:center;padding:12px 16px;font:500 .85rem var(--f-mono);color:#B4B7B2;pointer-events:none}
+.hud b{color:var(--arena-ink);font:700 1rem var(--f-num)}
+.hud .r{margin-left:auto}
+.steps{display:flex;gap:4px}
+.steps i{width:22px;height:4px;background:#3A3D42;border-radius:2px}
+.steps i.on{background:var(--tape)}
+.steps i.done{background:#83878A}
+.layer{position:absolute;inset:0;z-index:4;display:grid;place-items:center;padding:20px;background:rgba(11,12,13,.72)}
+.layer[hidden]{display:none}
+.panel{width:min(520px,100%);display:grid;gap:16px;color:var(--arena-ink);max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+.panel h2{margin:0;font:700 1.5rem/1.2 var(--f-num);font-stretch:108%;color:var(--arena-ink)}
+.panel p{margin:0;color:#B4B7B2;font-size:.95rem}
+.panel .btn{border-color:#3A3D42;background:transparent;color:var(--arena-ink)}
+.panel .btn.go{background:var(--tape);border-color:var(--tape);color:var(--tape-ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.msg{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;font:700 clamp(1.4rem,4vw,2.2rem) var(--f-num);pointer-events:none;padding:0 16px}
+.msg small{display:block;font:400 .95rem var(--f-text);color:#B4B7B2;margin-top:8px}
+.tgt{position:absolute;border-radius:50%;background:var(--tape);box-shadow:0 0 0 3px rgba(242,194,48,.25);transform:translate(-50%,-50%);pointer-events:none}
+.tgt.track{background:transparent;border:3px solid var(--tape)}
+.tgt.track.on{background:rgba(242,194,48,.35)}
+.bar{position:absolute;left:8%;right:8%;top:50%;height:56px;transform:translateY(-50%);border:1px solid #3A3D42;border-radius:6px}
+.bar .zone{position:absolute;top:-1px;bottom:-1px;width:3px;background:var(--tape)}
+.bar .needle{position:absolute;top:-10px;bottom:-10px;width:2px;background:#fff}
+.word{position:absolute;left:0;right:0;top:30%;text-align:center;font:800 clamp(2.4rem,9vw,4.4rem) var(--f-num)}
+.choices{position:absolute;left:5%;right:5%;bottom:10%;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.choices button{min-height:56px;border:1px solid #3A3D42;border-radius:var(--r);background:#1d2023;color:#E9EAE6;font:600 1rem var(--f-text);cursor:pointer}
+.choices button kbd{display:block;font:400 .72rem var(--f-mono);color:#83878A}
+.grid9{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:min(300px,70%);aspect-ratio:1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid9 button{border:1px solid #3A3D42;border-radius:8px;background:#1d2023;cursor:pointer}
+.grid9 button.lit{background:var(--tape);border-color:var(--tape)}
+.grid9 button.bad{background:#C4473A}
+.reactbox{position:absolute;inset:44px 12px 12px;border-radius:8px;background:#2A2D31;display:grid;place-items:center;font:700 1.6rem var(--f-num)}
+.reactbox.go{background:var(--tape);color:var(--tape-ink)}
+/* result */
+.result{padding-block:28px;display:grid;gap:24px}
+.result[hidden]{display:none}
+.age{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.age b{font:800 clamp(4.5rem,13vw,8rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.age span{font:500 1.1rem var(--f-text);color:var(--ink-2)}
+.type h2{font:700 1.6rem/1.2 var(--f-num)}
+.type p{margin:4px 0 0;color:var(--ink-2)}
+.areas{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.areas li{display:grid;grid-template-columns:7em 1fr 3em;gap:12px;align-items:center}
+.areas .lbl{font-size:.9rem}
+.areas .lbl small{display:block;font:400 .78rem var(--f-mono);color:var(--ink-3)}
+.areas .track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
+.areas .track i{display:block;height:100%;background:var(--tape)}
+.areas .num{font:600 1rem var(--f-mono);text-align:right}
+.banner{border-left:3px solid var(--warn);padding:6px 0 6px 14px;color:var(--ink-2);font-size:.92rem}
+.share{display:flex;flex-wrap:wrap;gap:10px}
+.share-status{min-height:1.4em;margin:0}
+details.rules{border-top:1px solid var(--rule);padding-top:16px}
+details.rules summary{cursor:pointer;font-weight:600;min-height:32px}
+details.rules table{border-collapse:collapse;font-size:.85rem;margin-top:10px}
+details.rules td,details.rules th{border-bottom:1px solid var(--rule);padding:6px 10px;text-align:left;font-family:var(--f-mono)}
+details.rules p{color:var(--ink-2);font-size:.9rem;max-width:70ch}
+.intro-notes{color:var(--ink-2);font-size:.92rem;max-width:70ch;margin:0;padding-left:1.2em;display:grid;gap:4px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}play/" aria-current="page">{{nav.play}}</a><a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="head">
+    <h1>{{play.h1}}</h1>
+    <p class="lede">{{play.lede}}</p>
+  </section>
+
+  <div class="arena" id="arena">
+    <div class="stage" id="stage"></div>
+    <div class="hud" id="hud" hidden><div class="steps" id="steps"></div><span id="hudName"></span><span class="r" id="hudInfo"></span></div>
+    <div class="layer" id="layer">
+      <div class="panel" id="panel">
+        <h2>{{play.introH}}</h2>
+        <p>{{play.introBody}}</p>
+        <div class="row"><button class="btn go" id="startAll" type="button">{{play.start}}</button></div>
+      </div>
+    </div>
+  </div>
+  <ul class="intro-notes" style="margin-top:14px">
+    <li>{{play.note1}}</li>
+    <li>{{play.note2}}</li>
+    <li>{{play.note3}}</li>
+  </ul>
+
+  <section class="result" id="result" hidden aria-live="polite">
+    <p class="banner" id="sharedBanner" hidden>{{play.sharedBanner}}</p>
+    <div class="age"><b id="ageNum">--</b><span>{{play.ageUnit}}</span></div>
+    <p class="small">{{play.ageNote}}</p>
+    <div class="type"><h2 id="typeName"></h2><p id="typeDesc"></p></div>
+    <ul class="areas" id="areas"></ul>
+    <p class="small" id="inputNote"></p>
+    <div class="share" id="shareRow">
+      <button class="btn go" id="shareBtn" type="button">{{play.share}}</button>
+      <button class="btn" id="saveBtn" type="button">{{play.saveImg}}</button>
+      <button class="btn" id="copyBtn" type="button">{{play.copyLink}}</button>
+      <a class="btn" id="xBtn" href="#" target="_blank" rel="noopener">{{play.postX}}</a>
+      <button class="btn" id="againBtn" type="button">{{play.again}}</button>
+    </div>
+    <p class="small share-status" id="shareStatus" role="status"></p>
+    <details class="rules">
+      <summary>{{play.rulesH}}</summary>
+      <p>{{play.rulesBody}}</p>
+      <div id="rulesTable"></div>
+    </details>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}sens/">{{nav.pairs}}</a> · <a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+
+<script type="application/json" id="i18n">{{@i18nJson}}</script>
+<script type="module" src="/assets/js/play.js"></script>
+</body>
+</html>

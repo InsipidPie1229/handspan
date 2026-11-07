@@ -5,6 +5,7 @@ const entry = process.argv[1] ? pathToFileURL(process.argv[1]).href : '';
 if (entry !== self) {
   await import('./sens.test.mjs');
   await import('./convertstate.test.mjs');
+  await import('./physical.test.mjs');
   await import('./stats.test.mjs');
   await import('./session.test.mjs');
   await import('./finder.test.mjs');
