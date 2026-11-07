@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.intro{padding-block:48px 24px;display:grid;gap:12px}
+.blk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;padding-block:28px 40px;border-top:1px solid var(--rule)}
+@media (max-width:900px){.blk{grid-template-columns:minmax(0,1fr);gap:24px}}
+.blk h2{grid-column:1/-1}
+.blk .fields{grid-template-columns:1fr 1fr;align-content:start}
+.blk .fields .wide{grid-column:1/-1}
+.out{display:grid;gap:14px;align-content:start}
+.big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.big b{font:800 clamp(3.6rem,9vw,6.5rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.big span{font:500 1rem var(--f-mono);color:var(--ink-2)}
+.big.void b{color:var(--rule-2)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin:0}
+.facts div{display:grid}
+.facts dt{font-size:.8rem;color:var(--ink-3)}
+.facts dd{margin:0;font:500 1.05rem var(--f-mono)}
+.f[hidden]{display:none}
+.methods{padding-block:28px 64px;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 40px}
+.methods h3{font-size:1rem;margin:0 0 6px}
+.methods p{margin:0;color:var(--ink-2);font-size:.92rem}
+.src{font-size:.86rem;color:var(--ink-3)}
+.src a{color:var(--ink-2)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}play/">{{nav.play}}</a><a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}zoom/" aria-current="page">{{nav.zoom}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>{{zoom.h1}}</h1>
+    <p class="lede">{{zoom.lede}}</p>
+  </section>
+
+  <section class="blk" aria-labelledby="h-ow">
+    <h2 id="h-ow">{{zoom.owH}}</h2>
+    <div class="fields">
+      <div class="f wide"><label for="owHero">{{zoom.owHero}}</label><select id="owHero">
+        <option value="widow">{{zoom.heroWidow}}</option><option value="ana">{{zoom.heroAna}}</option><option value="ashe">{{zoom.heroAshe}}</option>
+      </select></div>
+      <div class="f" id="fOwFov"><label for="owFov">{{zoom.owFov}}</label><input id="owFov" type="number" inputmode="numeric" value="103" min="80" max="103" aria-describedby="eOwFov"><p class="err" id="eOwFov" hidden></p></div>
+      <div class="f"><label for="owMethod">{{zoom.method}}</label><select id="owMethod">
+        <option value="0">{{zoom.mCenter}}</option><option value="x">{{zoom.mPoint}}</option><option value="turn">{{zoom.mTurn}}</option>
+      </select></div>
+      <div class="f wide" id="fOwX" hidden><label for="owX">{{zoom.point}}</label><input id="owX" type="number" inputmode="numeric" value="50" min="1" max="100" aria-describedby="eOwX"><p class="err" id="eOwX" hidden></p></div>
+    </div>
+    <div class="out" aria-live="polite">
+      <div class="big" id="owBig"><b id="owOut">--</b><span>%</span></div>
+      <p class="small">{{zoom.owOutNote}}</p>
+      <p class="note">{{zoom.owCaveat}}</p>
+      <p class="src">{{zoom.owSources}} <a href="https://www.mouse-sensitivity.com/forums/topic/268-overwatch-2/page/9/" rel="noopener">mouse-sensitivity.com</a>, <a href="https://us.forums.blizzard.com/en/overwatch/t/how-does-widow-scope-function/336425" rel="noopener">us.forums.blizzard.com</a> (2026-11-08)</p>
+    </div>
+  </section>
+
+  <section class="blk" aria-labelledby="h-gen">
+    <h2 id="h-gen">{{zoom.genH}}</h2>
+    <div class="fields">
+      <div class="f"><label for="gHip">{{zoom.genHip}}</label><input id="gHip" type="number" inputmode="decimal" value="103" aria-describedby="eGHip"><p class="err" id="eGHip" hidden></p></div>
+      <div class="f"><label for="gHipType">{{zoom.genFovType}}</label><select id="gHipType"><option value="h">{{zoom.fovH}}</option><option value="v">{{zoom.fovV}}</option></select></div>
+      <div class="f"><label for="gAspect">{{zoom.aspect}}</label><select id="gAspect"><option value="1.7777777778">16:9</option><option value="1.6">16:10</option><option value="2.3333333333">21:9</option><option value="1.3333333333">4:3</option></select></div>
+      <div class="f"><label for="gZoomKind">{{zoom.genZoomKind}}</label><select id="gZoomKind"><option value="mag">{{zoom.byMag}}</option><option value="fov">{{zoom.byFov}}</option></select></div>
+      <div class="f wide"><label for="gZoom" id="gZoomLbl">{{zoom.genMag}}</label><input id="gZoom" type="number" inputmode="decimal" value="4" aria-describedby="eGZoom"><p class="err" id="eGZoom" hidden></p></div>
+      <div class="f"><label for="gMethod">{{zoom.method}}</label><select id="gMethod">
+        <option value="0">{{zoom.mCenter}}</option><option value="x">{{zoom.mPoint}}</option><option value="turn">{{zoom.mTurn}}</option>
+      </select></div>
+      <div class="f" id="fGX" hidden><label for="gX">{{zoom.point}}</label><input id="gX" type="number" inputmode="numeric" value="50" aria-describedby="eGX"><p class="err" id="eGX" hidden></p></div>
+      <div class="f wide"><label for="gSens">{{zoom.genSens}}</label><input id="gSens" type="number" inputmode="decimal" value="1" aria-describedby="eGSens"><p class="err" id="eGSens" hidden></p></div>
+    </div>
+    <div class="out" aria-live="polite">
+      <div class="big" id="gBig"><b id="gOut">--</b><span>×</span></div>
+      <dl class="facts">
+        <div><dt>{{zoom.genZoomSens}}</dt><dd id="gSensOut">--</dd></div>
+        <div><dt>{{zoom.genZoomFov}}</dt><dd id="gFovOut">--</dd></div>
+      </dl>
+      <p class="small">{{zoom.genNote}}</p>
+    </div>
+  </section>
+
+  <section class="methods" aria-labelledby="h-m">
+    <h2 id="h-m" style="grid-column:1/-1">{{zoom.whyH}}</h2>
+    <div><h3>{{zoom.mCenter}}</h3><p>{{zoom.whyCenter}}</p></div>
+    <div><h3>{{zoom.mPoint}}</h3><p>{{zoom.whyPoint}}</p></div>
+    <div><h3>{{zoom.mTurn}}</h3><p>{{zoom.whyTurn}}</p></div>
+    <div><h3>{{zoom.formulaH}}</h3><p>{{zoom.formula}}</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}sens/">{{nav.pairs}}</a> · <a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+
+<script type="application/json" id="i18n">{{@i18nJson}}</script>
+<script type="module" src="/assets/js/zoom.js"></script>
+</body>
+</html>

@@ -37,6 +37,9 @@ const PAGES = {
   },
   play: {
     meta: { title: 'meta.play.title', description: 'meta.play.description' }
+  },
+  zoom: {
+    meta: { title: 'meta.zoom.title', description: 'meta.zoom.description' }
   }
 };
 // Pair pages ("Valorant to CS2") are added to PAGES after games.json and pairs.json are read.

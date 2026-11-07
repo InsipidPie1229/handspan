@@ -6,6 +6,7 @@ if (entry !== self) {
   await import('./sens.test.mjs');
   await import('./convertstate.test.mjs');
   await import('./physical.test.mjs');
+  await import('./zoom.test.mjs');
   await import('./stats.test.mjs');
   await import('./session.test.mjs');
   await import('./finder.test.mjs');
