@@ -1,0 +1,28 @@
+name: Test and build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Pages is served from the gh-pages branch (scripts/deploy.mjs), because
+# Actions deployments are not available for this account right now.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22
+      - name: Test
+        run: node --test test/*.test.mjs
+      - name: Build
+        env:
+          HS_SITE: https://insipidpie1229.github.io
+          HS_BASE: /handspan/
+        run: node build.mjs

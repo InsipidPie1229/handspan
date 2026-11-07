@@ -8,7 +8,7 @@ Mouse sensitivity tools that run in the browser: a converter between games (cm/3
 
 - Game coefficients come from converter sites and are shown with their source count. Their independence and in-game accuracy are **not verified**. See the About page.
 - Measurements include browser, mouse and display latency. The 3% tolerance and 0.25 s stall threshold are temporary values.
-- **Not verified yet:** an end-to-end run with a real mouse, in-game accuracy of the coefficients, and the GitHub Actions / Pages deployment itself.
+- **Not verified yet:** an end-to-end run with a real mouse and in-game accuracy of the coefficients.
 - No analytics or ads. Records stay in the browser (localStorage). Fonts are self-hosted.
 
 ## Build
@@ -22,6 +22,16 @@ HS_SITE=https://example.github.io HS_BASE=/handspan/ node build.mjs   # sub-path
 ```
 
 On Git Bash for Windows, prefix the sub-path build with `MSYS_NO_PATHCONV=1`.
+
+## Deploy
+
+The site is served by GitHub Pages from the `gh-pages` branch: https://insipidpie1229.github.io/handspan/
+
+```sh
+node scripts/deploy.mjs   # test, sub-path build, commit dist/ to gh-pages, push, check live URLs
+```
+
+The CI workflow only tests and builds; it does not deploy.
 
 Game data lives in `src/data/games.json`. A game with no sources or with conflicting sources (`conflict`) is left out of the build.
 
