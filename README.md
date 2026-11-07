@@ -1,8 +1,8 @@
 # handspan
 
-Mouse sensitivity tools that run in the browser: a converter between games (cm/360°), a short test that narrows a sensitivity range, a click-accuracy practice, and a move/attack alternation practice. Korean and English.
+Mouse sensitivity tools that run in the browser: a converter between 59 games (cm/360°, plus games you measure yourself), zoom/scope sensitivity matching, game-pair conversion pages, a short test that narrows a sensitivity range, a just-for-fun "game age" mini-game test, a click-accuracy practice and a move/attack alternation practice. Korean and English.
 
-브라우저에서 쓰는 마우스 감도 도구예요. 게임 간 감도 변환(cm/360°), 짧은 테스트로 감도 범위 찾기, 클릭 정확도 연습, 이동·공격 교대 연습이 있어요. 한국어와 영어를 지원해요.
+브라우저에서 쓰는 마우스 감도 도구예요. 59개 게임 감도 변환(cm/360°, 직접 잰 게임 추가 가능), 줌·스코프 감도, 게임별 변환 페이지, 감도 범위 찾기, 재미용 게임 나이 테스트, 클릭 정확도 연습, 이동·공격 교대 연습이 있어요. 한국어와 영어를 지원해요.
 
 ## Status
 

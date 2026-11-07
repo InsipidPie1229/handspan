@@ -1,8 +1,171 @@
 [
-  { "from": "val", "to": "cs", "slug": "valorant-to-cs2", "samples": [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.6] },
-  { "from": "cs", "to": "val", "slug": "cs2-to-valorant", "samples": [0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.5] },
-  { "from": "ow", "to": "val", "slug": "overwatch-2-to-valorant", "samples": [3, 4, 5, 6, 7, 8, 10] },
-  { "from": "val", "to": "ow", "slug": "valorant-to-overwatch-2", "samples": [0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6] },
-  { "from": "apex", "to": "val", "slug": "apex-legends-to-valorant", "samples": [1, 1.2, 1.5, 1.8, 2, 2.5, 3] },
-  { "from": "cs", "to": "ow", "slug": "cs2-to-overwatch-2", "samples": [0.8, 1, 1.2, 1.5, 1.8, 2, 2.5] }
+  {
+    "from": "val",
+    "to": "cs",
+    "slug": "valorant-to-cs2",
+    "samples": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.6
+    ]
+  },
+  {
+    "from": "cs",
+    "to": "val",
+    "slug": "cs2-to-valorant",
+    "samples": [
+      0.8,
+      1,
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2,
+      2.5
+    ]
+  },
+  {
+    "from": "ow",
+    "to": "val",
+    "slug": "overwatch-2-to-valorant",
+    "samples": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10
+    ]
+  },
+  {
+    "from": "val",
+    "to": "ow",
+    "slug": "valorant-to-overwatch-2",
+    "samples": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.5,
+      0.6
+    ]
+  },
+  {
+    "from": "apex",
+    "to": "val",
+    "slug": "apex-legends-to-valorant",
+    "samples": [
+      1,
+      1.2,
+      1.5,
+      1.8,
+      2,
+      2.5,
+      3
+    ]
+  },
+  {
+    "from": "cs",
+    "to": "ow",
+    "slug": "cs2-to-overwatch-2",
+    "samples": [
+      0.8,
+      1,
+      1.2,
+      1.5,
+      1.8,
+      2,
+      2.5
+    ]
+  },
+  {
+    "from": "fn",
+    "to": "val",
+    "slug": "fortnite-to-valorant",
+    "samples": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "from": "val",
+    "to": "fn",
+    "slug": "valorant-to-fortnite",
+    "samples": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.5,
+      0.6
+    ]
+  },
+  {
+    "from": "apex",
+    "to": "cs",
+    "slug": "apex-legends-to-cs2",
+    "samples": [
+      1,
+      1.2,
+      1.5,
+      1.8,
+      2,
+      2.5,
+      3
+    ]
+  },
+  {
+    "from": "ow",
+    "to": "cs",
+    "slug": "overwatch-2-to-cs2",
+    "samples": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10
+    ]
+  },
+  {
+    "from": "r6",
+    "to": "val",
+    "slug": "rainbow-six-siege-to-valorant",
+    "samples": [
+      5,
+      8,
+      10,
+      12,
+      15,
+      20
+    ]
+  },
+  {
+    "from": "cod",
+    "to": "val",
+    "slug": "call-of-duty-to-valorant",
+    "samples": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10
+    ]
+  }
 ]
