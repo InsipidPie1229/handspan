@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:32px}
+.doc section{display:grid;gap:12px}
+.doc p{color:var(--ink-2);max-width:68ch;margin:0}
+.pairs{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.pairs li{border-bottom:1px solid var(--rule)}
+.pairs a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;text-decoration:none;color:var(--ink);font:600 1.1rem var(--f-text)}
+.pairs a:hover{background:var(--tape-soft)}
+.pairs span{font:500 .95rem var(--f-mono);color:var(--ink-2);white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <h1>{{sens.h1}}</h1>
+    <p class="lede">{{sens.lede}}</p>
+  </section>
+  <section>
+    <ul class="pairs">{{@pairs}}</ul>
+    <p class="small">{{sens.note}}</p>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}sens/">{{nav.pairs}}</a> · <a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+</body>
+</html>

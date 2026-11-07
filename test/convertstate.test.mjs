@@ -58,8 +58,20 @@ test('state round-trips through the query string in both modes', () => {
   assert.ok(!serializeState(cmMode).includes('dpi='), 'cm mode does not write unused fields');
 });
 
+test('long but valid values survive the URL round trip (OpenClaw repro)', () => {
+  const st = { mode: 'sens', g: 'cs', dpi: '800', s: '2.1234567890123456789012345', to: '800', cm: '' };
+  assert.deepEqual(parseState(serializeState(st), ids), st);
+  const cm = { mode: 'cm', g: 'ow', dpi: '800', s: '4', to: '800', cm: String(cm360(800, 0.185, 0.0066)) };
+  assert.equal(parseState(serializeState(cm), ids).cm, cm.cm);
+});
+
+test('switching modes with full-precision cm keeps every row (OpenClaw repro: OW 800 / 0.185)', () => {
+  const cm = cm360(800, 0.185, 0.0066);
+  assert.deepEqual(convertCm(Number(String(cm)), 800, games), convert('ow', 800, 0.185, 800, games));
+});
+
 test('parseState falls back for unknown games and odd values', () => {
-  const st = parseState('?g=<script>&dpi=&s=%20&to=' + '9'.repeat(40) + '&m=evil', ids);
+  const st = parseState('?g=<script>&dpi=&s=%20&to=' + '9'.repeat(70) + '&m=evil', ids);
   assert.equal(st.g, 'ow');
   assert.equal(st.dpi, '800');
   assert.equal(st.s, '4');

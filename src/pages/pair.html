@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:40px}
+.doc section{display:grid;gap:12px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch;margin:0}
+.doc ul,.doc ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.crumb{font-size:.85rem;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+.factor{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:20px}
+.factor b{font:800 clamp(3rem,8vw,5.5rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.factor span{font:500 1rem var(--f-mono);color:var(--ink-2)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{font:500 .8rem var(--f-text);color:var(--ink-3);text-align:right;padding:10px 12px;border-bottom:1px solid var(--rule-2)}
+td{padding:12px;border-bottom:1px solid var(--rule);text-align:right;font:400 .95rem var(--f-mono);color:var(--ink-2)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td.s{font:600 1.2rem var(--f-num);font-stretch:110%;color:var(--ink)}
+td.off{color:var(--warn)}
+.srcs li{font-size:.9rem}
+.srcs a{color:var(--ink-2)}
+.go-row{display:flex;flex-wrap:wrap;gap:10px}
+.others{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.92rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <p class="crumb"><a href="{{@base}}sens/">{{nav.pairs}}</a> / {from} → {to}</p>
+    <h1>{{pair.h1}}</h1>
+    <p class="lede">{{pair.lede}}</p>
+    <div class="factor"><b>× {factor}</b><span>{{pair.factorUnit}}</span></div>
+    <p class="small">{{pair.updated}}</p>
+  </section>
+
+  <section aria-labelledby="h-table">
+    <h2 id="h-table">{{pair.tableH}}</h2>
+    <div class="tbl">{@table}</div>
+    <p class="small">{{pair.tableNote}}</p>
+  </section>
+
+  <section>
+    <h2>{{pair.calcH}}</h2>
+    <p>{{pair.calcBody}}</p>
+    <div class="go-row"><a class="btn go" href="{@convertHref}">{{pair.calcLink}}</a><a class="btn" href="{{@base}}find/">{{pair.findLink}}</a></div>
+  </section>
+
+  <section>
+    <h2>{{pair.formulaH}}</h2>
+    <p>{{pair.formulaBody}}</p>
+    <p>{{pair.dpiBody}}</p>
+  </section>
+
+  <section>
+    <h2>{{convert.checkHeading}}</h2>
+    <ol>
+      <li>{{convert.check1}}</li>
+      <li>{{convert.check2}}</li>
+      <li>{{convert.check3}}</li>
+      <li>{{convert.check4}}</li>
+    </ol>
+    <p>{{convert.checkLimits}}</p>
+    {@caveats}
+  </section>
+
+  <section>
+    <h2>{{pair.sourcesH}}</h2>
+    <p>{{pair.sourcesNote}}</p>
+    <ul class="srcs">{@sources}</ul>
+  </section>
+
+  <section>
+    <h2>{{pair.othersH}}</h2>
+    <div class="others">{@others}</div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}sens/">{{nav.pairs}}</a> · <a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+</body>
+</html>

@@ -2,7 +2,8 @@
 // Pure apart from the storage object passed in, so it can be tested in Node.
 
 export const DEFAULTS = { mode: 'sens', g: 'ow', dpi: '800', s: '4', to: '800', cm: '' };
-const MAX_FIELD = 24;
+// Long enough for any value a number input accepts as typed (e.g. 25 significant digits).
+const MAX_FIELD = 64;
 
 function field(params, key, fallback) {
   const v = params.get(key);

@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, rm, readdir, cp } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { cm360, settableSens } from './src/assets/js/lib/sens.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, 'src');
@@ -30,8 +31,12 @@ const PAGES = {
   },
   click: {
     meta: { title: 'meta.click.title', description: 'meta.click.description' }
+  },
+  sens: {
+    meta: { title: 'meta.sens.title', description: 'meta.sens.description' }
   }
 };
+// Pair pages ("Valorant to CS2") are added to PAGES after games.json and pairs.json are read.
 
 function fail(message) {
   console.error('build error: ' + message);
@@ -73,10 +78,17 @@ function collectTemplateKeys(template) {
   return keys;
 }
 
+// Fills {name} placeholders with already-escaped values (pair pages).
+function fill(text, vars) {
+  return vars ? text.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m)) : text;
+}
+
 function makeHead(lang, page, dict) {
   const cfg = PAGES[page];
-  const title = dict[cfg.meta.title];
-  const description = dict[cfg.meta.description];
+  // Title and description are escaped below, so fill them with unescaped values.
+  const raw = cfg.pair ? pairVars(cfg.pair, lang, false) : null;
+  const title = fill(dict[cfg.meta.title], raw);
+  const description = fill(dict[cfg.meta.description], raw);
   const url = SITE + pathFor(lang, page);
   const ko = SITE + pathFor('ko', page);
   const en = SITE + pathFor('en', page);
@@ -115,12 +127,85 @@ function sourcesTable(lang, dict) {
   return `<table><thead><tr><th>${escapeHtml(dict['about.colGame'])}</th><th>${escapeHtml(dict['about.colYaw'])}</th><th>${escapeHtml(dict['about.colSources'])}</th><th>${escapeHtml(dict['about.colStatus'])}</th></tr></thead><tbody>${rows.join('')}</tbody></table>`;
 }
 
+const fmtFactor = (v) => String(+v.toPrecision(4));
+
+function pairVars(pair, lang, escaped = true) {
+  const esc = escaped ? escapeHtml : String;
+  const from = gameById.get(pair.from);
+  const to = gameById.get(pair.to);
+  return {
+    from: esc(from.name[lang]),
+    to: esc(to.name[lang]),
+    factor: fmtFactor(from.yaw / to.yaw),
+    fromYaw: String(from.yaw),
+    toYaw: String(to.yaw),
+    decimals: String(to.decimals),
+    sens: String(pair.samples[Math.floor(pair.samples.length / 2)]),
+    checked: esc([...from.sources, ...to.sources].map((x) => x.checked).sort().pop())
+  };
+}
+
+function pairTable(pair, lang, dict, vars) {
+  const from = gameById.get(pair.from);
+  const to = gameById.get(pair.to);
+  const rows = pair.samples.map((sv) => {
+    const cm = cm360(800, sv, from.yaw);
+    const r = settableSens(cm, 800, to.yaw, to.decimals);
+    const err = Math.abs(r.errPct) >= 0.05 ? ` <span class="small">(${r.errPct > 0 ? '+' : ''}${r.errPct.toFixed(1)}%)</span>` : '';
+    return `<tr><td>${sv.toFixed(from.decimals)}</td><td class="s${r.ok ? '' : ' off'}">${r.sens.toFixed(to.decimals)}${err}</td><td>${cm.toFixed(1)}</td><td>${(cm / 2).toFixed(1)}</td></tr>`;
+  });
+  const head = ['pair.colFrom', 'pair.colTo', 'pair.colCm800', 'pair.colCm1600'].map((k) => `<th>${fill(dict[k], vars)}</th>`).join('');
+  return `<table><thead><tr>${head}</tr></thead><tbody>${rows.join('')}</tbody></table>`;
+}
+
+function pairSources(pair, lang) {
+  return [pair.from, pair.to].map((id) => {
+    const g = gameById.get(id);
+    const links = g.sources.map((x) => `<a href="${escapeHtml(x.url)}" rel="noopener">${escapeHtml(new URL(x.url).hostname)}</a> (${escapeHtml(x.checked)})`).join(', ');
+    return `<li><b>${escapeHtml(g.name[lang])}</b> ${g.yaw}: ${links}</li>`;
+  }).join('');
+}
+
+function pairCaveats(pair, lang) {
+  return [pair.from, pair.to].map((id) => gameById.get(id)).filter((g) => g.caveat && g.caveat[lang])
+    .map((g) => `<p class="note"><b>${escapeHtml(g.name[lang])}</b> ${escapeHtml(g.caveat[lang])}</p>`).join('');
+}
+
+function pairLinks(lang, exceptSlug) {
+  return pairs.filter((p) => p.slug !== exceptSlug).map((p) => {
+    const v = pairVars(p, lang);
+    return `<a href="${pathFor(lang, 'sens/' + p.slug)}">${v.from} → ${v.to}</a>`;
+  }).join('');
+}
+
+function pairList(lang) {
+  return pairs.map((p) => {
+    const v = pairVars(p, lang);
+    return `<li><a href="${pathFor(lang, 'sens/' + p.slug)}">${v.from} → ${v.to}<span>× ${v.factor}</span></a></li>`;
+  }).join('');
+}
+
+function renderPair(out, pair, lang, dict) {
+  const vars = pairVars(pair, lang);
+  const params = new URLSearchParams({ g: pair.from, dpi: '800', s: vars.sens, to: '800' });
+  const blocks = {
+    '@table': pairTable(pair, lang, dict, vars),
+    '@sources': pairSources(pair, lang),
+    '@caveats': pairCaveats(pair, lang),
+    '@others': pairLinks(lang, pair.slug),
+    '@convertHref': `${BASE}${lang}/convert/?${escapeHtml(params.toString())}`
+  };
+  out = out.replace(/\{(@\w+)\}/g, (m, k) => (k in blocks ? blocks[k] : m));
+  return fill(out, vars);
+}
+
 function render(template, lang, page, dict) {
   let out = template;
   out = out.replace(/\{\{@lang\}\}/g, lang);
   out = out.replace(/\{\{@base\}\}/g, `${BASE}${lang}/`);
   out = out.replace(/\{\{@head\}\}/g, makeHead(lang, page, dict));
   out = out.replace(/\{\{@sources\}\}/g, () => sourcesTable(lang, dict));
+  out = out.replace(/\{\{@pairs\}\}/g, () => pairList(lang));
   out = out.replace(/\{\{@i18nJson\}\}/g, JSON.stringify(dict).replace(/</g, '\\u003c'));
   out = out.replace(/\{\{([A-Za-z0-9_.]+)\}\}/g, (match, key) => {
     if (!(key in dict)) throw new Error(`missing key: ${key}`);
@@ -130,6 +215,7 @@ function render(template, lang, page, dict) {
     const current = target === lang ? ' aria-current="true"' : '';
     return `<a href="${pathFor(target, page)}" data-lang="${target}"${current}>`;
   });
+  if (PAGES[page].pair) out = renderPair(out, PAGES[page].pair, lang, dict);
   return out;
 }
 
@@ -172,6 +258,14 @@ for (const game of games) {
     console.warn(`warning: game "${game.id}" has no sources; excluded from dist/data/games.json`);
   }
 }
+const gameById = new Map(keptGames.map((g) => [g.id, g]));
+const pairs = JSON.parse(await readFile(path.join(SRC, 'data', 'pairs.json'), 'utf8'));
+for (const pair of pairs) {
+  if (!gameById.has(pair.from) || !gameById.has(pair.to) || pair.from === pair.to) fail(`pairs.json: ${pair.slug} uses a missing, excluded or identical game`);
+  if (!/^[a-z0-9-]+$/.test(pair.slug)) fail(`pairs.json: bad slug ${pair.slug}`);
+  if (!pair.samples.length || !pair.samples.every((v) => Number.isFinite(v) && v > 0)) fail(`pairs.json: bad samples in ${pair.slug}`);
+  PAGES['sens/' + pair.slug] = { template: 'pair', pair, meta: { title: 'meta.pair.title', description: 'meta.pair.description' } };
+}
 
 let existing = [];
 try {
@@ -186,7 +280,7 @@ await mkdir(DIST, { recursive: true });
 
 const allUsed = new Set();
 for (const [page, cfg] of Object.entries(PAGES)) {
-  const template = await readFile(path.join(SRC, 'pages', `${page}.html`), 'utf8');
+  const template = await readFile(path.join(SRC, 'pages', `${cfg.template || page}.html`), 'utf8');
   const templateKeys = collectTemplateKeys(template);
   for (const lang of LANGS) {
     const dict = i18n[lang];
@@ -206,7 +300,7 @@ for (const [page, cfg] of Object.entries(PAGES)) {
   }
 }
 
-['notfound.title', 'notfound.body', 'notfound.home', 'meta.ogAlt', 'about.colGame', 'about.colYaw', 'about.colSources', 'about.colStatus', 'about.excluded'].forEach((key) => allUsed.add(key));
+['notfound.title', 'notfound.body', 'notfound.home', 'meta.ogAlt', 'pair.colFrom', 'pair.colTo', 'pair.colCm800', 'pair.colCm1600', 'about.colGame', 'about.colYaw', 'about.colSources', 'about.colStatus', 'about.excluded'].forEach((key) => allUsed.add(key));
 const unusedKeys = Object.keys(i18n.ko).filter((key) => !allUsed.has(key));
 if (unusedKeys.length) fail(`unused keys: ${unusedKeys.join(', ')}`);
 
