@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko" data-t-dark="다크" data-t-light="라이트" data-t-to-dark="다크 테마로 바꾸기" data-t-to-light="라이트 테마로 바꾸기">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>handspan · 마우스 감도 변환과 조작 연습</title>
+<meta name="description" content="게임 간 감도 변환, cm/360° 계산, 감도 찾기 테스트, 클릭 정확도와 이동·공격 교대 연습. 설치·가입 없이 브라우저에서 씁니다.">
+<meta property="og:title" content="handspan · 마우스 감도 변환과 조작 연습">
+<meta property="og:description" content="게임 간 감도 변환, cm/360° 계산, 감도 찾기 테스트, 클릭 정확도와 이동·공격 교대 연습. 설치·가입 없이 브라우저에서 씁니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/ko/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/ko/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/">
+<link rel="icon" href="/handspan/assets/9915194bb1/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/9915194bb1/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: 마우스 감도 변환, 감도 찾기, 조작 연습">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/base.css">
+<script src="/handspan/assets/9915194bb1/site.js"></script>
+<style>
+.hero{padding-block:56px 32px;display:grid;gap:14px;max-width:760px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.tools-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.tools-list li{border-bottom:1px solid var(--rule)}
+.tools-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:24px 0;text-decoration:none}
+.tools-list a:hover{background:var(--tape-soft)}
+.tools-list h2{font:700 1.5rem/1.2 var(--f-num);font-stretch:108%}
+.tools-list p{margin:0;color:var(--ink-2);grid-column:1}
+.tools-list .go{grid-row:1 / span 2;grid-column:2;font:500 .9rem var(--f-text);color:var(--ink-2);white-space:nowrap}
+.tools-list .tag{font:500 .78rem var(--f-text);color:var(--ink-3)}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:40px 64px}
+.notes h2{font-size:1rem;margin-bottom:4px}.notes p{margin:0;color:var(--ink-2);font-size:.92rem}
+@media (max-width:640px){.tools-list a{grid-template-columns:minmax(0,1fr)}.tools-list .go{grid-row:auto;grid-column:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/ko/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="도구">
+    <a href="/handspan/ko/convert/">감도 변환</a><a href="/handspan/ko/find/">감도 찾기</a><a href="/handspan/ko/click/">클릭 정확도</a><a href="/handspan/ko/kite/">이동·공격 교대</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">다크</button><div class="lang"><a href="/handspan/ko/" data-lang="ko" aria-current="true">KO</a><a href="/handspan/en/" data-lang="en">EN</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>마우스 감도를 숫자로 맞추고, 손으로 확인해요</h1>
+    <p class="lede">게임마다 다른 감도를 같은 회전 거리로 바꾸고, 짧은 테스트로 손에 맞는 범위를 찾고, 커서 조작을 연습해요. 설치나 가입은 필요 없어요.</p>
+  </section>
+
+  <ul class="tools-list">
+    <li><a href="/handspan/ko/convert/"><h2>감도 변환</h2><p>게임·DPI·감도를 넣으면 한 바퀴에 필요한 마우스 거리(cm/360°)와 다른 게임의 같은 감도를 보여 줘요.</p><span class="go">열기 →</span></a></li>
+    <li><a href="/handspan/ko/find/"><h2>감도 찾기 <span class="tag">PC 전용</span></h2><p>지금 DPI를 그대로 두고 후보 감도를 번갈아 쏴 보며 손에 맞는 cm/360° 범위를 좁혀요.</p><span class="go">열기 →</span></a></li>
+    <li><a href="/handspan/ko/click/"><h2>클릭 정확도 <span class="tag">PC 전용</span></h2><p>크기와 거리가 다른 목표를 누르며 명중률, 빗나간 클릭, 목표를 잡는 시간을 따로 봐요.</p><span class="go">열기 →</span></a></li>
+    <li><a href="/handspan/ko/kite/"><h2>이동·공격 교대 <span class="tag">PC 전용</span></h2><p>이동 지점과 공격 목표를 번갈아 누르는 순서와 정확도를 연습해요. 실제 게임 화면을 재현하지는 않아요.</p><span class="go">열기 →</span></a></li>
+  </ul>
+
+  <section class="notes">
+    <div><h2>계산과 측정</h2><p>변환은 공개된 게임 계수로 계산한 값이에요. 측정 결과는 브라우저·마우스·화면 지연이 포함된 값이라 실제 게임에서 며칠 써 보고 정하는 게 좋아요.</p></div>
+    <div><h2>게임 계수</h2><p>게임마다 출처 수와 실게임 확인 여부를 따로 표시해요. 아직 실제 게임에서 확인한 게임은 없어요.</p></div>
+    <div><h2>기록</h2><p>연습 기록은 이 브라우저에만 저장돼요. 서버로 보내지 않아요.</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/ko/about/">정보·개인정보·출처</a></div></footer>
+</body>
+</html>

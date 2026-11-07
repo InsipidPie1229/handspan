@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-t-dark="Dark" data-t-light="Light" data-t-to-dark="Switch to dark theme" data-t-to-light="Switch to light theme">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>handspan · Mouse sensitivity converter and aim practice</title>
+<meta name="description" content="Convert sensitivity between games, calculate cm/360°, find a sensitivity range with a short test, and practice click accuracy and move/attack alternation in the browser. No install or sign-up.">
+<meta property="og:title" content="handspan · Mouse sensitivity converter and aim practice">
+<meta property="og:description" content="Convert sensitivity between games, calculate cm/360°, find a sensitivity range with a short test, and practice click accuracy and move/attack alternation in the browser. No install or sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/en/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/en/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/">
+<link rel="icon" href="/handspan/assets/9915194bb1/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/9915194bb1/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: mouse sensitivity converter, finder and aim practice">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/base.css">
+<script src="/handspan/assets/9915194bb1/site.js"></script>
+<style>
+.hero{padding-block:56px 32px;display:grid;gap:14px;max-width:760px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.tools-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.tools-list li{border-bottom:1px solid var(--rule)}
+.tools-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:24px 0;text-decoration:none}
+.tools-list a:hover{background:var(--tape-soft)}
+.tools-list h2{font:700 1.5rem/1.2 var(--f-num);font-stretch:108%}
+.tools-list p{margin:0;color:var(--ink-2);grid-column:1}
+.tools-list .go{grid-row:1 / span 2;grid-column:2;font:500 .9rem var(--f-text);color:var(--ink-2);white-space:nowrap}
+.tools-list .tag{font:500 .78rem var(--f-text);color:var(--ink-3)}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:40px 64px}
+.notes h2{font-size:1rem;margin-bottom:4px}.notes p{margin:0;color:var(--ink-2);font-size:.92rem}
+@media (max-width:640px){.tools-list a{grid-template-columns:minmax(0,1fr)}.tools-list .go{grid-row:auto;grid-column:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/en/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="Tools">
+    <a href="/handspan/en/convert/">Sensitivity converter</a><a href="/handspan/en/find/">Find sensitivity</a><a href="/handspan/en/click/">Click accuracy</a><a href="/handspan/en/kite/">Move and attack alternation</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">Dark</button><div class="lang"><a href="/handspan/ko/" data-lang="ko">KO</a><a href="/handspan/en/" data-lang="en" aria-current="true">EN</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Match mouse sensitivity by the numbers, then check it by hand</h1>
+    <p class="lede">Convert sensitivity between games at the same turn distance, narrow down a range that suits your hand with a short test, and practice cursor control. No install or sign-up.</p>
+  </section>
+
+  <ul class="tools-list">
+    <li><a href="/handspan/en/convert/"><h2>Sensitivity converter</h2><p>Enter a game, DPI and sensitivity to see the mouse distance for one full turn (cm/360°) and the matching sensitivity in other games.</p><span class="go">Open →</span></a></li>
+    <li><a href="/handspan/en/find/"><h2>Find sensitivity <span class="tag">Desktop only</span></h2><p>Keep your current DPI and shoot alternating candidate sensitivities to narrow a cm/360° range that suits your hand.</p><span class="go">Open →</span></a></li>
+    <li><a href="/handspan/en/click/"><h2>Click accuracy <span class="tag">Desktop only</span></h2><p>Click targets of different sizes and distances, with accuracy, missed clicks and time to acquire shown separately.</p><span class="go">Open →</span></a></li>
+    <li><a href="/handspan/en/kite/"><h2>Move and attack alternation <span class="tag">Desktop only</span></h2><p>Practice the order and accuracy of alternating move and attack clicks. It does not recreate any real game.</p><span class="go">Open →</span></a></li>
+  </ul>
+
+  <section class="notes">
+    <div><h2>Calculation and measurement</h2><p>Conversions use published game coefficients. Measurements include browser, mouse and display latency, so try a result in the real game for a few days before settling on it.</p></div>
+    <div><h2>Game coefficients</h2><p>Each game shows how many sources its coefficient has and whether it was checked in the real game. No game has been checked in-game yet.</p></div>
+    <div><h2>Records</h2><p>Practice records stay in this browser. Nothing is sent to a server.</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/en/about/">About, privacy and sources</a></div></footer>
+</body>
+</html>

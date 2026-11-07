@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko" data-t-dark="다크" data-t-light="라이트" data-t-to-dark="다크 테마로 바꾸기" data-t-to-light="라이트 테마로 바꾸기">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>정보와 출처 · handspan</title>
+<meta name="description" content="handspan이 저장하는 정보, 외부 요청, 측정 방식의 한계, 게임 계수의 출처와 확인 상태.">
+<meta property="og:title" content="정보와 출처 · handspan">
+<meta property="og:description" content="handspan이 저장하는 정보, 외부 요청, 측정 방식의 한계, 게임 계수의 출처와 확인 상태.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/ko/about/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/ko/about/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/about/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="icon" href="/handspan/assets/9915194bb1/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/9915194bb1/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: 마우스 감도 변환, 감도 찾기, 조작 연습">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/base.css">
+<script src="/handspan/assets/9915194bb1/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:36px}
+.doc section{display:grid;gap:10px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch}
+.doc ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.src-table{overflow-x:auto}
+.src-table table{border-collapse:collapse;width:100%;font-size:.86rem}
+.src-table th{font-weight:500;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule-2)}
+.src-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.src-table td.n{font-family:var(--f-mono);white-space:nowrap}
+.src-table a{word-break:break-all}
+.src-table .ex td{color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/ko/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="도구">
+    <a href="/handspan/ko/convert/">감도 변환</a><a href="/handspan/ko/find/">감도 찾기</a><a href="/handspan/ko/click/">클릭 정확도</a><a href="/handspan/ko/kite/">이동·공격 교대</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">다크</button><div class="lang"><a href="/handspan/ko/about/" data-lang="ko" aria-current="true">KO</a><a href="/handspan/en/about/" data-lang="en">EN</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <h1>정보와 출처</h1>
+    <p class="lede">무엇을 저장하고, 어디에 요청하고, 숫자가 어디서 왔는지 적어 둬요.</p>
+  </section>
+  <section>
+    <h2>저장과 외부 요청</h2>
+    <ul>
+      <li>자체 분석 도구나 광고는 쓰지 않아요. 연습 기록과 설정은 이 브라우저(localStorage)에만 저장되고 서버로 보내지 않아요.</li>
+      <li>글꼴(Archivo, IBM Plex Mono, IBM Plex Sans KR)은 이 사이트에 직접 올려 둔 파일을 써요. Google 같은 외부 서버에는 요청하지 않아요. 글꼴 라이선스(SIL OFL 1.1)는 assets/fonts/LICENSES.md에 있어요.</li>
+      <li>사이트를 올린 호스팅 서비스도 일반적인 접속 기록을 남길 수 있어요.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>측정 방식과 한계</h2>
+    <ul>
+      <li>측정 결과에는 브라우저, 마우스, 화면의 지연이 포함돼요. 실제 게임 점수와 같다는 뜻이 아니에요.</li>
+      <li>감도 찾기 결과는 정답이 아니라 출발점인 범위예요. 실제 게임에서 며칠 써 보고 정하세요.</li>
+      <li>목표 오차 3%와 멈춤 판정 0.25초는 검증된 값이 아니라 임시 기준이에요.</li>
+      <li>실제 마우스로 처음부터 끝까지 해 보는 검증은 아직 하지 않았어요. 측정 방식은 자동 테스트로만 확인했어요.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>게임 계수 출처</h2>
+    <p>아래 값은 변환기 사이트에 적힌 그대로 옮긴 것이에요. 사이트들이 같은 목록을 옮겨 적었을 수 있어서 서로 독립적인 근거인지는 확인하지 않았어요. 실제 게임에서 확인한 게임은 아직 없어요.</p>
+    <div class="src-table"><table><thead><tr><th>게임</th><th>사용 값</th><th>출처 (확인일 · 적힌 값)</th><th>상태</th></tr></thead><tbody><tr class=""><td>오버워치 2</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.0066)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.0066 · hipfire FOV 103 (16:9))</td><td>실게임 미확인</td></tr><tr class=""><td>CS2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022)</td><td>실게임 미확인</td></tr><tr class=""><td>발로란트</td><td class="n">0.07</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.07)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.07)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.07)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.07)</td><td>실게임 미확인</td></tr><tr class=""><td>Apex 레전드</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022)</td><td>실게임 미확인</td></tr><tr class=""><td>콜 오브 듀티 (레거시)</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066 · MW3, Warzone, Black Ops 6)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066 · Warzone, Black Ops 6/7)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.0066)</td><td>실게임 미확인</td></tr><tr class=""><td>포트나이트</td><td class="n">0.005555</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.005555 · X sensitivity shown as %)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.005555)<br><a href="https://dcprosens.com/blog/pubg-sensitivity-converter-guide/" rel="noopener">dcprosens.com</a> (2026-11-08 · 0.005555)</td><td>실게임 미확인 · 한 변환기는 포트나이트가 시야각이나 슬라이더 방식에 따라 달라진다고 적고 있어요.</td></tr><tr class=""><td>레인보우 식스 시즈 (배율 0.02)</td><td class="n">0.00572957795</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.00572957795 · default multiplier 0.02)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.00572958)<br><a href="https://sensconverter.vercel.app/guides/what-is-mouse-yaw" rel="noopener">sensconverter.vercel.app</a> (2026-11-08 · 0.00572957795)</td><td>실게임 미확인 · 배율(기본 0.02)과 시야각 설정에 따라 달라질 수 있어요.</td></tr><tr class=""><td>마블 라이벌즈</td><td class="n">0.0175</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0175)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.017453 · pi/180; notes some converters list 0.022)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.0175)<br>0.022 (hearsay via game-sens.jor.dev)</td><td>실게임 미확인 · 확인한 출처는 0.0175와 0.017453(π/180)으로 0.3% 차이예요. 0.022라는 값은 다른 사이트의 전언일 뿐 원문을 확인하지 않았어요. 원문이 확인되면 충돌로 보고 계산에서 뺄 거예요.</td></tr><tr class="ex"><td>데드락</td><td class="n">0.044</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.044)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022 · says same yaw as CS2)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.044)</td><td>계산에서 뺌: 출처마다 0.044와 0.022로 두 배 차이가 나서, 확인될 때까지 계산에서 뺐어요.</td></tr><tr class=""><td>더 파이널스</td><td class="n">0.001</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.001)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.001)</td><td>실게임 미확인</td></tr><tr class=""><td>팀 포트리스 2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>실게임 미확인</td></tr><tr class=""><td>타이탄폴 2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>실게임 미확인</td></tr><tr class=""><td>퀘이크 챔피언스</td><td class="n">0.022</td><td><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>실게임 미확인</td></tr><tr class=""><td>데스티니 가디언즈</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066)</td><td>실게임 미확인</td></tr></tbody></table></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/ko/about/">정보·개인정보·출처</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-t-dark="Dark" data-t-light="Light" data-t-to-dark="Switch to dark theme" data-t-to-light="Switch to light theme">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>About and sources · handspan</title>
+<meta name="description" content="What handspan stores, which external requests it makes, the limits of its measurements, and where each game coefficient comes from.">
+<meta property="og:title" content="About and sources · handspan">
+<meta property="og:description" content="What handspan stores, which external requests it makes, the limits of its measurements, and where each game coefficient comes from.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/about/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/about/">
+<link rel="icon" href="/handspan/assets/9915194bb1/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/9915194bb1/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: mouse sensitivity converter, finder and aim practice">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/9915194bb1/base.css">
+<script src="/handspan/assets/9915194bb1/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:36px}
+.doc section{display:grid;gap:10px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch}
+.doc ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.src-table{overflow-x:auto}
+.src-table table{border-collapse:collapse;width:100%;font-size:.86rem}
+.src-table th{font-weight:500;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule-2)}
+.src-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.src-table td.n{font-family:var(--f-mono);white-space:nowrap}
+.src-table a{word-break:break-all}
+.src-table .ex td{color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/en/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="Tools">
+    <a href="/handspan/en/convert/">Sensitivity converter</a><a href="/handspan/en/find/">Find sensitivity</a><a href="/handspan/en/click/">Click accuracy</a><a href="/handspan/en/kite/">Move and attack alternation</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">Dark</button><div class="lang"><a href="/handspan/ko/about/" data-lang="ko">KO</a><a href="/handspan/en/about/" data-lang="en" aria-current="true">EN</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <h1>About and sources</h1>
+    <p class="lede">What is stored, what is requested from elsewhere, and where the numbers come from.</p>
+  </section>
+  <section>
+    <h2>Storage and external requests</h2>
+    <ul>
+      <li>No analytics or ads of our own. Practice records and settings stay in this browser (localStorage) and are not sent to a server.</li>
+      <li>Fonts (Archivo, IBM Plex Mono, IBM Plex Sans KR) are served from this site. No requests go to Google or other external servers. Font licenses (SIL OFL 1.1) are in assets/fonts/LICENSES.md.</li>
+      <li>The hosting service that serves the site may keep ordinary access logs.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Measurement and its limits</h2>
+    <ul>
+      <li>Results include browser, mouse and display latency. They are not the same as in-game performance.</li>
+      <li>The finder gives a starting range, not an answer. Try it in the real game for a few days before settling.</li>
+      <li>The 3% target tolerance and the 0.25 s stall threshold are temporary values, not verified ones.</li>
+      <li>An end-to-end run with a real mouse has not been verified yet. The measurement logic has only been checked with automated tests.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Game coefficient sources</h2>
+    <p>Values are copied as written on converter sites. Those sites may copy the same list, so their independence is not verified. No game has been checked in the real game yet.</p>
+    <div class="src-table"><table><thead><tr><th>Game</th><th>Value used</th><th>Sources (checked · value as written)</th><th>Status</th></tr></thead><tbody><tr class=""><td>Overwatch 2</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.0066)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.0066 · hipfire FOV 103 (16:9))</td><td>Not verified in game</td></tr><tr class=""><td>CS2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022)</td><td>Not verified in game</td></tr><tr class=""><td>Valorant</td><td class="n">0.07</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.07)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.07)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.07)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.07)</td><td>Not verified in game</td></tr><tr class=""><td>Apex Legends</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022)</td><td>Not verified in game</td></tr><tr class=""><td>Call of Duty (legacy)</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066 · MW3, Warzone, Black Ops 6)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066 · Warzone, Black Ops 6/7)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.0066)</td><td>Not verified in game</td></tr><tr class=""><td>Fortnite</td><td class="n">0.005555</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.005555 · X sensitivity shown as %)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.005555)<br><a href="https://dcprosens.com/blog/pubg-sensitivity-converter-guide/" rel="noopener">dcprosens.com</a> (2026-11-08 · 0.005555)</td><td>Not verified in game · One converter notes Fortnite scales with field of view or a slider system.</td></tr><tr class=""><td>Rainbow Six Siege (multiplier 0.02)</td><td class="n">0.00572957795</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.00572957795 · default multiplier 0.02)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.00572958)<br><a href="https://sensconverter.vercel.app/guides/what-is-mouse-yaw" rel="noopener">sensconverter.vercel.app</a> (2026-11-08 · 0.00572957795)</td><td>Not verified in game · Depends on the multiplier (default 0.02) and may depend on field of view.</td></tr><tr class=""><td>Marvel Rivals</td><td class="n">0.0175</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0175)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.017453 · pi/180; notes some converters list 0.022)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.0175)<br>0.022 (hearsay via game-sens.jor.dev)</td><td>Not verified in game · Checked sources give 0.0175 and 0.017453 (pi/180), a 0.3% difference. A value of 0.022 is only reported second-hand and has not been checked; if confirmed, the game will be treated as conflicting and left out.</td></tr><tr class="ex"><td>Deadlock</td><td class="n">0.044</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.044)<br><a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08 · 0.022 · says same yaw as CS2)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.044)</td><td>Left out: Sources disagree by a factor of two (0.044 vs 0.022), so it is left out until checked.</td></tr><tr class=""><td>The Finals</td><td class="n">0.001</td><td><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.001)<br><a href="https://mansone.com/tools/sensitivity-converter" rel="noopener">mansone.com</a> (2026-11-08 · 0.001)</td><td>Not verified in game</td></tr><tr class=""><td>Team Fortress 2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>Not verified in game</td></tr><tr class=""><td>Titanfall 2</td><td class="n">0.022</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.022)<br><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>Not verified in game</td></tr><tr class=""><td>Quake Champions</td><td class="n">0.022</td><td><a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08 · 0.022)</td><td>Not verified in game</td></tr><tr class=""><td>Destiny 2</td><td class="n">0.0066</td><td><a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08 · 0.0066)<br><a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08 · 0.0066)</td><td>Not verified in game</td></tr></tbody></table></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/en/about/">About, privacy and sources</a></div></footer>
+</body>
+</html>
