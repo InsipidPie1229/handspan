@@ -42,7 +42,7 @@ if (!out('git', ['status', '--porcelain'], { cwd: WT })) {
   console.log('gh-pages already matches this build');
   process.exit(0);
 }
-run('git', ['commit', '-q', '-m', `deploy: build of ${head}`], { cwd: WT });
+run('git', ['-c', 'user.name=InsipidPie1229', '-c', 'user.email=118425817+InsipidPie1229@users.noreply.github.com', 'commit', '-q', '-m', `deploy: build of ${head}`], { cwd: WT });
 if (dry) {
   console.log('dry run: committed in .deploy, not pushed');
   process.exit(0);
