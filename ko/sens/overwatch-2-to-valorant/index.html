@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko" data-t-dark="다크" data-t-light="라이트" data-t-to-dark="다크 테마로 바꾸기" data-t-to-light="라이트 테마로 바꾸기">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>오버워치 2 → 발로란트 감도 변환 (× 0.09429) · handspan</title>
+<meta name="description" content="오버워치 2 감도를 발로란트 감도로 바꾸려면 같은 DPI에서 × 0.09429. 감도별 환산표, cm/360, 계산식, 출처와 한계를 함께 정리했어요.">
+<meta property="og:title" content="오버워치 2 → 발로란트 감도 변환 (× 0.09429) · handspan">
+<meta property="og:description" content="오버워치 2 감도를 발로란트 감도로 바꾸려면 같은 DPI에서 × 0.09429. 감도별 환산표, cm/360, 계산식, 출처와 한계를 함께 정리했어요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/ko/sens/overwatch-2-to-valorant/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/ko/sens/overwatch-2-to-valorant/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/sens/overwatch-2-to-valorant/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/sens/overwatch-2-to-valorant/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/sens/overwatch-2-to-valorant/">
+<link rel="icon" href="/handspan/assets/1e7f97bd6f/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/1e7f97bd6f/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: 마우스 감도 변환, 감도 찾기, 조작 연습">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/1e7f97bd6f/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/1e7f97bd6f/base.css">
+<script src="/handspan/assets/1e7f97bd6f/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:40px}
+.doc section{display:grid;gap:12px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch;margin:0}
+.doc ul,.doc ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.crumb{font-size:.85rem;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+.factor{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:20px}
+.factor b{font:800 clamp(3rem,8vw,5.5rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.factor span{font:500 1rem var(--f-mono);color:var(--ink-2)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{font:500 .8rem var(--f-text);color:var(--ink-3);text-align:right;padding:10px 12px;border-bottom:1px solid var(--rule-2)}
+td{padding:12px;border-bottom:1px solid var(--rule);text-align:right;font:400 .95rem var(--f-mono);color:var(--ink-2)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td.s{font:600 1.2rem var(--f-num);font-stretch:110%;color:var(--ink)}
+td.off{color:var(--warn)}
+.srcs li{font-size:.9rem}
+.srcs a{color:var(--ink-2)}
+.go-row{display:flex;flex-wrap:wrap;gap:10px}
+.others{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.92rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/ko/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="도구">
+    <a href="/handspan/ko/convert/">감도 변환</a><a href="/handspan/ko/find/">감도 찾기</a><a href="/handspan/ko/click/">클릭 정확도</a><a href="/handspan/ko/kite/">이동·공격 교대</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">다크</button><div class="lang"><a href="/handspan/ko/sens/overwatch-2-to-valorant/" data-lang="ko" aria-current="true">KO</a><a href="/handspan/en/sens/overwatch-2-to-valorant/" data-lang="en">EN</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <p class="crumb"><a href="/handspan/ko/sens/">게임별 감도 변환</a> / 오버워치 2 → 발로란트</p>
+    <h1>오버워치 2 → 발로란트 감도 변환</h1>
+    <p class="lede">DPI를 그대로 쓴다면 발로란트 감도 = 오버워치 2 감도 × 0.09429예요. 마우스를 같은 거리만큼 밀었을 때 같은 각도로 돌도록 맞춘 값이에요.</p>
+    <div class="factor"><b>× 0.09429</b><span>같은 DPI · 비조준 수평 회전</span></div>
+    <p class="small">계수 확인일 2026-11-08 · 실게임 미확인</p>
+  </section>
+
+  <section aria-labelledby="h-table">
+    <h2 id="h-table">감도별 환산표</h2>
+    <div class="tbl"><table><thead><tr><th>오버워치 2 감도</th><th>발로란트 감도</th><th>cm/360 (800 DPI)</th><th>cm/360 (1600 DPI)</th></tr></thead><tbody><tr><td>3.00</td><td class="s">0.283 <span class="small">(-0.1%)</span></td><td>57.7</td><td>28.9</td></tr><tr><td>4.00</td><td class="s">0.377</td><td>43.3</td><td>21.6</td></tr><tr><td>5.00</td><td class="s">0.471 <span class="small">(+0.1%)</span></td><td>34.6</td><td>17.3</td></tr><tr><td>6.00</td><td class="s">0.566 <span class="small">(-0.1%)</span></td><td>28.9</td><td>14.4</td></tr><tr><td>7.00</td><td class="s">0.660</td><td>24.7</td><td>12.4</td></tr><tr><td>8.00</td><td class="s">0.754</td><td>21.6</td><td>10.8</td></tr><tr><td>10.00</td><td class="s">0.943</td><td>17.3</td><td>8.7</td></tr></tbody></table></div>
+    <p class="small">발로란트 감도는 입력할 수 있는 단위(소수점 3자리)로 반올림했고, 반올림 때문에 생기는 차이가 0.05% 이상이면 괄호에 적었어요. 3%를 넘으면 노란색으로 표시해요. 감도 배수는 DPI와 상관없이 같아요.</p>
+  </section>
+
+  <section>
+    <h2>내 값으로 계산하기</h2>
+    <p>표에 없는 감도나 다른 DPI, 다른 게임까지 함께 보려면 변환기에서 바로 계산하세요. 어떤 감도가 맞는지 모르겠다면 감도 찾기로 범위를 좁혀 볼 수 있어요.</p>
+    <div class="go-row"><a class="btn go" href="/handspan/ko/convert/?g=ow&amp;dpi=800&amp;s=6&amp;to=800">변환기에서 열기</a><a class="btn" href="/handspan/ko/find/">감도 찾기</a></div>
+  </section>
+
+  <section>
+    <h2>계산식</h2>
+    <p>cm/360 = 914.4 ÷ (DPI × 감도 × 계수). 오버워치 2 계수는 0.0066, 발로란트 계수는 0.07예요. 그래서 같은 DPI에서는 발로란트 감도 = 오버워치 2 감도 × 0.0066 ÷ 0.07 = 오버워치 2 감도 × 0.09429예요.</p>
+    <p>DPI도 바꾼다면 위 값에 (이전 DPI ÷ 새 DPI)를 한 번 더 곱해요. 예를 들어 800에서 1600으로 바꾸면 감도를 절반으로 줄여요.</p>
+  </section>
+
+  <section>
+    <h2>게임 안에서 직접 확인하기</h2>
+    <ol>
+      <li>게임에 감도를 넣고 마우스 가속(포인터 정확도 향상 포함)이 꺼져 있는지 확인해요.</li>
+      <li>마우스 옆에 자를 두거나 패드에 시작 위치를 표시하고, 화면의 눈에 띄는 기준점을 조준해요.</li>
+      <li>마우스를 천천히 옆으로 밀어 정확히 한 바퀴 돌아 같은 기준점에 올 때까지 이동한 거리를 재요.</li>
+      <li>잰 거리를 위의 cm/360과 비교해요. 3% 넘게 차이 나면 DPI 설정, 가속, 게임 계수를 다시 확인해요.</li>
+    </ol>
+    <p>이 계산은 허리 사격(비조준) 상태의 좌우 회전만 맞춰요. 조준(ADS)·스코프 배율, 시야각(FOV) 설정, 세로 감도 배율은 게임마다 다르게 적용돼서 따로 맞춰야 해요.</p>
+    
+  </section>
+
+  <section>
+    <h2>계수 출처</h2>
+    <p>공개 변환기 사이트에서 확인한 값과 날짜예요. 사이트끼리 같은 목록을 옮겨 적었을 수 있어서 서로 독립적인 근거인지는 확인하지 않았어요.</p>
+    <ul class="srcs"><li><b>오버워치 2</b> 0.0066: <a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08), <a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08), <a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08), <a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08)</li><li><b>발로란트</b> 0.07: <a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08), <a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08), <a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08), <a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08)</li></ul>
+  </section>
+
+  <section>
+    <h2>다른 변환</h2>
+    <div class="others"><a href="/handspan/ko/sens/valorant-to-cs2/">발로란트 → CS2</a><a href="/handspan/ko/sens/cs2-to-valorant/">CS2 → 발로란트</a><a href="/handspan/ko/sens/valorant-to-overwatch-2/">발로란트 → 오버워치 2</a><a href="/handspan/ko/sens/apex-legends-to-valorant/">Apex 레전드 → 발로란트</a><a href="/handspan/ko/sens/cs2-to-overwatch-2/">CS2 → 오버워치 2</a></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/ko/sens/">게임별 감도 변환</a> · <a href="/handspan/ko/about/">정보·개인정보·출처</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-t-dark="Dark" data-t-light="Light" data-t-to-dark="Switch to dark theme" data-t-to-light="Switch to light theme">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Valorant to CS2 sensitivity (× 3.182) · handspan</title>
+<meta name="description" content="To convert Valorant sensitivity to CS2 at the same DPI, multiply by 3.182. Includes a sensitivity table, cm/360, the formula, sources and limits.">
+<meta property="og:title" content="Valorant to CS2 sensitivity (× 3.182) · handspan">
+<meta property="og:description" content="To convert Valorant sensitivity to CS2 at the same DPI, multiply by 3.182. Includes a sensitivity table, cm/360, the formula, sources and limits.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://insipidpie1229.github.io/handspan/en/sens/valorant-to-cs2/">
+<link rel="canonical" href="https://insipidpie1229.github.io/handspan/en/sens/valorant-to-cs2/">
+<link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/sens/valorant-to-cs2/">
+<link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/sens/valorant-to-cs2/">
+<link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/sens/valorant-to-cs2/">
+<link rel="icon" href="/handspan/assets/1e7f97bd6f/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="handspan">
+<meta property="og:image" content="https://insipidpie1229.github.io/handspan/assets/1e7f97bd6f/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="handspan: mouse sensitivity converter, finder and aim practice">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/handspan/assets/1e7f97bd6f/fonts.css">
+<link rel="stylesheet" href="/handspan/assets/1e7f97bd6f/base.css">
+<script src="/handspan/assets/1e7f97bd6f/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:40px}
+.doc section{display:grid;gap:12px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch;margin:0}
+.doc ul,.doc ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.crumb{font-size:.85rem;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+.factor{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:20px}
+.factor b{font:800 clamp(3rem,8vw,5.5rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.factor span{font:500 1rem var(--f-mono);color:var(--ink-2)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{font:500 .8rem var(--f-text);color:var(--ink-3);text-align:right;padding:10px 12px;border-bottom:1px solid var(--rule-2)}
+td{padding:12px;border-bottom:1px solid var(--rule);text-align:right;font:400 .95rem var(--f-mono);color:var(--ink-2)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td.s{font:600 1.2rem var(--f-num);font-stretch:110%;color:var(--ink)}
+td.off{color:var(--warn)}
+.srcs li{font-size:.9rem}
+.srcs a{color:var(--ink-2)}
+.go-row{display:flex;flex-wrap:wrap;gap:10px}
+.others{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.92rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/handspan/en/"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="Tools">
+    <a href="/handspan/en/convert/">Sensitivity converter</a><a href="/handspan/en/find/">Find sensitivity</a><a href="/handspan/en/click/">Click accuracy</a><a href="/handspan/en/kite/">Move and attack alternation</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">Dark</button><div class="lang"><a href="/handspan/ko/sens/valorant-to-cs2/" data-lang="ko">KO</a><a href="/handspan/en/sens/valorant-to-cs2/" data-lang="en" aria-current="true">EN</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <p class="crumb"><a href="/handspan/en/sens/">Sensitivity by game</a> / Valorant → CS2</p>
+    <h1>Valorant to CS2 sensitivity</h1>
+    <p class="lede">If you keep the same DPI, CS2 sensitivity = Valorant sensitivity × 3.182. The same mouse distance then turns you the same angle in both games.</p>
+    <div class="factor"><b>× 3.182</b><span>same DPI · hip-fire horizontal turn</span></div>
+    <p class="small">Yaw values checked 2026-11-08 · not verified in game</p>
+  </section>
+
+  <section aria-labelledby="h-table">
+    <h2 id="h-table">Sensitivity table</h2>
+    <div class="tbl"><table><thead><tr><th>Valorant sens</th><th>CS2 sens</th><th>cm/360 (800 DPI)</th><th>cm/360 (1600 DPI)</th></tr></thead><tbody><tr><td>0.200</td><td class="s">0.64 <span class="small">(-0.6%)</span></td><td>81.6</td><td>40.8</td></tr><tr><td>0.250</td><td class="s">0.80 <span class="small">(-0.6%)</span></td><td>65.3</td><td>32.7</td></tr><tr><td>0.300</td><td class="s">0.95 <span class="small">(+0.5%)</span></td><td>54.4</td><td>27.2</td></tr><tr><td>0.350</td><td class="s">1.11 <span class="small">(+0.3%)</span></td><td>46.7</td><td>23.3</td></tr><tr><td>0.400</td><td class="s">1.27 <span class="small">(+0.2%)</span></td><td>40.8</td><td>20.4</td></tr><tr><td>0.450</td><td class="s">1.43 <span class="small">(+0.1%)</span></td><td>36.3</td><td>18.1</td></tr><tr><td>0.500</td><td class="s">1.59 <span class="small">(+0.1%)</span></td><td>32.7</td><td>16.3</td></tr><tr><td>0.600</td><td class="s">1.91</td><td>27.2</td><td>13.6</td></tr></tbody></table></div>
+    <p class="small">CS2 values are rounded to the step the game accepts (2 decimals). Rounding differences of 0.05% or more are shown in brackets, and anything over 3% is marked in yellow. The factor itself does not depend on DPI.</p>
+  </section>
+
+  <section>
+    <h2>Calculate your own value</h2>
+    <p>For a value not in the table, a different DPI, or other games, use the converter. If you are not sure which sensitivity suits you, the sensitivity finder can narrow it down.</p>
+    <div class="go-row"><a class="btn go" href="/handspan/en/convert/?g=val&amp;dpi=800&amp;s=0.4&amp;to=800">Open in the converter</a><a class="btn" href="/handspan/en/find/">Find your sensitivity</a></div>
+  </section>
+
+  <section>
+    <h2>Formula</h2>
+    <p>cm/360 = 914.4 ÷ (DPI × sensitivity × yaw). Valorant uses a yaw of 0.07 and CS2 uses 0.022, so at the same DPI CS2 sensitivity = Valorant sensitivity × 0.07 ÷ 0.022 = Valorant sensitivity × 3.182.</p>
+    <p>If you also change DPI, multiply once more by (old DPI ÷ new DPI). Going from 800 to 1600 DPI halves the sensitivity.</p>
+  </section>
+
+  <section>
+    <h2>Check it in game</h2>
+    <ol>
+      <li>Enter the sensitivity in game and make sure mouse acceleration (including Enhance pointer precision) is off.</li>
+      <li>Put a ruler next to the mouse or mark a start point on the pad, and aim at a distinct point on screen.</li>
+      <li>Slide the mouse slowly sideways until you turn exactly once and land on the same point, and measure the distance.</li>
+      <li>Compare it with the cm/360 above. If it is off by more than 3%, check the DPI setting, acceleration and the game coefficient.</li>
+    </ol>
+    <p>This matches horizontal hip-fire rotation only. ADS and scope multipliers, field-of-view settings and vertical multipliers work differently in each game and need separate matching.</p>
+    
+  </section>
+
+  <section>
+    <h2>Yaw sources</h2>
+    <p>Values and dates checked on public converter sites. These sites may copy the same list, so their independence is not verified.</p>
+    <ul class="srcs"><li><b>Valorant</b> 0.07: <a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08), <a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08), <a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08), <a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08)</li><li><b>CS2</b> 0.022: <a href="https://mousesensitivityconverters.com/" rel="noopener">mousesensitivityconverters.com</a> (2026-11-08), <a href="https://senslab.pro/sensitivity" rel="noopener">senslab.pro</a> (2026-11-08), <a href="https://webcode.tools/converters/game-sensitivity-converter/" rel="noopener">webcode.tools</a> (2026-11-08), <a href="https://game-sens.jor.dev/" rel="noopener">game-sens.jor.dev</a> (2026-11-08)</li></ul>
+  </section>
+
+  <section>
+    <h2>Other conversions</h2>
+    <div class="others"><a href="/handspan/en/sens/cs2-to-valorant/">CS2 → Valorant</a><a href="/handspan/en/sens/overwatch-2-to-valorant/">Overwatch 2 → Valorant</a><a href="/handspan/en/sens/valorant-to-overwatch-2/">Valorant → Overwatch 2</a><a href="/handspan/en/sens/apex-legends-to-valorant/">Apex Legends → Valorant</a><a href="/handspan/en/sens/cs2-to-overwatch-2/">CS2 → Overwatch 2</a></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/handspan/en/sens/">Sensitivity by game</a> · <a href="/handspan/en/about/">About, privacy and sources</a></div></footer>
+</body>
+</html>

@@ -216,6 +216,7 @@ function setupProfiles() {
   renderProfiles('');
   $('profForm').addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!Number.isFinite(lastCm)) return status(t('convert.profErrInvalid'));
     const r = profiles.save($('profName').value, serializeState(readState()));
     if (!r.ok) return status(PROFILE_ERRORS[r.error]());
     $('profName').value = '';
@@ -239,6 +240,7 @@ function setupProfiles() {
     status(t('convert.profDeleted', { name }));
   });
   $('share').addEventListener('click', async () => {
+    if (!Number.isFinite(lastCm)) return status(t('convert.profErrInvalid'));
     syncUrl();
     const url = location.href;
     try {
@@ -256,7 +258,7 @@ function setupProfiles() {
 }
 
 async function init() {
-  const res = await fetch('/handspan/data/9a7195eab9/games.json');
+  const res = await fetch('/handspan/data/1e7f97bd6f/games.json');
   games = await res.json();
   byId = new Map(games.map((g) => [g.id, g]));
   $('g').innerHTML = games.map((g) => `<option value="${esc(g.id)}">${esc(g.name[LANG])}</option>`).join('');
@@ -266,7 +268,8 @@ async function init() {
   document.querySelectorAll('#modeSeg button').forEach((b) => b.addEventListener('click', () => {
     // Carry the current distance over so switching to cm mode keeps the same target.
     if (b.dataset.mode === 'cm' && mode === 'sens') {
-      if (Number.isFinite(lastCm)) $('cmIn').value = String(+lastCm.toFixed(2));
+      // Full precision: a rounded value can move a row across a rounding boundary.
+      if (Number.isFinite(lastCm)) $('cmIn').value = String(lastCm);
     }
     setMode(b.dataset.mode);
     update();
