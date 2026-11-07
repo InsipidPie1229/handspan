@@ -97,6 +97,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/play/"/>
   </url>
   <url>
+    <loc>https://insipidpie1229.github.io/handspan/ko/zoom/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/zoom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/zoom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/zoom/"/>
+  </url>
+  <url>
+    <loc>https://insipidpie1229.github.io/handspan/en/zoom/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/zoom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/zoom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://insipidpie1229.github.io/handspan/en/zoom/"/>
+  </url>
+  <url>
     <loc>https://insipidpie1229.github.io/handspan/ko/sens/valorant-to-cs2/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://insipidpie1229.github.io/handspan/ko/sens/valorant-to-cs2/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://insipidpie1229.github.io/handspan/en/sens/valorant-to-cs2/"/>

@@ -258,7 +258,7 @@ function setupProfiles() {
 }
 
 async function init() {
-  const res = await fetch('/handspan/data/be0e643f20/games.json');
+  const res = await fetch('/handspan/data/1cf9229922/games.json');
   games = await res.json();
   byId = new Map(games.map((g) => [g.id, g]));
   $('g').innerHTML = games.map((g) => `<option value="${esc(g.id)}">${esc(g.name[LANG])}</option>`).join('');
