@@ -63,6 +63,23 @@ tbody tr:hover td{background:var(--tape-soft)}
 .how h2{font-size:1rem;margin-bottom:6px}
 .how p{margin:0;color:var(--ink-2);font-size:.92rem}
 code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border-radius:3px}
+.seg{display:flex;border:1px solid var(--rule-2);border-radius:var(--r);overflow:hidden}
+.seg button{flex:1;min-height:44px;background:transparent;border:0;border-right:1px solid var(--rule-2);color:var(--ink-2);font:500 .9rem var(--f-text);cursor:pointer;padding:0 12px}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--tape-soft);color:var(--ink);box-shadow:inset 0 -2px 0 var(--tape)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.f[hidden]{display:none}
+.mode{display:grid;gap:6px}
+.mode>span{font-size:.85rem;color:var(--ink-2)}
+.prof{padding-block:28px;border-bottom:1px solid var(--rule);display:grid;gap:14px}
+.prof-row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.prof-row .f{flex:1 1 200px}
+.prof-row .btn{min-height:48px}
+.prof .small{margin:0}
+.prof #shareBox{width:100%;height:44px;padding:8px 10px;font:400 .85rem var(--f-mono);color:var(--ink);background:var(--field);border:1px solid var(--rule-2);border-radius:var(--r)}
+.check{padding-block:32px;border-top:1px solid var(--rule);display:grid;gap:12px}
+.check ol{margin:0;padding-left:1.3em;display:grid;gap:6px;color:var(--ink-2);max-width:70ch}
+.check p{margin:0;color:var(--ink-2);max-width:70ch}
 </style>
 </head>
 <body>
@@ -82,9 +99,14 @@ code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border
 
   <section class="calc" aria-label="{{convert.calcAria}}">
     <div class="fields">
-      <div class="f wide"><label for="g">{{convert.game}}</label><select id="g"></select></div>
+      <div class="mode wide"><span id="modeLbl">{{convert.modeLabel}}</span><div class="seg" id="modeSeg" role="group" aria-labelledby="modeLbl">
+        <button type="button" data-mode="sens" aria-pressed="true">{{convert.modeSens}}</button>
+        <button type="button" data-mode="cm" aria-pressed="false">{{convert.modeCm}}</button>
+      </div></div>
+      <div class="f wide" id="fG"><label for="g">{{convert.game}}</label><select id="g"></select></div>
       <div class="f" id="fDpi"><label for="dpi">{{convert.dpi}}</label><input id="dpi" type="number" inputmode="numeric" value="800" aria-describedby="eDpi"><p class="err" id="eDpi" hidden></p></div>
       <div class="f" id="fSens"><label for="sens">{{convert.sens}}</label><input id="sens" type="number" inputmode="decimal" step="0.01" value="4" aria-describedby="eSens"><p class="err" id="eSens" hidden></p></div>
+      <div class="f wide" id="fCm" hidden><label for="cmIn">{{convert.cmIn}}</label><input id="cmIn" type="number" inputmode="decimal" step="0.1" aria-describedby="eCm"><p class="err" id="eCm" hidden></p></div>
       <div class="f wide" id="fDpi2"><label for="dpi2">{{convert.dpi2}}</label><input id="dpi2" type="number" inputmode="numeric" value="800" aria-describedby="eDpi2"><p class="err" id="eDpi2" hidden></p></div>
     </div>
     <div class="out" aria-live="polite">
@@ -100,6 +122,24 @@ code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border
     </div>
   </section>
 
+  <section class="prof" aria-labelledby="h-prof">
+    <h2 id="h-prof">{{convert.profHeading}}</h2>
+    <form class="prof-row" id="profForm">
+      <div class="f"><label for="profName">{{convert.profName}}</label><input id="profName" type="text" autocomplete="off" spellcheck="false"></div>
+      <button class="btn" id="profSave" type="submit">{{convert.profSave}}</button>
+      <button class="btn go" id="share" type="button">{{convert.share}}</button>
+    </form>
+    <div class="prof-row">
+      <div class="f"><label for="profList">{{convert.profList}}</label><select id="profList"></select></div>
+      <button class="btn" id="profLoad" type="button">{{convert.profLoad}}</button>
+      <button class="btn" id="profDel" type="button">{{convert.profDel}}</button>
+    </div>
+    <input id="shareBox" type="text" readonly hidden aria-label="{{convert.share}}">
+    <p class="small" id="profStatus" role="status" aria-live="polite"></p>
+    <p class="small" id="profNote"></p>
+    <p class="small">{{convert.profPrivacy}}</p>
+  </section>
+
   <section class="games" aria-labelledby="h-games">
     <div class="games-head">
       <h2 id="h-games">{{convert.otherHeading}}</h2>
@@ -111,6 +151,17 @@ code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border
     </table></div>
     <button class="more" id="more" type="button" aria-expanded="false">{{convert.more}}</button>
     <p class="small">{{convert.tolNote}}</p>
+  </section>
+
+  <section class="check" aria-labelledby="h-check">
+    <h2 id="h-check">{{convert.checkHeading}}</h2>
+    <ol>
+      <li>{{convert.check1}}</li>
+      <li>{{convert.check2}}</li>
+      <li>{{convert.check3}}</li>
+      <li>{{convert.check4}}</li>
+    </ol>
+    <p>{{convert.checkLimits}}</p>
   </section>
 
   <section class="how">

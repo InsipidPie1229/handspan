@@ -17,10 +17,26 @@ function round2(v) {
   return Math.round(v * 100) / 100;
 }
 
+/** Accepted cm/360 range, for typed values and for values derived from a sensitivity. */
+export const CM_MIN = 1;
+export const CM_MAX = 1000;
+
+export function validateCm(x) {
+  return Number.isFinite(x) && x >= CM_MIN && x <= CM_MAX ? null : 'err.cm';
+}
+
 export function convert(fromId, dpi, sens, toDpi, games) {
   const from = games.find((g) => g.id === fromId);
   if (!from) throw new Error('unknown game: ' + fromId);
-  const cm = cm360(dpi, sens, from.yaw);
+  return convertCm(cm360(dpi, sens, from.yaw), toDpi, games);
+}
+
+/**
+ * Other-game sensitivities for a cm/360 target. Throws when cm is outside [CM_MIN, CM_MAX]
+ * (including NaN/Infinity from extreme sensitivities), so callers never render non-finite rows.
+ */
+export function convertCm(cm, toDpi, games) {
+  if (validateCm(cm)) throw new RangeError('cm/360 out of range: ' + cm);
   const rows = games.map((g) => {
     const r = settableSens(cm, toDpi, g.yaw, g.decimals);
     return { id: g.id, sens: r.sens, edpi: round2(r.sens * toDpi), cm: r.cm, errPct: r.errPct };

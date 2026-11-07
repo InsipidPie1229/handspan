@@ -1,10 +1,14 @@
-import { convert, validateDpi, validateSens, altDpi, TOLERANCE_PCT } from './lib/sens.js';
+import { cm360, convertCm, validateDpi, validateSens, validateCm, altDpi, TOLERANCE_PCT, CM_MIN, CM_MAX } from './lib/sens.js';
+import { parseState, serializeState, createProfiles, MAX_NAME } from './lib/convertState.js';
 
 const I18N = JSON.parse(document.getElementById('i18n').textContent);
 const LANG = document.documentElement.lang;
 const $ = (id) => document.getElementById(id);
 let games = [];
 let byId = new Map();
+let mode = 'sens';
+let lastCm = NaN;
+const profiles = createProfiles(() => window.localStorage);
 
 function t(key, vars = {}) {
   const text = I18N[key] ?? key;
@@ -14,7 +18,9 @@ function t(key, vars = {}) {
 const ERR_MESSAGES = {
   'err.dpi': t('err.dpi'),
   'err.sens': t('err.sens'),
-  'err.dpiRange': t('err.dpiRange')
+  'err.dpiRange': t('err.dpiRange'),
+  'err.cm': t('err.cm', { min: CM_MIN, max: CM_MAX }),
+  'err.sensRange': t('err.sensRange', { min: CM_MIN, max: CM_MAX })
 };
 
 function esc(v) {
@@ -76,24 +82,41 @@ function statusText(game) {
 
 function calc() {
   const id = $('g').value;
-  const dpi = Number($('dpi').value);
-  const sens = Number($('sens').value);
   const toDpi = Number($('dpi2').value);
   const game = byId.get(id);
-  const eDpi = validateDpi(dpi);
-  const eSens = validateSens(sens);
   const eDpi2 = validateDpi(toDpi);
-  setErr('fDpi', 'eDpi', eDpi ? ERR_MESSAGES[eDpi] : '');
-  setErr('fSens', 'eSens', eSens ? ERR_MESSAGES[eSens] : '');
   setErr('fDpi2', 'eDpi2', eDpi2 ? ERR_MESSAGES[eDpi2] : '');
-  const ok = !eDpi && !eSens && !eDpi2 && !!game;
+  let cm = NaN;
+  let ok = !eDpi2;
+  let dpi = NaN;
+  let sens = NaN;
+  if (mode === 'cm') {
+    cm = Number($('cmIn').value);
+    const eCm = validateCm(cm);
+    setErr('fCm', 'eCm', eCm ? ERR_MESSAGES[eCm] : '');
+    ok = ok && !eCm;
+  } else {
+    dpi = Number($('dpi').value);
+    sens = Number($('sens').value);
+    const eDpi = validateDpi(dpi);
+    let eSens = validateSens(sens);
+    if (!eDpi && !eSens && game) {
+      cm = cm360(dpi, sens, game.yaw);
+      // Extreme sensitivities give cm/360 outside any usable range (or Infinity): reject them.
+      if (validateCm(cm)) eSens = 'err.sensRange';
+    }
+    setErr('fDpi', 'eDpi', eDpi ? ERR_MESSAGES[eDpi] : '');
+    setErr('fSens', 'eSens', eSens ? ERR_MESSAGES[eSens] : '');
+    ok = ok && !eDpi && !eSens && !!game;
+  }
   $('big').classList.toggle('void', !ok);
   const warn = $('warn');
   const notes = [];
-  if (game && game.sources.length === 1) notes.push(t('convert.warnOne', { game: esc(game.name[LANG]) }));
-  if (game && game.caveat && game.caveat[LANG]) notes.push(`<b>${esc(game.name[LANG])}</b> ${esc(game.caveat[LANG])}`);
+  if (mode === 'sens' && game && game.sources.length === 1) notes.push(t('convert.warnOne', { game: esc(game.name[LANG]) }));
+  if (mode === 'sens' && game && game.caveat && game.caveat[LANG]) notes.push(`<b>${esc(game.name[LANG])}</b> ${esc(game.caveat[LANG])}`);
   warn.hidden = notes.length === 0;
   warn.innerHTML = notes.join('<br>');
+  lastCm = ok ? cm : NaN;
   if (!ok) {
     $('cm').textContent = '--';
     $('half').textContent = '--';
@@ -102,11 +125,10 @@ function calc() {
     $('rows').innerHTML = `<tr><td colspan="5" class="g" style="color:var(--ink-3);padding-block:28px">${t('convert.fixPrompt')}</td></tr>`;
     return;
   }
-  const result = convert(id, dpi, sens, toDpi, games);
-  const cm = result.cm;
+  const result = convertCm(cm, toDpi, games);
   $('cm').textContent = cm.toFixed(1);
   $('half').textContent = (cm / 2).toFixed(1) + ' cm';
-  $('edpi').textContent = String(+(dpi * sens).toFixed(2));
+  $('edpi').textContent = mode === 'cm' ? '--' : String(+(dpi * sens).toFixed(2));
   ruler(cm);
   $('dpiNote').textContent = t('convert.dpiNote', { dpi: toDpi });
   $('rows').innerHTML = result.rows.map((row) => {
@@ -120,17 +142,32 @@ function calc() {
       const fmt = (v) => (v > 0 ? '+' : '') + v.toFixed(1);
       offNote = `<span class="off">${t('convert.offTarget', { err: fmt(row.errPct) })} · ${alt ? t('convert.offTargetAlt', { dpi: alt.dpi, sens: alt.sens.toFixed(g.decimals), err: fmt(alt.errPct) }) : t('convert.offTargetNone')}</span>`;
     }
-    return `<tr class="${row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.sens.toFixed(g.decimals)}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
+    return `<tr class="${mode === 'sens' && row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.sens.toFixed(g.decimals)}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
   }).join('');
 }
 
+function readState() {
+  return { mode, g: $('g').value, dpi: $('dpi').value, s: $('sens').value, to: $('dpi2').value, cm: $('cmIn').value };
+}
+
 function syncUrl() {
-  const params = new URLSearchParams();
-  params.set('g', $('g').value);
-  params.set('dpi', $('dpi').value);
-  params.set('s', $('sens').value);
-  params.set('to', $('dpi2').value);
-  history.replaceState(null, '', location.pathname + '?' + params.toString());
+  history.replaceState(null, '', location.pathname + '?' + serializeState(readState()));
+}
+
+function setMode(next) {
+  mode = next === 'cm' ? 'cm' : 'sens';
+  document.querySelectorAll('#modeSeg button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.mode === mode ? 'true' : 'false'));
+  ['fG', 'fDpi', 'fSens'].forEach((f) => { $(f).hidden = mode === 'cm'; });
+  $('fCm').hidden = mode !== 'cm';
+}
+
+function applyState(st) {
+  $('g').value = st.g;
+  $('dpi').value = st.dpi;
+  $('sens').value = st.s;
+  $('dpi2').value = st.to;
+  $('cmIn').value = st.cm;
+  setMode(st.mode);
 }
 
 function update() {
@@ -138,25 +175,103 @@ function update() {
   syncUrl();
 }
 
-function readParam(params, key, fallback) {
-  const v = params.get(key);
-  return v === null || v === '' ? fallback : v;
+let statusTimer = 0;
+function status(msg) {
+  const el = $('profStatus');
+  el.textContent = msg;
+  clearTimeout(statusTimer);
+  if (msg) statusTimer = setTimeout(() => { el.textContent = ''; }, 6000);
+}
+
+function renderProfiles(selected) {
+  const { list, status: st } = profiles.load();
+  const sel = $('profList');
+  sel.textContent = '';
+  const first = document.createElement('option');
+  first.value = '';
+  first.textContent = list.length ? t('convert.profPick') : t('convert.profEmpty');
+  sel.append(first);
+  for (const p of list) {
+    const o = document.createElement('option');
+    o.value = p.name;
+    o.textContent = p.name;
+    sel.append(o);
+  }
+  sel.value = list.some((p) => p.name === selected) ? selected : '';
+  const unavailable = st === 'unavailable';
+  ['profName', 'profSave', 'profList', 'profLoad', 'profDel'].forEach((id) => { $(id).disabled = unavailable; });
+  $('profNote').textContent = unavailable ? t('convert.profUnavailable') : st === 'corrupt' ? t('convert.profCorrupt') : '';
+  return list;
+}
+
+const PROFILE_ERRORS = {
+  name: () => t('convert.profErrName', { max: MAX_NAME }),
+  full: () => t('convert.profErrFull'),
+  quota: () => t('convert.profErrQuota'),
+  unavailable: () => t('convert.profUnavailable')
+};
+
+function setupProfiles() {
+  $('profName').maxLength = MAX_NAME;
+  renderProfiles('');
+  $('profForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const r = profiles.save($('profName').value, serializeState(readState()));
+    if (!r.ok) return status(PROFILE_ERRORS[r.error]());
+    $('profName').value = '';
+    renderProfiles(r.name);
+    status(t('convert.profSaved', { name: r.name }));
+  });
+  $('profLoad').addEventListener('click', () => {
+    const name = $('profList').value;
+    const p = renderProfiles(name).find((x) => x.name === name);
+    if (!p) return status(t('convert.profPick'));
+    applyState(parseState(p.q, games.map((g) => g.id), $('g').value));
+    update();
+    status(t('convert.profLoaded', { name: p.name }));
+  });
+  $('profDel').addEventListener('click', () => {
+    const name = $('profList').value;
+    if (!name) return status(t('convert.profPick'));
+    const r = profiles.remove(name);
+    if (!r.ok) return status(PROFILE_ERRORS[r.error]());
+    renderProfiles('');
+    status(t('convert.profDeleted', { name }));
+  });
+  $('share').addEventListener('click', async () => {
+    syncUrl();
+    const url = location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      status(t('convert.shareCopied'));
+    } catch {
+      const box = $('shareBox');
+      box.hidden = false;
+      box.value = url;
+      box.focus();
+      box.select();
+      status(t('convert.shareManual'));
+    }
+  });
 }
 
 async function init() {
   const res = await fetch('/data/games.json');
   games = await res.json();
   byId = new Map(games.map((g) => [g.id, g]));
-  const params = new URLSearchParams(location.search);
-  const wanted = readParam(params, 'g', 'ow');
-  const selected = byId.has(wanted) ? wanted : (games[0] ? games[0].id : 'ow');
   $('g').innerHTML = games.map((g) => `<option value="${esc(g.id)}">${esc(g.name[LANG])}</option>`).join('');
-  $('g').value = selected;
-  $('dpi').value = readParam(params, 'dpi', '800');
-  $('sens').value = readParam(params, 's', '4');
-  $('dpi2').value = readParam(params, 'to', '800');
+  applyState(parseState(location.search, games.map((g) => g.id)));
   update();
-  ['g', 'dpi', 'sens', 'dpi2'].forEach((id) => $(id).addEventListener('input', update));
+  ['g', 'dpi', 'sens', 'dpi2', 'cmIn'].forEach((id) => $(id).addEventListener('input', update));
+  document.querySelectorAll('#modeSeg button').forEach((b) => b.addEventListener('click', () => {
+    // Carry the current distance over so switching to cm mode keeps the same target.
+    if (b.dataset.mode === 'cm' && mode === 'sens') {
+      if (Number.isFinite(lastCm)) $('cmIn').value = String(+lastCm.toFixed(2));
+    }
+    setMode(b.dataset.mode);
+    update();
+  }));
+  setupProfiles();
   $('more').addEventListener('click', (e) => {
     const open = document.querySelector('.games').classList.toggle('open');
     e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
