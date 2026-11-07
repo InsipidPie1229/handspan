@@ -61,13 +61,15 @@ function gen() {
     if (zoomOk && hipOk) zoomH = fovForMagnification(hipH, z);
   } else {
     zoomOk = Number.isFinite(z) && z >= 1 && z <= 170;
-    setErr('gZoom', 'eGZoom', zoomOk ? '' : t('zoom.errFov'));
+    setErr('gZoom', 'eGZoom', zoomOk ? '' : t('zoom.errZoomFov'));
     if (zoomOk && hipOk) zoomH = type === 'h' ? z : vToH(z, aspect);
   }
   const [m, x, ok] = method('gMethod', 'gX', 'fGX', 'eGX');
+  // Hip-fire sensitivity is optional: empty means "multiplier only".
+  const sensEmpty = $('gSens').value.trim() === '';
   const sens = num('gSens');
-  const sensOk = Number.isFinite(sens) && sens > 0 && sens < 1e6;
-  setErr('gSens', 'eGSens', sensOk ? '' : t('zoom.errSens'));
+  const sensOk = !sensEmpty && Number.isFinite(sens) && sens > 0 && sens < 1e6;
+  setErr('gSens', 'eGSens', sensEmpty || sensOk ? '' : t('zoom.errSens'));
   const good = hipOk && zoomOk && ok && Number.isFinite(zoomH);
   $('gBig').classList.toggle('void', !good);
   if (!good) {
@@ -78,7 +80,11 @@ function gen() {
   }
   const mult = zoomMultiplier(hipH, zoomH, m, x);
   $('gOut').textContent = mult.toFixed(4);
-  $('gSensOut').textContent = sensOk ? String(+(sens * mult).toPrecision(5)) : '--';
+  const zs = sens * mult;
+  // The product must stay a usable positive number (tiny inputs can underflow to 0).
+  const zsOk = sensOk && Number.isFinite(zs) && zs >= 1e-6;
+  if (sensOk && !zsOk) setErr('gSens', 'eGSens', t('zoom.errSens'));
+  $('gSensOut').textContent = zsOk ? String(+zs.toPrecision(5)) : '--';
   const zv = hToV(zoomH, aspect);
   $('gFovOut').textContent = `${zoomH.toFixed(2)}° H · ${zv.toFixed(2)}° V`;
 }

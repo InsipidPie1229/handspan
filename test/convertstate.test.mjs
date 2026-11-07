@@ -158,3 +158,34 @@ test('blocked, throwing, corrupt and full storage never throw', () => {
   const full = createProfiles(() => ({ getItem: () => null, setItem() { throw new Error('QuotaExceededError'); } }));
   assert.deepEqual(full.save('a', 'q'), { ok: false, error: 'quota' });
 });
+
+import { yawFromMeasurement, createCustomGames, CUSTOM_KEY, MAX_CUSTOM } from '../src/assets/js/lib/convertState.js';
+
+test('yaw from a measurement inverts cm/360', () => {
+  const yaw = yawFromMeasurement(800, 4, cm360(800, 4, 0.0066));
+  assert.ok(Math.abs(yaw - 0.0066) < 1e-12);
+  for (const args of [[99, 1, 30], [800, 0, 30], [800, 1, 0.5], [800, 1, 1001], [800, NaN, 30], [800, 1e-300, 30], [800, 1e300, 30]]) {
+    assert.equal(yawFromMeasurement(...args), null, JSON.stringify(args));
+  }
+});
+
+test('custom games: add, ids, limit, remove, corrupt and blocked storage', () => {
+  const st = memStorage();
+  const c = createCustomGames(() => st);
+  const a = c.add('  My <b>game</b> ', 0.05);
+  assert.ok(a.ok);
+  assert.equal(a.item.id, 'c1');
+  assert.equal(a.item.name, 'My <b>game</b>');
+  assert.equal(c.add('x', NaN).error, 'value');
+  assert.equal(c.add('', 0.05).error, 'name');
+  for (let i = 1; i < MAX_CUSTOM; i++) assert.ok(c.add('g' + i, 0.01).ok);
+  assert.equal(c.add('one more', 0.01).error, 'full');
+  c.remove('c1');
+  assert.equal(c.add('again', 0.02).item.id, 'c1', 'freed id is reused');
+  const corrupt = createCustomGames(() => memStorage({ [CUSTOM_KEY]: JSON.stringify([{ id: 'x1', name: 'a', yaw: 1 }, { id: 'c2', name: 'b', yaw: 'no' }, { id: 'c3', name: 'ok', yaw: 0.1 }]) }));
+  assert.deepEqual(corrupt.load(), { list: [{ id: 'c3', name: 'ok', yaw: 0.1 }], status: 'corrupt' });
+  assert.equal(createCustomGames(() => memStorage({ [CUSTOM_KEY]: '{' })).load().status, 'corrupt');
+  const blocked = createCustomGames(() => { throw new Error('blocked'); });
+  assert.deepEqual(blocked.load(), { list: [], status: 'unavailable' });
+  assert.equal(blocked.add('a', 0.1).error, 'unavailable');
+});

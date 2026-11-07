@@ -42,4 +42,9 @@ test('invalid inputs throw instead of returning NaN', () => {
   assert.throws(() => owZoomPercent('mercy', 103, 'mdh', 0), RangeError);
   assert.throws(() => owZoomPercent('widow', 79, 'mdh', 0), RangeError);
   assert.throws(() => fovForMagnification(90, 0.5), RangeError);
+  // review P2: every public function rejects non-finite or degenerate input
+  for (const fn of [() => vToH(NaN, 16 / 9), () => hToV(90, 0), () => hToV(90, -1), () => vToH(90, Infinity),
+    () => fovForMagnification(NaN, 4), () => fovForMagnification(90, Infinity), () => vToH(180, 1)]) {
+    assert.throws(fn, RangeError);
+  }
 });

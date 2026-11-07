@@ -77,6 +77,12 @@ code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border
 .prof-row .btn{min-height:48px}
 .prof .small{margin:0}
 .prof #shareBox{width:100%;height:44px;padding:8px 10px;font:400 .85rem var(--f-mono);color:var(--ink);background:var(--field);border:1px solid var(--rule-2);border-radius:var(--r)}
+.filter{max-width:320px}
+.custom-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.custom-list li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:.92rem}
+.custom-list li span{font-family:var(--f-mono);color:var(--ink-3)}
+.custom-list button{min-height:36px;padding:0 12px;border:1px solid var(--rule-2);border-radius:var(--r);background:transparent;color:var(--ink-2);cursor:pointer}
+tr.hiddenrow{display:none}
 .check{padding-block:32px;border-top:1px solid var(--rule);display:grid;gap:12px}
 .check ol{margin:0;padding-left:1.3em;display:grid;gap:6px;color:var(--ink-2);max-width:70ch}
 .check p{margin:0;color:var(--ink-2);max-width:70ch}
@@ -140,11 +146,27 @@ code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border
     <p class="small">{{convert.profPrivacy}}</p>
   </section>
 
+  <section class="prof" aria-labelledby="h-custom">
+    <h2 id="h-custom">{{convert.customHeading}}</h2>
+    <p class="small">{{convert.customLede}}</p>
+    <form class="prof-row" id="customForm">
+      <div class="f"><label for="cName">{{convert.customName}}</label><input id="cName" type="text" autocomplete="off" spellcheck="false"></div>
+      <div class="f"><label for="cDpi">{{convert.dpi}}</label><input id="cDpi" type="number" inputmode="numeric" value="800"></div>
+      <div class="f"><label for="cSens">{{convert.sens}}</label><input id="cSens" type="number" inputmode="decimal" step="any"></div>
+      <div class="f"><label for="cCm">{{convert.customCm}}</label><input id="cCm" type="number" inputmode="decimal" step="any"></div>
+      <button class="btn" id="cAdd" type="submit">{{convert.customAdd}}</button>
+    </form>
+    <ul class="custom-list" id="customList"></ul>
+    <p class="small" id="customStatus" role="status" aria-live="polite"></p>
+  </section>
+
   <section class="games" aria-labelledby="h-games">
     <div class="games-head">
       <h2 id="h-games">{{convert.otherHeading}}</h2>
       <span class="small" id="dpiNote"></span>
     </div>
+    <div class="f filter"><label for="filter">{{convert.filter}}</label><input id="filter" type="search" autocomplete="off" spellcheck="false" placeholder="{{convert.filterPh}}"></div>
+    <p class="small" id="filterNone" hidden>{{convert.filterNone}}</p>
     <div class="tbl"><table>
       <thead><tr><th>{{convert.colGame}}</th><th>{{convert.colSens}}</th><th class="hide-m">{{convert.colEdpi}}</th><th class="hide-m">{{convert.colYaw}}</th><th class="hide-m">{{convert.colStatus}}</th></tr></thead>
       <tbody id="rows"></tbody>

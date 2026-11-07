@@ -1,5 +1,5 @@
 import { cm360, convertCm, validateDpi, validateSens, validateCm, altDpi, TOLERANCE_PCT, CM_MIN, CM_MAX } from './lib/sens.js';
-import { parseState, serializeState, createProfiles, MAX_NAME } from './lib/convertState.js';
+import { parseState, serializeState, createProfiles, createCustomGames, yawFromMeasurement, MAX_NAME } from './lib/convertState.js';
 
 const I18N = JSON.parse(document.getElementById('i18n').textContent);
 const LANG = document.documentElement.lang;
@@ -9,6 +9,8 @@ let byId = new Map();
 let mode = 'sens';
 let lastCm = NaN;
 const profiles = createProfiles(() => window.localStorage);
+const customs = createCustomGames(() => window.localStorage);
+let baseGames = [];
 
 function t(key, vars = {}) {
   const text = I18N[key] ?? key;
@@ -76,6 +78,7 @@ function sourceText(game) {
 }
 
 function statusText(game) {
+  if (game.custom) return t('status.custom');
   const verified = game.inGameVerified ? game.inGameVerified.date : t('status.unverified');
   return verified + ' · ' + sourceText(game);
 }
@@ -112,7 +115,7 @@ function calc() {
   $('big').classList.toggle('void', !ok);
   const warn = $('warn');
   const notes = [];
-  if (mode === 'sens' && game && game.sources.length === 1) notes.push(t('convert.warnOne', { game: esc(game.name[LANG]) }));
+  if (mode === 'sens' && game && !game.custom && game.sources.length === 1) notes.push(t('convert.warnOne', { game: esc(game.name[LANG]) }));
   if (mode === 'sens' && game && game.caveat && game.caveat[LANG]) notes.push(`<b>${esc(game.name[LANG])}</b> ${esc(game.caveat[LANG])}`);
   warn.hidden = notes.length === 0;
   warn.innerHTML = notes.join('<br>');
@@ -133,7 +136,7 @@ function calc() {
   $('dpiNote').textContent = t('convert.dpiNote', { dpi: toDpi });
   $('rows').innerHTML = result.rows.map((row) => {
     const g = byId.get(row.id);
-    const one = g.sources.length === 1;
+    const one = !g.custom && g.sources.length === 1;
     const st = statusText(g);
     const off = Math.abs(row.errPct) > TOLERANCE_PCT;
     let offNote = '';
@@ -142,8 +145,69 @@ function calc() {
       const fmt = (v) => (v > 0 ? '+' : '') + v.toFixed(1);
       offNote = `<span class="off">${t('convert.offTarget', { err: fmt(row.errPct) })} · ${alt ? t('convert.offTargetAlt', { dpi: alt.dpi, sens: alt.sens.toFixed(g.decimals), err: fmt(alt.errPct) }) : t('convert.offTargetNone')}</span>`;
     }
-    return `<tr class="${mode === 'sens' && row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.sens.toFixed(g.decimals)}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
+    return `<tr data-name="${esc(g.name[LANG].toLowerCase())}" class="${mode === 'sens' && row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.sens.toFixed(g.decimals)}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
   }).join('');
+  applyFilter();
+}
+
+function applyFilter() {
+  const q = $('filter').value.trim().toLowerCase();
+  let shown = 0;
+  for (const tr of $('rows').querySelectorAll('tr[data-name]')) {
+    // The source game's row always stays visible.
+    const match = !q || tr.dataset.name.includes(q);
+    tr.classList.toggle('hiddenrow', !match && !tr.classList.contains('from'));
+    if (match) shown++;
+  }
+  $('filterNone').hidden = !q || shown > 0;
+}
+
+function loadGames() {
+  const { list, status: st } = customs.load();
+  const custom = list.map((c) => ({ id: c.id, name: { ko: c.name, en: c.name }, yaw: c.yaw, decimals: 3, sources: [], custom: true }));
+  games = [...baseGames, ...custom];
+  byId = new Map(games.map((g) => [g.id, g]));
+  const cur = $('g').value;
+  $('g').innerHTML = games.map((g) => `<option value="${esc(g.id)}">${esc(g.name[LANG])}${g.custom ? ' · ' + esc(t('status.custom')) : ''}</option>`).join('');
+  if (byId.has(cur)) $('g').value = cur;
+  const ul = $('customList');
+  ul.textContent = '';
+  for (const c of list) {
+    const li = document.createElement('li');
+    const b = document.createElement('b');
+    b.textContent = c.name;
+    const yaw = document.createElement('span');
+    yaw.textContent = `yaw ${+c.yaw.toPrecision(5)}`;
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.textContent = t('convert.profDel');
+    del.addEventListener('click', () => {
+      const r = customs.remove(c.id);
+      $('customStatus').textContent = r.ok ? t('convert.customDeleted', { name: c.name }) : PROFILE_ERRORS[r.error]();
+      loadGames();
+      update();
+    });
+    li.append(b, yaw, del);
+    ul.append(li);
+  }
+  $('cAdd').disabled = st === 'unavailable';
+  if (st === 'unavailable') $('customStatus').textContent = t('convert.profUnavailable');
+}
+
+function setupCustom() {
+  $('cName').maxLength = MAX_NAME;
+  $('customForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const yaw = yawFromMeasurement(Number($('cDpi').value), Number($('cSens').value), Number($('cCm').value));
+    if (yaw === null) { $('customStatus').textContent = t('convert.customErr'); return; }
+    const r = customs.add($('cName').value, yaw);
+    if (!r.ok) { $('customStatus').textContent = PROFILE_ERRORS[r.error](); return; }
+    $('cName').value = '';
+    $('customStatus').textContent = t('convert.customAdded', { name: r.item.name });
+    loadGames();
+    update();
+  });
+  $('filter').addEventListener('input', applyFilter);
 }
 
 function readState() {
@@ -259,9 +323,9 @@ function setupProfiles() {
 
 async function init() {
   const res = await fetch('/data/games.json');
-  games = await res.json();
-  byId = new Map(games.map((g) => [g.id, g]));
-  $('g').innerHTML = games.map((g) => `<option value="${esc(g.id)}">${esc(g.name[LANG])}</option>`).join('');
+  baseGames = await res.json();
+  loadGames();
+  setupCustom();
   applyState(parseState(location.search, games.map((g) => g.id)));
   update();
   ['g', 'dpi', 'sens', 'dpi2', 'cmIn'].forEach((id) => $(id).addEventListener('input', update));

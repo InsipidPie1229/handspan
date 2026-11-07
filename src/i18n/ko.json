@@ -557,5 +557,18 @@
   "zoom.errPoint": "1에서 100 사이로 넣어 주세요.",
   "zoom.errFov": "FOV는 10°에서 170° 사이로 넣어 주세요.",
   "zoom.errMag": "배율은 1에서 50 사이로 넣어 주세요.",
-  "zoom.errSens": "0보다 큰 감도를 넣어 주세요."
+  "zoom.errSens": "감도는 0.000001 이상으로 넣거나 비워 두세요.",
+  "convert.filter": "게임 찾기",
+  "convert.filterPh": "예: 발로, apex",
+  "convert.filterNone": "찾는 게임이 없어요. 아래 '목록에 없는 게임'에서 직접 재서 추가할 수 있어요.",
+  "status.custom": "직접 측정",
+  "convert.customHeading": "목록에 없는 게임",
+  "convert.customLede": "게임에서 한 바퀴 거리를 직접 재면 그 게임을 변환에 추가할 수 있어요. 아무 감도로 정한 뒤 마우스를 밀어 정확히 한 바퀴 도는 거리를 재세요(가속 끄기). 이 브라우저에만 저장돼요.",
+  "convert.customName": "게임 이름",
+  "convert.customCm": "잰 한 바퀴 거리 (cm)",
+  "convert.customAdd": "추가",
+  "convert.customAdded": "‘{name}’을(를) 추가했어요. 위 표와 게임 목록에 나와요.",
+  "convert.customDeleted": "‘{name}’을(를) 지웠어요.",
+  "convert.customErr": "DPI는 100~32000, 감도는 0보다 크게, 거리는 1~1000 cm로 넣어 주세요.",
+  "zoom.errZoomFov": "줌 FOV는 1°에서 170° 사이로 넣어 주세요."
 }

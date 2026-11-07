@@ -557,5 +557,18 @@
   "zoom.errPoint": "Enter a value from 1 to 100.",
   "zoom.errFov": "Enter an FOV from 10° to 170°.",
   "zoom.errMag": "Enter a magnification from 1 to 50.",
-  "zoom.errSens": "Enter a sensitivity greater than 0."
+  "zoom.errSens": "Enter a sensitivity of at least 0.000001, or leave it empty.",
+  "convert.filter": "Find a game",
+  "convert.filterPh": "e.g. valo, apex",
+  "convert.filterNone": "No game matches. You can measure and add it below under 'Game not listed'.",
+  "status.custom": "measured by you",
+  "convert.customHeading": "Game not listed",
+  "convert.customLede": "Measure one full turn in the game and add it to the converter. Pick any sensitivity, turn off acceleration, and measure the mouse distance for exactly one turn. Stored only in this browser.",
+  "convert.customName": "Game name",
+  "convert.customCm": "Measured distance per turn (cm)",
+  "convert.customAdd": "Add",
+  "convert.customAdded": "Added “{name}”. It now appears in the table and the game list.",
+  "convert.customDeleted": "Deleted “{name}”.",
+  "convert.customErr": "Use a DPI of 100-32000, a sensitivity above 0 and a distance of 1-1000 cm.",
+  "zoom.errZoomFov": "Enter a zoom FOV from 1° to 170°."
 }

@@ -138,3 +138,98 @@ export function createProfiles(getStorage) {
 
   return { load, save, remove };
 }
+
+// ---- Games the user measured themselves -------------------------------------------------------
+export const CUSTOM_KEY = 'hs.convert.custom.v1';
+export const MAX_CUSTOM = 20;
+const K = 914.4;
+
+/**
+ * Yaw from an in-game measurement: at `dpi` and `sens`, one full turn took `cm`.
+ * Returns null unless every input and the result are finite and in range.
+ */
+export function yawFromMeasurement(dpi, sens, cm) {
+  if (!(Number.isFinite(dpi) && dpi >= 100 && dpi <= 32000)) return null;
+  if (!(Number.isFinite(sens) && sens > 0)) return null;
+  if (!(Number.isFinite(cm) && cm >= 1 && cm <= 1000)) return null;
+  const yaw = K / (dpi * sens * cm);
+  return Number.isFinite(yaw) && yaw >= 1e-6 && yaw <= 100 ? yaw : null;
+}
+
+/** Custom games as converter entries: { id: 'c1'.., name, yaw, decimals: 3, custom: true }. */
+export function createCustomGames(getStorage) {
+  const store = createProfilesLike(getStorage, CUSTOM_KEY);
+  function load() {
+    const { data, status } = store.read();
+    const list = [];
+    const ids = new Set();
+    for (const item of Array.isArray(data) ? data : []) {
+      if (!item || typeof item.name !== 'string' || typeof item.id !== 'string' || !/^c\d{1,6}$/.test(item.id)) continue;
+      const name = cleanName(item.name).slice(0, MAX_NAME);
+      if (!name || ids.has(item.id) || !(Number.isFinite(item.yaw) && item.yaw >= 1e-6 && item.yaw <= 100)) continue;
+      ids.add(item.id);
+      list.push({ id: item.id, name, yaw: item.yaw });
+      if (list.length >= MAX_CUSTOM) break;
+    }
+    const bad = status === 'ok' && data !== null && (!Array.isArray(data) || list.length !== data.length);
+    return { list, status: bad ? 'corrupt' : status };
+  }
+  function add(name, yaw) {
+    const n = cleanName(name);
+    if (!n || n.length > MAX_NAME) return { ok: false, error: 'name' };
+    if (!(Number.isFinite(yaw) && yaw >= 1e-6 && yaw <= 100)) return { ok: false, error: 'value' };
+    const cur = load();
+    if (cur.status === 'unavailable') return { ok: false, error: 'unavailable' };
+    if (cur.list.length >= MAX_CUSTOM) return { ok: false, error: 'full' };
+    let k = 1;
+    while (cur.list.some((g) => g.id === 'c' + k)) k++;
+    const item = { id: 'c' + k, name: n, yaw };
+    const err = store.write([...cur.list, item]);
+    return err ? { ok: false, error: err } : { ok: true, item };
+  }
+  function remove(id) {
+    const cur = load();
+    if (cur.status === 'unavailable') return { ok: false, error: 'unavailable' };
+    const err = store.write(cur.list.filter((g) => g.id !== id));
+    return err ? { ok: false, error: err } : { ok: true };
+  }
+  return { load, add, remove };
+}
+
+function createProfilesLike(getStorage, key) {
+  function storage() {
+    try {
+      return getStorage();
+    } catch {
+      return null;
+    }
+  }
+  return {
+    read() {
+      const st = storage();
+      if (!st) return { data: null, status: 'unavailable' };
+      let raw;
+      try {
+        raw = st.getItem(key);
+      } catch {
+        return { data: null, status: 'unavailable' };
+      }
+      if (raw === null) return { data: null, status: 'ok' };
+      try {
+        return { data: JSON.parse(raw), status: 'ok' };
+      } catch {
+        return { data: null, status: 'corrupt' };
+      }
+    },
+    write(list) {
+      const st = storage();
+      if (!st) return 'unavailable';
+      try {
+        st.setItem(key, JSON.stringify(list));
+        return null;
+      } catch {
+        return 'quota';
+      }
+    },
+  };
+}
