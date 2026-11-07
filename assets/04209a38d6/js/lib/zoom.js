@@ -9,12 +9,24 @@
 
 const RAD = Math.PI / 180;
 
+function checkFov(f) {
+  if (!(Number.isFinite(f) && f > 0 && f < 180)) throw new RangeError('FOV out of range');
+}
+
+function checkAspect(a) {
+  if (!(Number.isFinite(a) && a > 0)) throw new RangeError('aspect out of range');
+}
+
 /** Horizontal FOV from vertical FOV for an aspect ratio (width/height). */
 export function vToH(v, aspect) {
+  checkFov(v);
+  checkAspect(aspect);
   return (2 * Math.atan(Math.tan((v * RAD) / 2) * aspect)) / RAD;
 }
 
 export function hToV(h, aspect) {
+  checkFov(h);
+  checkAspect(aspect);
   return (2 * Math.atan(Math.tan((h * RAD) / 2) / aspect)) / RAD;
 }
 
@@ -28,7 +40,8 @@ function angleAt(h, x) {
  * hipH, zoomH: horizontal FOVs in (0, 180). x in [0, 1] for 'mdh' (0 = focal-length match).
  */
 export function zoomMultiplier(hipH, zoomH, method, x = 0) {
-  for (const f of [hipH, zoomH]) if (!(f > 0 && f < 180)) throw new RangeError('FOV out of range');
+  checkFov(hipH);
+  checkFov(zoomH);
   if (method === 'turn') return 1;
   if (method !== 'mdh') throw new RangeError('unknown method');
   if (!(x >= 0 && x <= 1)) throw new RangeError('x out of range');
@@ -38,7 +51,8 @@ export function zoomMultiplier(hipH, zoomH, method, x = 0) {
 
 /** Zoom FOV for a magnification relative to hip fire (focal-length definition). */
 export function fovForMagnification(hipH, mag) {
-  if (!(mag >= 1)) throw new RangeError('magnification must be >= 1');
+  checkFov(hipH);
+  if (!(Number.isFinite(mag) && mag >= 1)) throw new RangeError('magnification must be finite and >= 1');
   return (2 * Math.atan(Math.tan((hipH * RAD) / 2) / mag)) / RAD;
 }
 

@@ -1,0 +1,1824 @@
+[
+  {
+    "id": "ow",
+    "name": {
+      "ko": "오버워치 2",
+      "en": "Overwatch 2"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "hipfire FOV 103 (16:9)"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cs",
+    "name": {
+      "ko": "CS2",
+      "en": "CS2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "val",
+    "name": {
+      "ko": "발로란트",
+      "en": "Valorant"
+    },
+    "yaw": 0.07,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "apex",
+    "name": {
+      "ko": "Apex 레전드",
+      "en": "Apex Legends"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cod",
+    "name": {
+      "ko": "콜 오브 듀티: 워존 · MW3 · BO6 (레거시)",
+      "en": "Call of Duty: Warzone · MW3 · BO6 (legacy)"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "MW3, Warzone, Black Ops 6"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "Warzone, Black Ops 6/7"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "MW3, Warzone, Black Ops 6"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "Call of Duty: Warzone, MW3, BO6"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "fn",
+    "name": {
+      "ko": "포트나이트",
+      "en": "Fortnite"
+    },
+    "yaw": 0.005555,
+    "decimals": 1,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.005555,
+        "checked": "2026-11-08",
+        "note": "X sensitivity shown as %"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://dcprosens.com/blog/pubg-sensitivity-converter-guide/",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00556,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "caveat": {
+      "ko": "한 변환기는 포트나이트가 시야각이나 슬라이더 방식에 따라 달라진다고 적고 있어요.",
+      "en": "One converter notes Fortnite scales with field of view or a slider system."
+    },
+    "independence": "unverified"
+  },
+  {
+    "id": "r6",
+    "name": {
+      "ko": "레인보우 식스 시즈 (배율 0.02)",
+      "en": "Rainbow Six Siege (multiplier 0.02)"
+    },
+    "yaw": 0.00572957795,
+    "decimals": 0,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.00572957795,
+        "checked": "2026-11-08",
+        "note": "default multiplier 0.02"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.00572958,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://sensconverter.vercel.app/guides/what-is-mouse-yaw",
+        "value": 0.00572957795,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.00572957795,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00573,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "caveat": {
+      "ko": "배율(기본 0.02)과 시야각 설정에 따라 달라질 수 있어요.",
+      "en": "Depends on the multiplier (default 0.02) and may depend on field of view."
+    },
+    "independence": "unverified"
+  },
+  {
+    "id": "fin",
+    "name": {
+      "ko": "더 파이널스",
+      "en": "The Finals"
+    },
+    "yaw": 0.001,
+    "decimals": 1,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://mansone.com/tools/sensitivity-converter",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tf2",
+    "name": {
+      "ko": "팀 포트리스 2",
+      "en": "Team Fortress 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tf",
+    "name": {
+      "ko": "타이탄폴 2",
+      "en": "Titanfall 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "qc",
+    "name": {
+      "ko": "퀘이크 챔피언스",
+      "en": "Quake Champions"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "d2",
+    "name": {
+      "ko": "데스티니 가디언즈",
+      "en": "Destiny 2"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "csgo",
+    "name": {
+      "ko": "CS:GO",
+      "en": "CS:GO"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cs16",
+    "name": {
+      "ko": "카운터 스트라이크 1.6",
+      "en": "Counter-Strike 1.6"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "css",
+    "name": {
+      "ko": "카운터 스트라이크: 소스",
+      "en": "Counter-Strike: Source"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "hl2",
+    "name": {
+      "ko": "하프라이프 2",
+      "en": "Half-Life 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08",
+        "note": "listed as Half-Life 2 / Garry's Mod"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "gmod",
+    "name": {
+      "ko": "개리 모드",
+      "en": "Garry's Mod"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08",
+        "note": "listed as Half-Life 2 / Garry's Mod"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "l4d2",
+    "name": {
+      "ko": "레프트 4 데드 2",
+      "en": "Left 4 Dead 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "portal2",
+    "name": {
+      "ko": "포탈 2",
+      "en": "Portal 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "ql",
+    "name": {
+      "ko": "퀘이크 라이브",
+      "en": "Quake Live"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "doom",
+    "name": {
+      "ko": "둠 이터널",
+      "en": "Doom Eternal"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tarkov",
+    "name": {
+      "ko": "이스케이프 프롬 타르코프",
+      "en": "Escape from Tarkov"
+    },
+    "yaw": 0.125,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.125,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.125,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.125,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "맨몸 기준 값이에요. 타르코프는 장비 무게·헬멧·무기 인체공학에 따라 회전 속도가 달라져서, 실제 레이드에서는 체감이 달라질 수 있어요.",
+      "en": "Base value without gear. In Tarkov, armor, helmets and weapon ergonomics change turn speed, so it can feel different in raid."
+    }
+  },
+  {
+    "id": "rust",
+    "name": {
+      "ko": "러스트",
+      "en": "Rust"
+    },
+    "yaw": 0.1125,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://csdb.gg/sensitivity-converter/",
+        "value": 0.1125,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.11247,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.1125,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "확인한 두 출처는 0.1125와 0.11247로 0.03% 차이예요. 일부 블로그형 변환 페이지는 0.072나 0.0486을 쓰지만 근거를 밝히지 않아 출처로 세지 않았어요.",
+      "en": "The two checked sources give 0.1125 and 0.11247, a 0.03% difference. Some blog-style converter pages use 0.072 or 0.0486 without stating a basis, so they are not counted as sources."
+    },
+    "reports": [
+      {
+        "value": 0.072,
+        "via": "https://sens-converter-0422.pages.dev/",
+        "status": "unsupported",
+        "note": "no basis given"
+      },
+      {
+        "value": 0.0486,
+        "via": "https://west-games.com/rust-aim-sensitivity-converter/",
+        "status": "unsupported",
+        "note": "no basis given"
+      }
+    ]
+  },
+  {
+    "id": "roblox",
+    "name": {
+      "ko": "로블록스",
+      "en": "Roblox"
+    },
+    "yaw": 0.39783,
+    "decimals": 4,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.39783,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.4,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "기본 카메라 기준이에요. 두 출처는 0.39783과 0.4로 0.5% 차이예요. 게임(경험)마다 카메라를 직접 만들면 감도가 다를 수 있어요.",
+      "en": "For the default camera. The two sources give 0.39783 and 0.4, a 0.5% difference. Experiences with a custom camera can behave differently."
+    }
+  },
+  {
+    "id": "codcw",
+    "name": {
+      "ko": "콜 오브 듀티: 블랙 옵스 콜드 워",
+      "en": "Call of Duty: Black Ops Cold War"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "codvg",
+    "name": {
+      "ko": "콜 오브 듀티: 뱅가드",
+      "en": "Call of Duty: Vanguard"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "codmw19",
+    "name": {
+      "ko": "콜 오브 듀티: 모던 워페어 (2019)",
+      "en": "Call of Duty: Modern Warfare (2019)"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "listed as Call of Duty: Modern Warfare"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "sg2",
+    "name": {
+      "ko": "스플릿게이트 2",
+      "en": "Splitgate 2"
+    },
+    "yaw": 0.01116,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.01116,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "sg",
+    "name": {
+      "ko": "스플릿게이트",
+      "en": "Splitgate"
+    },
+    "yaw": 0.00937,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00937,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "paladins",
+    "name": {
+      "ko": "팔라딘스",
+      "en": "Paladins"
+    },
+    "yaw": 0.0092,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0092,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "smite2",
+    "name": {
+      "ko": "스마이트 2",
+      "en": "Smite 2"
+    },
+    "yaw": 0.00726,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00726,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "hunt",
+    "name": {
+      "ko": "헌트: 쇼다운",
+      "en": "Hunt: Showdown"
+    },
+    "yaw": 0.043,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.043,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "squad",
+    "name": {
+      "ko": "스쿼드",
+      "en": "Squad"
+    },
+    "yaw": 0.175,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.175,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "ins",
+    "name": {
+      "ko": "인서전시: 샌드스톰",
+      "en": "Insurgency: Sandstorm"
+    },
+    "yaw": 0.14,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.14,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "ron",
+    "name": {
+      "ko": "레디 오어 낫",
+      "en": "Ready or Not"
+    },
+    "yaw": 0.176,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.176,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "abi",
+    "name": {
+      "ko": "아레나 브레이크아웃: 인피니트",
+      "en": "Arena Breakout: Infinite"
+    },
+    "yaw": 0.1024,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.1024,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "drg",
+    "name": {
+      "ko": "딥 락 갤럭틱",
+      "en": "Deep Rock Galactic"
+    },
+    "yaw": 0.0134,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0134,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "cp2077",
+    "name": {
+      "ko": "사이버펑크 2077",
+      "en": "Cyberpunk 2077"
+    },
+    "yaw": 0.01,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.01,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "hd2",
+    "name": {
+      "ko": "헬다이버즈 2",
+      "en": "Helldivers 2"
+    },
+    "yaw": 0.573,
+    "decimals": 4,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.573,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "strinova",
+    "name": {
+      "ko": "스트리노바",
+      "en": "Strinova"
+    },
+    "yaw": 0.0139,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0139,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "spectre",
+    "name": {
+      "ko": "스펙터 디바이드",
+      "en": "Spectre Divide"
+    },
+    "yaw": 0.0715,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0715,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "fragpunk",
+    "name": {
+      "ko": "프래그펑크",
+      "en": "FragPunk"
+    },
+    "yaw": 0.0556,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.0556,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "farlight",
+    "name": {
+      "ko": "파라이트 84",
+      "en": "Farlight 84"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "bloodstrike",
+    "name": {
+      "ko": "블러드 스트라이크",
+      "en": "Blood Strike"
+    },
+    "yaw": 0.00154,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00154,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "warface",
+    "name": {
+      "ko": "워페이스",
+      "en": "Warface"
+    },
+    "yaw": 0.00333,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.00333,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "dayz",
+    "name": {
+      "ko": "데이즈",
+      "en": "DayZ"
+    },
+    "yaw": 0.179,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.179,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "palworld",
+    "name": {
+      "ko": "팰월드",
+      "en": "Palworld"
+    },
+    "yaw": 0.044,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.044,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "payday3",
+    "name": {
+      "ko": "페이데이 3",
+      "en": "PAYDAY 3"
+    },
+    "yaw": 0.07,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "bl3",
+    "name": {
+      "ko": "보더랜드 3",
+      "en": "Borderlands 3"
+    },
+    "yaw": 0.007,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.007,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "combat",
+    "name": {
+      "ko": "컴뱃 마스터",
+      "en": "Combat Master"
+    },
+    "yaw": 0.001,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "otg",
+    "name": {
+      "ko": "오프 더 그리드",
+      "en": "Off The Grid"
+    },
+    "yaw": 0.07,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "gzw",
+    "name": {
+      "ko": "그레이 존 워페어",
+      "en": "Gray Zone Warfare"
+    },
+    "yaw": 0.063,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.063,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "b4b",
+    "name": {
+      "ko": "백 4 블러드",
+      "en": "Back 4 Blood"
+    },
+    "yaw": 0.175,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.175,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "doomtda",
+    "name": {
+      "ko": "둠: 더 다크 에이지",
+      "en": "DOOM: The Dark Ages"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "unturned",
+    "name": {
+      "ko": "언턴드",
+      "en": "Unturned"
+    },
+    "yaw": 0.5,
+    "decimals": 4,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.5,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "ror2",
+    "name": {
+      "ko": "리스크 오브 레인 2",
+      "en": "Risk of Rain 2"
+    },
+    "yaw": 0.5,
+    "decimals": 4,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.5,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "dune",
+    "name": {
+      "ko": "듄: 어웨이크닝",
+      "en": "Dune: Awakening"
+    },
+    "yaw": 0.175,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.175,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "ark",
+    "name": {
+      "ko": "ARK: 서바이벌 이볼브드",
+      "en": "ARK: Survival Evolved"
+    },
+    "yaw": 0.175,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.175,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  },
+  {
+    "id": "7dtd",
+    "name": {
+      "ko": "7 데이즈 투 다이",
+      "en": "7 Days to Die"
+    },
+    "yaw": 0.25,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://frameratetest.com/sensitivity-converter/",
+        "value": 0.25,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified",
+    "caveat": {
+      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
+    }
+  }
+]
