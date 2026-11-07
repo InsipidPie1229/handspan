@@ -322,7 +322,7 @@ function setupProfiles() {
 }
 
 async function init() {
-  const res = await fetch('/handspan/data/04209a38d6/games.json');
+  const res = await fetch('/handspan/data/182209a801/games.json');
   baseGames = await res.json();
   loadGames();
   setupCustom();
