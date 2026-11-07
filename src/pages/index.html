@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.hero{padding-block:56px 32px;display:grid;gap:14px;max-width:760px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.tools-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.tools-list li{border-bottom:1px solid var(--rule)}
+.tools-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:24px 0;text-decoration:none}
+.tools-list a:hover{background:var(--tape-soft)}
+.tools-list h2{font:700 1.5rem/1.2 var(--f-num);font-stretch:108%}
+.tools-list p{margin:0;color:var(--ink-2);grid-column:1}
+.tools-list .go{grid-row:1 / span 2;grid-column:2;font:500 .9rem var(--f-text);color:var(--ink-2);white-space:nowrap}
+.tools-list .tag{font:500 .78rem var(--f-text);color:var(--ink-3)}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:40px 64px}
+.notes h2{font-size:1rem;margin-bottom:4px}.notes p{margin:0;color:var(--ink-2);font-size:.92rem}
+@media (max-width:640px){.tools-list a{grid-template-columns:minmax(0,1fr)}.tools-list .go{grid-row:auto;grid-column:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>{{home.h1}}</h1>
+    <p class="lede">{{home.lede}}</p>
+  </section>
+
+  <ul class="tools-list">
+    <li><a href="{{@base}}convert/"><h2>{{nav.convert}}</h2><p>{{home.convert}}</p><span class="go">{{home.open}} →</span></a></li>
+    <li><a href="{{@base}}find/"><h2>{{nav.find}} <span class="tag">{{home.pcOnly}}</span></h2><p>{{home.find}}</p><span class="go">{{home.open}} →</span></a></li>
+    <li><a href="{{@base}}click/"><h2>{{nav.click}} <span class="tag">{{home.pcOnly}}</span></h2><p>{{home.click}}</p><span class="go">{{home.open}} →</span></a></li>
+    <li><a href="{{@base}}kite/"><h2>{{nav.kite}} <span class="tag">{{home.pcOnly}}</span></h2><p>{{home.kite}}</p><span class="go">{{home.open}} →</span></a></li>
+  </ul>
+
+  <section class="notes">
+    <div><h2>{{home.noteCalcH}}</h2><p>{{home.noteCalc}}</p></div>
+    <div><h2>{{home.noteDataH}}</h2><p>{{home.noteData}}</p></div>
+    <div><h2>{{home.notePrivacyH}}</h2><p>{{home.notePrivacy}}</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+</body>
+</html>

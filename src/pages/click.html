@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.head{padding-block:32px 20px;display:flex;justify-content:space-between;align-items:end;gap:16px 32px;flex-wrap:wrap}
+.head>div{display:grid;gap:8px}
+.arena{position:relative;aspect-ratio:16/9;max-height:calc(100vh - 220px);width:100%;background:var(--arena);border-radius:var(--r);overflow:hidden;color:var(--arena-ink)}
+.arena canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none}
+.hud{position:absolute;z-index:2;left:0;right:0;top:0;display:flex;gap:28px;padding:14px 18px;font:500 .9rem var(--f-mono);color:var(--arena-ink);pointer-events:none}
+.hud[hidden]{display:none}
+.hud b{font:700 1.2rem var(--f-num);font-stretch:110%;margin-right:6px}
+.hud .t{margin-left:auto}
+.layer{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:24px;background:rgba(11,12,13,.62)}
+.layer[hidden]{display:none}
+.panel{width:min(460px,100%);display:grid;gap:18px;color:var(--arena-ink);max-height:calc(100% - 8px);overflow-y:auto;overscroll-behavior:contain}
+.panel h2{margin:0;font:700 1.6rem/1.2 var(--f-num);font-stretch:108%;color:var(--arena-ink)}
+.panel p{margin:0;color:#B4B7B2;font-size:.95rem}
+.panel.result-panel{width:min(560px,100%)}
+.seg{display:flex;border:1px solid #3A3D42;border-radius:var(--r);overflow:hidden}
+.seg button{flex:1;min-height:44px;background:transparent;border:0;border-right:1px solid #3A3D42;color:#B4B7B2;font:500 .9rem var(--f-text);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:#2A2D31;color:#fff;box-shadow:inset 0 -2px 0 var(--tape)}
+.seg button:hover{color:#fff}
+.opt{display:grid;gap:6px}
+.opt>span{font-size:.8rem;color:#83878A}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.panel .btn{border-color:#3A3D42;background:transparent;color:var(--arena-ink)}
+.panel .btn:hover{background:rgba(242,194,48,.16)}
+.panel .btn.go{background:var(--tape);border-color:var(--tape);color:var(--tape-ink)}
+.esc{font:400 .82rem var(--f-text);color:#83878A}
+kbd{font:500 .78rem var(--f-mono);border:1px solid #3A3D42;border-bottom-width:2px;border-radius:3px;padding:1px 6px;color:#E9EAE6}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #3A3D42;border-bottom:1px solid #3A3D42;margin:0}
+.res>div{padding:14px 0;display:grid;gap:2px;min-width:0}
+.res>div+div{padding-left:16px;border-left:1px solid #3A3D42}
+.res dt{font-size:.78rem;color:#83878A}
+.res dd{margin:0;font:800 2.2rem/1 var(--f-num);font-stretch:115%}
+.res dd small{font:500 .85rem var(--f-mono);color:#B4B7B2;margin-left:3px}
+.res .short{font:600 .9rem var(--f-text);color:#B4B7B2}
+.dist{display:grid;gap:6px}
+.dist .bars{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:84px;padding-top:20px}
+.dist .bars i{display:block;position:relative;background:#3A3D42;border-top:2px solid var(--tape);min-height:2px}
+.dist .bars em{position:absolute;left:0;right:0;top:-20px;text-align:center;font:500 .75rem var(--f-mono);font-style:normal;color:#E9EAE6;white-space:nowrap}
+.dist .lbl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font:400 .72rem var(--f-mono);color:#83878A;text-align:center}
+.cond{font:400 .8rem var(--f-text);color:#83878A}
+.hist{display:grid;gap:4px}
+.hist ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:.78rem;font-family:var(--f-mono)}
+.hist li{display:flex;justify-content:space-between;gap:10px}
+.hist li span:first-child{color:#83878A}
+.link{width:100%;height:40px;padding:8px 10px;font:500 .82rem var(--f-mono);color:var(--arena-ink);background:#17191B;border:1px solid #3A3D42;border-radius:var(--r)}
+.below{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:28px 64px}
+.below h2{font-size:1rem;margin:0 0 4px}
+.below p{margin:0;color:var(--ink-2);font-size:.92rem}
+.desk{display:none}
+@media (max-width:760px),(pointer:coarse){.arena{display:none}.desk{display:grid;gap:12px;padding:20px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}}
+.desk p{margin:0;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/" aria-current="page">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="head">
+    <div>
+      <h1>{{click.h1}}</h1>
+      <p class="lede">{{click.lede}}</p>
+    </div>
+    <span class="small">{{click.pcOnly}}</span>
+  </section>
+
+  <div class="desk">
+    <h2>{{click.deskHeading}}</h2>
+    <p>{{click.deskBody}}</p>
+    <a class="btn" href="{{@base}}convert/">{{click.deskLink}}</a>
+  </div>
+
+  <div class="arena" id="arena">
+    <canvas id="cv"></canvas>
+    <div class="hud" id="hud" hidden><span id="hHit"></span><span id="hMiss"></span><span class="t" id="hTime"></span></div>
+
+    <div class="layer" id="ready">
+      <div class="panel">
+        <h2>{{click.readyHeading}}</h2>
+        <div class="opt"><span>{{click.sizeLabel}}</span><div class="seg" role="group" aria-label="{{click.sizeLabel}}" data-group="size">
+          <button type="button" data-size="S" aria-pressed="false">{{click.sizeS}}</button>
+          <button type="button" data-size="M" aria-pressed="true">{{click.sizeM}}</button>
+          <button type="button" data-size="L" aria-pressed="false">{{click.sizeL}}</button>
+        </div></div>
+        <div class="opt"><span>{{click.speedLabel}}</span><div class="seg" role="group" aria-label="{{click.speedLabel}}" data-group="speed">
+          <button type="button" data-speed="still" aria-pressed="true">{{click.speedStill}}</button>
+          <button type="button" data-speed="slow" aria-pressed="false">{{click.speedSlow}}</button>
+          <button type="button" data-speed="fast" aria-pressed="false">{{click.speedFast}}</button>
+        </div></div>
+        <div class="opt"><span>{{click.durLabel}}</span><div class="seg" role="group" aria-label="{{click.durLabel}}" data-group="dur">
+          <button type="button" data-dur="30" aria-pressed="true">{{click.dur30}}</button>
+          <button type="button" data-dur="60" aria-pressed="false">{{click.dur60}}</button>
+        </div></div>
+        <div class="row"><button class="btn go" id="startBtn" type="button">{{click.start30}}</button></div>
+        <p class="esc"><kbd>Esc</kbd> {{click.esc}}</p>
+      </div>
+    </div>
+
+    <div class="layer" id="paused" hidden>
+      <div class="panel">
+        <h2>{{click.pausedHeading}}</h2>
+        <p id="pausedBody"></p>
+        <div class="row"><button class="btn go" id="resumeBtn" type="button">{{click.resume}}</button><button class="btn" id="restartBtn" type="button">{{click.restart}}</button></div>
+      </div>
+    </div>
+
+    <div class="layer" id="result" hidden>
+      <div class="panel result-panel">
+        <h2 id="resTitle"></h2>
+        <div id="resBody"></div>
+        <p class="cond" id="resCond"></p>
+        <div class="row"><button class="btn go" id="againBtn" type="button">{{click.again}}</button><button class="btn" id="saveBtn" type="button">{{click.saveImage}}</button><button class="btn" id="copyBtn" type="button">{{click.copyLink}}</button></div>
+        <p class="cond" id="copyMsg" hidden></p>
+        <input class="link" id="linkInput" readonly hidden aria-label="{{click.copyLink}}">
+        <div class="hist" id="resHist"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="below">
+    <div><h2>{{click.belowWhatH}}</h2><p>{{click.belowWhat}}</p></div>
+    <div><h2>{{click.belowGameH}}</h2><p>{{click.belowGame}}</p></div>
+    <div><h2>{{click.belowHistH}}</h2><p>{{click.belowHist}}</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+
+<script type="application/json" id="i18n">{{@i18nJson}}</script>
+<script type="module" src="/assets/js/click.js"></script>
+</body>
+</html>

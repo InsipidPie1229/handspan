@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.doc{max-width:860px;padding-block:48px 64px;display:grid;gap:36px}
+.doc section{display:grid;gap:10px}
+.doc h2{font-size:1.15rem}
+.doc p,.doc li{color:var(--ink-2);max-width:68ch}
+.doc ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.src-table{overflow-x:auto}
+.src-table table{border-collapse:collapse;width:100%;font-size:.86rem}
+.src-table th{font-weight:500;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule-2)}
+.src-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.src-table td.n{font-family:var(--f-mono);white-space:nowrap}
+.src-table a{word-break:break-all}
+.src-table .ex td{color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap doc">
+  <section>
+    <h1>{{about.h1}}</h1>
+    <p class="lede">{{about.lede}}</p>
+  </section>
+  <section>
+    <h2>{{about.privacyH}}</h2>
+    <ul>
+      <li>{{about.privacy1}}</li>
+      <li>{{about.privacy2}}</li>
+      <li>{{about.privacy3}}</li>
+    </ul>
+  </section>
+  <section>
+    <h2>{{about.measureH}}</h2>
+    <ul>
+      <li>{{about.measure1}}</li>
+      <li>{{about.measure2}}</li>
+      <li>{{about.measure3}}</li>
+      <li>{{about.measure4}}</li>
+    </ul>
+  </section>
+  <section>
+    <h2>{{about.sourcesH}}</h2>
+    <p>{{about.sourcesLede}}</p>
+    <div class="src-table">{{@sources}}</div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+</body>
+</html>

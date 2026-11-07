@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.head{padding-block:32px 20px;display:flex;justify-content:space-between;align-items:end;gap:16px 32px;flex-wrap:wrap}
+.head>div{display:grid;gap:8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+@media (max-width:1000px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage-col{min-width:0}
+.stage{position:relative;width:100%;aspect-ratio:16/9;background:var(--arena);border-radius:var(--r);overflow:hidden;user-select:none}
+.stage:fullscreen{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0}
+.stage canvas{display:block;width:100%;height:100%;cursor:crosshair}
+.ov{position:absolute;inset:0;display:grid;place-items:center;background:rgba(11,12,13,.62);padding:16px;color:var(--arena-ink)}
+.ov-card{max-width:440px;display:grid;gap:10px;justify-items:center;text-align:center}
+.ov-k{margin:0;font:500 .78rem var(--f-text);letter-spacing:.04em;color:var(--tape)}
+.ov-card h2{margin:0;font:700 1.6rem/1.15 var(--f-num);font-stretch:108%;color:var(--arena-ink)}
+.ov-card p{margin:0;font-size:.92rem;color:#B4B7B2}
+.ov-b{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+.ov .btn{border-color:#3A3D42;background:transparent;color:var(--arena-ink)}
+.ov .btn.go{background:var(--tape);border-color:var(--tape);color:var(--tape-ink)}
+.fs{position:absolute;right:10px;bottom:10px;font:500 .75rem var(--f-text);background:rgba(11,12,13,.6);color:var(--arena-ink);border:1px solid #3A3D42;border-radius:var(--r);padding:6px 10px;min-height:36px;cursor:pointer}
+.stage:fullscreen .fs{display:none}
+.below{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:.84rem;color:var(--ink-3)}
+.below b{color:var(--ink);font-weight:600}
+kbd{font:500 .78rem var(--f-mono);border:1px solid var(--rule-2);border-bottom-width:2px;border-radius:3px;padding:0 5px;color:var(--ink)}
+aside{display:grid;gap:14px;min-width:0}
+.sec{border:1px solid var(--rule);border-radius:var(--r);padding:16px;display:grid;gap:12px;min-width:0;background:var(--field)}
+.sec h3{margin:0;font:600 .78rem var(--f-text);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.field{display:grid;gap:5px;min-width:0}
+.field label,.flabel{font-size:.82rem;color:var(--ink-2)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.hint{font-size:.76rem;color:var(--ink-3)}
+.sec input[type=number],.sec select{width:100%;height:44px;padding:8px 10px;font:500 .95rem var(--f-mono);color:var(--ink);background:var(--bg);border:1px solid var(--rule-2);border-radius:var(--r)}
+.sec select{font-family:var(--f-text)}
+.sec input:disabled,.sec select:disabled{opacity:.55}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--bg);border:1px solid var(--rule-2);border-radius:var(--r);padding:3px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{font-size:.78rem;font-weight:500;text-align:center;padding:6px;border-radius:3px;cursor:pointer;color:var(--ink-3);line-height:1.3;min-height:44px;display:flex;align-items:center;justify-content:center}
+.seg input:checked+label{background:var(--field);color:var(--ink);box-shadow:0 0 0 1px var(--rule-2)}
+.seg input:focus-visible+label{outline:2px solid var(--tape);outline-offset:1px}
+.seg input:disabled+label{cursor:not-allowed;opacity:.6}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;padding:4px 9px;border-radius:999px;border:1px solid var(--rule-2);color:var(--ink-3);width:fit-content;max-width:100%}
+.chip::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip.ok{color:var(--ok)}.chip.warn{color:var(--warn)}
+.cands{display:flex;flex-wrap:wrap;gap:6px}
+.cands span{font:500 .76rem var(--f-mono);padding:3px 8px;border-radius:3px;background:var(--bg);border:1px solid var(--rule)}
+.msg{font-size:.82rem;color:var(--err);margin:0}
+.tbl{overflow-x:auto;margin:0 calc(-1*var(--gut));padding:0 var(--gut)}
+table{border-collapse:collapse;width:100%;font-size:.78rem;font-variant-numeric:tabular-nums}
+th{font-weight:500;color:var(--ink-3);text-align:right;padding:5px;border-bottom:1px solid var(--rule-2);white-space:nowrap}
+td{text-align:right;padding:6px 5px;border-bottom:1px solid var(--rule);font-family:var(--f-mono);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tr.win td{background:var(--tape-soft)}
+tr.win td:first-child{box-shadow:inset 3px 0 0 var(--tape)}
+.feel{font-family:var(--f-text);font-size:.74rem}
+.feel.ok{color:var(--ok)}.feel.wrist,.feel.shoulder{color:var(--warn)}
+.ep-hi,.ep-lo{color:var(--warn)}.ep-ok{color:var(--ok)}
+.pick{font:500 .72rem var(--f-text);padding:2px 7px;border-radius:3px;border:1px solid var(--rule-2);background:var(--bg);color:var(--ink);cursor:pointer}
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:.84rem;margin-top:6px}
+.rhead b{font-weight:600}
+.rhead span{color:var(--ink-3);font-family:var(--f-mono);font-size:.74rem}
+.steps{display:flex;gap:3px}
+.steps i{flex:1;height:4px;border-radius:2px;background:var(--rule)}
+.steps i.done{background:var(--tape)}
+.steps i.now{background:var(--tape);opacity:.45}
+.final{display:grid;gap:10px}
+.final .big{font:800 2rem/1.05 var(--f-num);font-stretch:112%;color:var(--ink)}
+.final .big small{font:600 .9rem var(--f-text);color:var(--ink-3);margin-left:6px}
+.final p{margin:0;font-size:.85rem}
+.final .sub{font:600 .74rem var(--f-text);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:4px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.84rem;margin:0}
+.kv dt{color:var(--ink-3)}.kv dd{margin:0;font-family:var(--f-mono);text-align:right}
+.kv dt.rec,.kv dd.rec{color:var(--ink);font-weight:600}
+.hist{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:.78rem}
+.hist li{display:flex;justify-content:space-between;gap:10px;font-family:var(--f-mono)}
+.hist li span:first-child{color:var(--ink-3)}
+.empty{color:var(--ink-3);font-size:.83rem;margin:0}
+.note{font-size:.79rem;color:var(--ink-3);margin:0}
+.callout{font-size:.83rem;margin:0;padding:8px 10px;border-radius:var(--r);background:var(--bg);border:1px solid var(--rule)}
+.callout.warn{border-color:var(--warn)}
+.desk{display:none}
+@media (max-width:760px),(pointer:coarse){.stage-col{display:none}.desk{display:grid;gap:12px;padding:20px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}}
+.desk p{margin:0;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/">{{nav.convert}}</a><a href="{{@base}}find/" aria-current="page">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="head">
+    <div>
+      <h1>{{find.h1}}</h1>
+      <p class="lede">{{find.lede}}</p>
+    </div>
+    <span class="small">{{find.pcOnly}}</span>
+  </section>
+
+  <div class="desk">
+    <h2>{{find.deskHeading}}</h2>
+    <p>{{find.deskBody}}</p>
+    <a class="btn" href="{{@base}}convert/">{{find.deskLink}}</a>
+  </div>
+
+  <div class="grid">
+    <div class="stage-col">
+      <div class="stage" id="stage">
+        <canvas id="cv"></canvas>
+        <div class="ov" id="ov">
+          <div class="ov-card">
+            <p class="ov-k" id="ovK">{{find.ovReadyK}}</p>
+            <h2 id="ovT">{{find.ovReadyT}}</h2>
+            <p id="ovX">{{find.ovReadyX}}</p>
+            <div class="ov-b" id="ovB"></div>
+          </div>
+        </div>
+        <button class="fs" id="fsBtn" type="button">{{find.fs}}</button>
+      </div>
+      <div class="below">
+        <span><kbd>{{find.keyClick}}</kbd> {{find.belowShoot}}</span>
+        <span><kbd>Esc</kbd> {{find.belowPause}}</span>
+        <span>{{find.belowFov}}</span>
+        <span>{{find.belowCands}}</span>
+      </div>
+    </div>
+
+    <aside>
+      <section class="sec" aria-labelledby="h-setup">
+        <h3 id="h-setup">{{find.setupHeading}}</h3>
+        <div class="seg" role="radiogroup" aria-label="{{find.modeAria}}">
+          <input type="radio" name="mode" id="modeSens" value="sens"><label for="modeSens">{{find.modeSens}}</label>
+          <input type="radio" name="mode" id="modeFix" value="fix"><label for="modeFix">{{find.modeFix}}</label>
+        </div>
+        <div class="field">
+          <label for="game">{{find.game}}</label>
+          <select id="game"></select>
+        </div>
+        <div class="row3">
+          <div class="field">
+            <label for="actualDpi">{{find.actualDpi}}</label>
+            <input type="number" id="actualDpi" min="100" max="32000" step="50" inputmode="numeric">
+          </div>
+          <div class="field" id="fixField">
+            <label for="fixSens">{{find.fixSens}}</label>
+            <input type="number" id="fixSens" min="0.001" max="1000" step="0.01" inputmode="decimal">
+          </div>
+          <div class="field" id="stepField">
+            <label for="dpiStep">{{find.dpiStep}}</label>
+            <select id="dpiStep"><option value="1">1</option><option value="10">10</option><option value="50">50</option><option value="100">100</option></select>
+          </div>
+        </div>
+        <span class="hint">{{find.dpiHint}}</span>
+        <div class="row2">
+          <div class="field">
+            <label for="minC">{{find.minC}}</label>
+            <input type="number" id="minC" min="10" max="150" step="0.5" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="maxC">{{find.maxC}}</label>
+            <input type="number" id="maxC" min="10" max="150" step="0.5" inputmode="decimal">
+          </div>
+        </div>
+        <span class="hint" id="rangeHint"></span>
+        <div class="field">
+          <span class="flabel">{{find.roundOne}}</span>
+          <div class="cands" id="preview"></div>
+        </div>
+        <span class="chip" id="rawChip">{{find.rawPending}}</span>
+        <p class="msg" id="setupMsg" hidden></p>
+        <button class="btn go" id="startBtn" type="button">{{find.start}}</button>
+      </section>
+
+      <section class="sec" aria-labelledby="h-prog">
+        <h3 id="h-prog">{{find.progHeading}}</h3>
+        <div id="prog"><p class="empty">{{find.progEmpty}}</p></div>
+      </section>
+
+      <section class="sec" id="finalSec" aria-labelledby="h-final" hidden>
+        <h3 id="h-final">{{find.finalHeading}}</h3>
+        <div id="final"></div>
+      </section>
+
+      <section class="sec" aria-labelledby="h-hist">
+        <h3 id="h-hist">{{find.histHeading}}</h3>
+        <ul class="hist" id="hist"></ul>
+      </section>
+    </aside>
+  </div>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+
+<script type="application/json" id="i18n">{{@i18nJson}}</script>
+<script type="module" src="/assets/js/find.js"></script>
+</body>
+</html>

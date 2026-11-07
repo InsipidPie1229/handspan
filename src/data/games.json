@@ -1,0 +1,471 @@
+[
+  {
+    "id": "ow",
+    "name": {
+      "ko": "오버워치 2",
+      "en": "Overwatch 2"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "hipfire FOV 103 (16:9)"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cs",
+    "name": {
+      "ko": "CS2",
+      "en": "CS2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "val",
+    "name": {
+      "ko": "발로란트",
+      "en": "Valorant"
+    },
+    "yaw": 0.07,
+    "decimals": 3,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.07,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "apex",
+    "name": {
+      "ko": "Apex 레전드",
+      "en": "Apex Legends"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "cod",
+    "name": {
+      "ko": "콜 오브 듀티 (레거시)",
+      "en": "Call of Duty (legacy)"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "MW3, Warzone, Black Ops 6"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08",
+        "note": "Warzone, Black Ops 6/7"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "fn",
+    "name": {
+      "ko": "포트나이트",
+      "en": "Fortnite"
+    },
+    "yaw": 0.005555,
+    "decimals": 1,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.005555,
+        "checked": "2026-11-08",
+        "note": "X sensitivity shown as %"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://dcprosens.com/blog/pubg-sensitivity-converter-guide/",
+        "value": 0.005555,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "caveat": {
+      "ko": "한 변환기는 포트나이트가 시야각이나 슬라이더 방식에 따라 달라진다고 적고 있어요.",
+      "en": "One converter notes Fortnite scales with field of view or a slider system."
+    },
+    "independence": "unverified"
+  },
+  {
+    "id": "r6",
+    "name": {
+      "ko": "레인보우 식스 시즈 (배율 0.02)",
+      "en": "Rainbow Six Siege (multiplier 0.02)"
+    },
+    "yaw": 0.00572957795,
+    "decimals": 0,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.00572957795,
+        "checked": "2026-11-08",
+        "note": "default multiplier 0.02"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.00572958,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://sensconverter.vercel.app/guides/what-is-mouse-yaw",
+        "value": 0.00572957795,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "caveat": {
+      "ko": "배율(기본 0.02)과 시야각 설정에 따라 달라질 수 있어요.",
+      "en": "Depends on the multiplier (default 0.02) and may depend on field of view."
+    },
+    "independence": "unverified"
+  },
+  {
+    "id": "mr",
+    "name": {
+      "ko": "마블 라이벌즈",
+      "en": "Marvel Rivals"
+    },
+    "yaw": 0.0175,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0175,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.017453,
+        "checked": "2026-11-08",
+        "note": "pi/180; notes some converters list 0.022"
+      },
+      {
+        "url": "https://mansone.com/tools/sensitivity-converter",
+        "value": 0.0175,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "caveat": {
+      "ko": "확인한 출처는 0.0175와 0.017453(π/180)으로 0.3% 차이예요. 0.022라는 값은 다른 사이트의 전언일 뿐 원문을 확인하지 않았어요. 원문이 확인되면 충돌로 보고 계산에서 뺄 거예요.",
+      "en": "Checked sources give 0.0175 and 0.017453 (pi/180), a 0.3% difference. A value of 0.022 is only reported second-hand and has not been checked; if confirmed, the game will be treated as conflicting and left out."
+    },
+    "independence": "unverified",
+    "reports": [
+      {
+        "value": 0.022,
+        "via": "https://game-sens.jor.dev/",
+        "status": "hearsay",
+        "note": "the page says some converters list 0.022; no such source was checked directly"
+      }
+    ]
+  },
+  {
+    "id": "dl",
+    "name": {
+      "ko": "데드락",
+      "en": "Deadlock"
+    },
+    "yaw": 0.044,
+    "decimals": 2,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.044,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://game-sens.jor.dev/",
+        "value": 0.022,
+        "checked": "2026-11-08",
+        "note": "says same yaw as CS2"
+      },
+      {
+        "url": "https://mansone.com/tools/sensitivity-converter",
+        "value": 0.044,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "conflict": {
+      "ko": "출처마다 0.044와 0.022로 두 배 차이가 나서, 확인될 때까지 계산에서 뺐어요.",
+      "en": "Sources disagree by a factor of two (0.044 vs 0.022), so it is left out until checked."
+    },
+    "independence": "unverified"
+  },
+  {
+    "id": "fin",
+    "name": {
+      "ko": "더 파이널스",
+      "en": "The Finals"
+    },
+    "yaw": 0.001,
+    "decimals": 1,
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "sources": [
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://mansone.com/tools/sensitivity-converter",
+        "value": 0.001,
+        "checked": "2026-11-08"
+      }
+    ],
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tf2",
+    "name": {
+      "ko": "팀 포트리스 2",
+      "en": "Team Fortress 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "tf",
+    "name": {
+      "ko": "타이탄폴 2",
+      "en": "Titanfall 2"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "qc",
+    "name": {
+      "ko": "퀘이크 챔피언스",
+      "en": "Quake Champions"
+    },
+    "yaw": 0.022,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://webcode.tools/converters/game-sensitivity-converter/",
+        "value": 0.022,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  },
+  {
+    "id": "d2",
+    "name": {
+      "ko": "데스티니 가디언즈",
+      "en": "Destiny 2"
+    },
+    "yaw": 0.0066,
+    "decimals": 2,
+    "sources": [
+      {
+        "url": "https://mousesensitivityconverters.com/",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      },
+      {
+        "url": "https://senslab.pro/sensitivity",
+        "value": 0.0066,
+        "checked": "2026-11-08"
+      }
+    ],
+    "notes": {
+      "ko": "",
+      "en": ""
+    },
+    "inGameVerified": null,
+    "independence": "unverified"
+  }
+]

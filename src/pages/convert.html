@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="{{@lang}}" data-t-dark="{{theme.dark}}" data-t-light="{{theme.light}}" data-t-to-dark="{{theme.toDark}}" data-t-to-light="{{theme.toLight}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{@head}}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script src="/assets/site.js"></script>
+<style>
+.intro{padding-block:48px 28px;display:grid;gap:12px}
+.calc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;padding-block:8px 40px;border-bottom:1px solid var(--rule)}
+@media (max-width:900px){.calc{grid-template-columns:minmax(0,1fr);gap:28px}}
+.calc .fields{grid-template-columns:1fr 1fr;align-content:start}
+.calc .fields .wide{grid-column:1/-1}
+.out{display:grid;gap:18px;align-content:start}
+.big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.big b{font:800 clamp(4.5rem,10vw,8.5rem)/.9 var(--f-num);font-stretch:118%;letter-spacing:-.03em}
+.big span{font:500 1.05rem var(--f-mono);color:var(--ink-2)}
+.big.void b{color:var(--rule-2)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 32px;margin:0}
+.facts div{display:grid}
+.facts dt{font-size:.8rem;color:var(--ink-3)}
+.facts dd{margin:0;font:500 1.15rem var(--f-mono)}
+/* ruler */
+.ruler{position:relative;height:52px;margin-top:4px}
+.ruler svg{display:block;width:100%;height:100%;overflow:visible}
+.ruler .tick{stroke:var(--ink-3)}
+.ruler .tick.m{stroke:var(--ink-2)}
+.ruler text{fill:var(--ink-3);font:11px var(--f-mono)}
+.ruler .zone{fill:var(--ink-3);font:11px var(--f-text)}
+.ruler .pin{fill:var(--tape);stroke:var(--ink);stroke-width:1}
+.ruler .over{fill:var(--ink-2);font:600 11px var(--f-mono)}
+.basis{margin:-10px 0 0}
+td .cav{font:400 .78rem var(--f-text);color:var(--warn);margin-top:2px;white-space:normal}
+td .cav summary{cursor:pointer;min-height:24px}
+td .off{display:block;font:400 .78rem var(--f-text);color:var(--warn);margin-top:2px}
+tr.offrow td.s{color:var(--ink-3);text-decoration:line-through}
+td .st-m{display:none;font:400 .78rem var(--f-text);color:var(--ink-3);margin-top:2px}
+td .st-m.one{color:var(--warn)}
+@media (max-width:640px){.hide-m{display:none}td .st-m{display:block}}
+.scale{display:flex;justify-content:space-between;gap:12px;font-size:.78rem;color:var(--ink-3);margin-top:-6px}
+.more{justify-self:start;background:none;border:0;color:var(--ink-2);text-decoration:underline;font:500 .88rem var(--f-text);min-height:44px;cursor:pointer;padding:0}
+@media (min-width:641px){.more{display:none}}
+.games.open .hide-m{display:table-cell}
+/* table */
+.games{padding-block:40px 24px;display:grid;gap:16px}
+.games-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.tbl{overflow-x:auto;margin:0 calc(-1*var(--gut));padding:0 var(--gut)}
+table{border-collapse:collapse;width:100%}
+.games.open table{min-width:560px}
+th{font:500 .8rem var(--f-text);color:var(--ink-3);text-align:right;padding:10px 12px;border-bottom:1px solid var(--rule-2)}
+td{padding:14px 12px;border-bottom:1px solid var(--rule);text-align:right;font:400 .95rem var(--f-mono);color:var(--ink-2)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td.g{font:500 1rem var(--f-text);color:var(--ink)}
+td.s{font:600 1.35rem var(--f-num);font-stretch:110%;color:var(--ink)}
+tr.from td{background:var(--tape-soft)}
+tr.from td.g::before{content:"";display:inline-block;width:8px;height:8px;background:var(--tape);border:1px solid var(--ink);margin-right:10px;vertical-align:1px}
+td .st{font:400 .8rem var(--f-text);color:var(--ink-3);white-space:nowrap}
+td .st.one{color:var(--warn)}
+tbody tr:hover td{background:var(--tape-soft)}
+.how{padding-block:24px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 48px;border-top:1px solid var(--rule)}
+.how h2{font-size:1rem;margin-bottom:6px}
+.how p{margin:0;color:var(--ink-2);font-size:.92rem}
+code{font:.88em var(--f-mono);background:var(--tape-soft);padding:1px 5px;border-radius:3px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="{{@base}}"><i aria-hidden="true"></i>handspan</a>
+  <nav class="nav" aria-label="{{nav.tools}}">
+    <a href="{{@base}}convert/" aria-current="page">{{nav.convert}}</a><a href="{{@base}}find/">{{nav.find}}</a><a href="{{@base}}click/">{{nav.click}}</a><a href="{{@base}}kite/">{{nav.kite}}</a>
+  </nav>
+  <div class="tools"><button class="theme" id="themeBtn" type="button">{{theme.dark}}</button><div class="lang"><a href="#" data-lang="ko">{{lang.ko}}</a><a href="#" data-lang="en">{{lang.en}}</a></div></div>
+</div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>{{convert.h1}}</h1>
+    <p class="lede">{{convert.lede}}</p>
+  </section>
+
+  <section class="calc" aria-label="{{convert.calcAria}}">
+    <div class="fields">
+      <div class="f wide"><label for="g">{{convert.game}}</label><select id="g"></select></div>
+      <div class="f" id="fDpi"><label for="dpi">{{convert.dpi}}</label><input id="dpi" type="number" inputmode="numeric" value="800" aria-describedby="eDpi"><p class="err" id="eDpi" hidden></p></div>
+      <div class="f" id="fSens"><label for="sens">{{convert.sens}}</label><input id="sens" type="number" inputmode="decimal" step="0.01" value="4" aria-describedby="eSens"><p class="err" id="eSens" hidden></p></div>
+      <div class="f wide" id="fDpi2"><label for="dpi2">{{convert.dpi2}}</label><input id="dpi2" type="number" inputmode="numeric" value="800" aria-describedby="eDpi2"><p class="err" id="eDpi2" hidden></p></div>
+    </div>
+    <div class="out" aria-live="polite">
+      <div class="big" id="big"><b id="cm">--</b><span>cm / 360°</span></div>
+      <p class="small basis">{{convert.basis}}</p>
+      <dl class="facts">
+        <div><dt>{{convert.halfPoint}}</dt><dd id="half">--</dd></div>
+        <div><dt>{{convert.edpi}}</dt><dd id="edpi">--</dd></div>
+      </dl>
+      <div class="ruler" aria-hidden="true"><svg id="ruler" viewBox="0 0 700 52"></svg></div>
+      <div class="scale"><span>{{convert.scaleShort}}</span><span>{{convert.scaleLong}}</span></div>
+      <p class="note" id="warn" hidden></p>
+    </div>
+  </section>
+
+  <section class="games" aria-labelledby="h-games">
+    <div class="games-head">
+      <h2 id="h-games">{{convert.otherHeading}}</h2>
+      <span class="small" id="dpiNote"></span>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>{{convert.colGame}}</th><th>{{convert.colSens}}</th><th class="hide-m">{{convert.colEdpi}}</th><th class="hide-m">{{convert.colYaw}}</th><th class="hide-m">{{convert.colStatus}}</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <button class="more" id="more" type="button" aria-expanded="false">{{convert.more}}</button>
+    <p class="small">{{convert.tolNote}}</p>
+  </section>
+
+  <section class="how">
+    <div><h2>{{convert.howFormulaHeading}}</h2><p>{{convert.howFormula}}</p></div>
+    <div><h2>{{convert.howExclusionsHeading}}</h2><p>{{convert.howExclusions}}</p></div>
+    <div><h2>{{convert.howStatusHeading}}</h2><p>{{convert.howStatus}}</p></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><a href="{{@base}}about/">{{nav.about}}</a></div></footer>
+
+<script type="application/json" id="i18n">{{@i18nJson}}</script>
+<script type="module" src="/assets/js/convert.js"></script>
+</body>
+</html>
