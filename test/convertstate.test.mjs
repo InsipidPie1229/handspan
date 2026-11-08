@@ -169,23 +169,48 @@ test('yaw from a measurement inverts cm/360', () => {
   }
 });
 
-test('custom games: add, ids, limit, remove, corrupt and blocked storage', () => {
+test('custom games: stable ids, measurement kept, limit, corrupt and blocked storage', () => {
   const st = memStorage();
   const c = createCustomGames(() => st);
-  const a = c.add('  My <b>game</b> ', 0.05);
+  let n = 0;
+  const ids = () => 'c' + String(100000 + n++);
+  const m = (cm) => ({ dpi: 800, sens: 1, cm });
+  const a = c.add('  My <b>game</b> ', m(40), ids);
   assert.ok(a.ok);
-  assert.equal(a.item.id, 'c1');
   assert.equal(a.item.name, 'My <b>game</b>');
-  assert.equal(c.add('x', NaN).error, 'value');
-  assert.equal(c.add('', 0.05).error, 'name');
-  for (let i = 1; i < MAX_CUSTOM; i++) assert.ok(c.add('g' + i, 0.01).ok);
-  assert.equal(c.add('one more', 0.01).error, 'full');
-  c.remove('c1');
-  assert.equal(c.add('again', 0.02).item.id, 'c1', 'freed id is reused');
-  const corrupt = createCustomGames(() => memStorage({ [CUSTOM_KEY]: JSON.stringify([{ id: 'x1', name: 'a', yaw: 1 }, { id: 'c2', name: 'b', yaw: 'no' }, { id: 'c3', name: 'ok', yaw: 0.1 }]) }));
-  assert.deepEqual(corrupt.load(), { list: [{ id: 'c3', name: 'ok', yaw: 0.1 }], status: 'corrupt' });
+  assert.deepEqual(a.item.measured, { dpi: 800, sens: 1, cm: 40 });
+  assert.ok(Math.abs(a.item.yaw - 914.4 / (800 * 40)) < 1e-15);
+  assert.equal(c.add('x', m(NaN), ids).error, 'value');
+  assert.equal(c.add('', m(40), ids).error, 'name');
+  c.remove(a.item.id);
+  const b = c.add('B', m(20), ids);
+  assert.notEqual(b.item.id, a.item.id, 'ids are never reused (review P1)');
+  for (let i = 1; i < MAX_CUSTOM; i++) assert.ok(c.add('g' + i, m(30), ids).ok);
+  assert.equal(c.add('one more', m(30), ids).error, 'full');
+  assert.deepEqual(c.load().list.find((g) => g.id === b.item.id).measured, { dpi: 800, sens: 1, cm: 20 });
+  const corrupt = createCustomGames(() => memStorage({ [CUSTOM_KEY]: JSON.stringify([
+    { id: 'x1', name: 'a', measured: m(30) }, { id: 'cabcdef1', name: 'b', measured: { dpi: 800, sens: 'no', cm: 30 } },
+    { id: 'cabcdef2', name: 'ok', measured: m(30) }]) }));
+  const r = corrupt.load();
+  assert.equal(r.status, 'corrupt');
+  assert.deepEqual(r.list.map((g) => g.id), ['cabcdef2']);
   assert.equal(createCustomGames(() => memStorage({ [CUSTOM_KEY]: '{' })).load().status, 'corrupt');
   const blocked = createCustomGames(() => { throw new Error('blocked'); });
   assert.deepEqual(blocked.load(), { list: [], status: 'unavailable' });
-  assert.equal(blocked.add('a', 0.1).error, 'unavailable');
+  assert.equal(blocked.add('a', m(30)).error, 'unavailable');
+});
+
+test('a missing game is reported, not silently replaced', () => {
+  const st = parseState('?g=cdeleted1&dpi=800&s=1&to=800', ids);
+  assert.equal(st.missing, 'cdeleted1');
+  assert.equal(parseState('?m=cm&cm=40&to=800', ids).missing, undefined);
+  assert.equal(parseState('?g=val&dpi=800&s=1&to=800', ids).missing, undefined);
+});
+
+test('games with an unverified input step are shown unrounded', () => {
+  const gs = [{ id: 'a', yaw: 0.0066, decimals: 2 }, { id: 'u', yaw: 914.4 / (800 * 0.0005 * 40), decimals: 3, stepUnverified: true }];
+  const r = convertCm(40, 800, gs).rows.find((x) => x.id === 'u');
+  assert.ok(Math.abs(r.sens - 0.0005) < 1e-15, 'review repro: 0.0005 at 40 cm stays 0.0005');
+  assert.equal(r.errPct, 0);
+  assert.equal(r.unrounded, true);
 });

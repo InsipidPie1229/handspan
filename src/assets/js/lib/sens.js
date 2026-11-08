@@ -38,6 +38,11 @@ export function convert(fromId, dpi, sens, toDpi, games) {
 export function convertCm(cm, toDpi, games) {
   if (validateCm(cm)) throw new RangeError('cm/360 out of range: ' + cm);
   const rows = games.map((g) => {
+    if (g.stepUnverified) {
+      // The game's input step is unknown: show the exact value and claim no rounding error.
+      const sens = sensFor(cm, toDpi, g.yaw);
+      return { id: g.id, sens, edpi: round2(sens * toDpi), cm, errPct: 0, unrounded: true };
+    }
     const r = settableSens(cm, toDpi, g.yaw, g.decimals);
     return { id: g.id, sens: r.sens, edpi: round2(r.sens * toDpi), cm: r.cm, errPct: r.errPct };
   });
