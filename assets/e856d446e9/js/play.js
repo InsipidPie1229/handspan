@@ -493,6 +493,22 @@ function fmtRaw(key, raw) {
 let current = null;
 
 /** code: the share code for this result (null when it cannot be shared). */
+let previewUrl = '';
+/** Shows the share card under the buttons so people see what they will post. */
+async function preview() {
+  try {
+    const blob = await card();
+    if (!blob) return;
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = URL.createObjectURL(blob);
+    $('cardImg').src = previewUrl;
+    $('cardImg').alt = t('play.cardAlt', { age: current.age, type: TYPES[current.type][0] });
+    $('cardFig').hidden = false;
+  } catch {
+    $('cardFig').hidden = true;
+  }
+}
+
 function render(raw, kind, shared, code) {
   const shareable = code !== null;
   const scores = scoreAll(raw);
@@ -509,6 +525,7 @@ function render(raw, kind, shared, code) {
   $('typeDesc').textContent = TYPES[type][1];
   $('areas').innerHTML = AREAS.map((k) => `<li><span class="lbl">${esc(NAMES[k])}<small>${esc(fmtRaw(k, raw))}</small></span><span class="track"><i style="width:${scores[k]}%"></i></span><span class="num">${scores[k]}</span></li>`).join('');
   $('inputNote').textContent = t('play.inputNote', { input: INPUT_NAMES[kind], total, v: RULES_VERSION });
+  preview();
   $('shareStatus').textContent = shareable ? '' : t('play.cannotShare');
   if (!shareable) return;
   const url = shareUrl();
