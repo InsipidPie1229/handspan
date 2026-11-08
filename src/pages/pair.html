@@ -29,6 +29,8 @@ td.off{color:var(--warn)}
 .srcs a{color:var(--ink-2)}
 .go-row{display:flex;flex-wrap:wrap;gap:10px}
 .others{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.92rem}
+.faq{gap:18px}
+.faq h3{font-size:1rem;margin:0 0 4px}
 </style>
 </head>
 <body>
@@ -83,6 +85,11 @@ td.off{color:var(--warn)}
     <h2>{{pair.sourcesH}}</h2>
     <p>{{pair.sourcesNote}}</p>
     <ul class="srcs">{@sources}</ul>
+  </section>
+
+  <section class="faq">
+    <h2>{{pair.faqH}}</h2>
+    {@faq}
   </section>
 
   <section>

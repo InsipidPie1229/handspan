@@ -116,8 +116,9 @@ function makeHead(lang, page, dict) {
     '<meta property="og:image:width" content="1200">',
     '<meta property="og:image:height" content="630">',
     `<meta property="og:image:alt" content="${escapeHtml(dict['meta.ogAlt'])}">`,
-    '<meta name="twitter:card" content="summary_large_image">'
-  ].join('\n');
+    '<meta name="twitter:card" content="summary_large_image">',
+    jsonLd(lang, page, dict, raw, title, description, url)
+  ].filter(Boolean).join('\n');
 }
 
 // Source table for the about page, generated from games.json (all games, including excluded ones).
@@ -135,6 +136,42 @@ function sourcesTable(lang, dict) {
 
 const fmtFactor = (v) => String(+v.toPrecision(4));
 
+// Structured data that only restates what the page visibly shows.
+const TOOL_PAGES = new Set(['convert', 'zoom', 'find', 'click', 'kite', 'play']);
+function ldScript(obj) {
+  return `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
+}
+
+function jsonLd(lang, page, dict, raw, title, description, url) {
+  const home = SITE + pathFor(lang, 'index');
+  if (TOOL_PAGES.has(page)) {
+    return ldScript({
+      '@context': 'https://schema.org', '@type': 'WebApplication', name: title.replace(/ · handspan$/, ''),
+      description, url, inLanguage: lang, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any',
+      isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    });
+  }
+  const cfg = PAGES[page];
+  if (!cfg.pair) return '';
+  const crumbs = ldScript({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'handspan', item: home },
+      { '@type': 'ListItem', position: 2, name: dict['nav.pairs'], item: SITE + pathFor(lang, 'sens') },
+      { '@type': 'ListItem', position: 3, name: `${raw.from} → ${raw.to}`, item: url },
+    ],
+  });
+  const faq = ldScript({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: pairFaq(raw, dict).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  });
+  return crumbs + '\n' + faq;
+}
+
+/** FAQ entries as plain text; the page renders the same strings (escaped) in a visible section. */
+function pairFaq(vars, dict) {
+  return [1, 2, 3].map((i) => [fill(dict[`pair.faqQ${i}`], vars), fill(dict[`pair.faqA${i}`], vars)]);
+}
+
 function pairVars(pair, lang, escaped = true) {
   const esc = escaped ? escapeHtml : String;
   const from = gameById.get(pair.from);
@@ -147,6 +184,11 @@ function pairVars(pair, lang, escaped = true) {
     toYaw: String(to.yaw),
     decimals: String(to.decimals),
     sens: String(pair.samples[Math.floor(pair.samples.length / 2)]),
+    example: (() => {
+      const sv = pair.samples[Math.floor(pair.samples.length / 2)];
+      const r = settableSens(cm360(800, sv, from.yaw), 800, to.yaw, to.decimals);
+      return r.sens.toFixed(to.decimals);
+    })(),
     checked: esc([...from.sources, ...to.sources].map((x) => x.checked).sort().pop())
   };
 }
@@ -199,6 +241,7 @@ function renderPair(out, pair, lang, dict) {
     '@sources': pairSources(pair, lang),
     '@caveats': pairCaveats(pair, lang),
     '@others': pairLinks(lang, pair.slug),
+    '@faq': pairFaq(pairVars(pair, lang, false), dict).map(([q, a]) => `<div><h3>${escapeHtml(q)}</h3><p>${escapeHtml(a)}</p></div>`).join(''),
     '@convertHref': `${BASE}${lang}/convert/?${escapeHtml(params.toString())}`
   };
   out = out.replace(/\{(@\w+)\}/g, (m, k) => (k in blocks ? blocks[k] : m));
@@ -212,6 +255,8 @@ function render(template, lang, page, dict) {
   out = out.replace(/\{\{@head\}\}/g, makeHead(lang, page, dict));
   out = out.replace(/\{\{@sources\}\}/g, () => sourcesTable(lang, dict));
   out = out.replace(/\{\{@pairs\}\}/g, () => pairList(lang));
+  out = out.replace(/\{\{@gameCount\}\}/g, String(keptGames.length));
+  out = out.replace(/\{\{@pairCount\}\}/g, String(pairs.length));
   out = out.replace(/\{\{@i18nJson\}\}/g, JSON.stringify(dict).replace(/</g, '\\u003c'));
   out = out.replace(/\{\{([A-Za-z0-9_.]+)\}\}/g, (match, key) => {
     if (!(key in dict)) throw new Error(`missing key: ${key}`);
@@ -306,7 +351,7 @@ for (const [page, cfg] of Object.entries(PAGES)) {
   }
 }
 
-['notfound.title', 'notfound.body', 'notfound.home', 'meta.ogAlt', 'pair.colFrom', 'pair.colTo', 'pair.colCm800', 'pair.colCm1600', 'about.colGame', 'about.colYaw', 'about.colSources', 'about.colStatus', 'about.excluded'].forEach((key) => allUsed.add(key));
+['notfound.title', 'notfound.body', 'notfound.home', 'meta.ogAlt', 'pair.faqQ1', 'pair.faqA1', 'pair.faqQ2', 'pair.faqA2', 'pair.faqQ3', 'pair.faqA3', 'pair.colFrom', 'pair.colTo', 'pair.colCm800', 'pair.colCm1600', 'about.colGame', 'about.colYaw', 'about.colSources', 'about.colStatus', 'about.excluded'].forEach((key) => allUsed.add(key));
 const unusedKeys = Object.keys(i18n.ko).filter((key) => !allUsed.has(key));
 if (unusedKeys.length) fail(`unused keys: ${unusedKeys.join(', ')}`);
 
