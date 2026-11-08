@@ -591,5 +591,7 @@
   "home.ctaConvert": "Convert sensitivity",
   "home.ctaPlay": "Game age test",
   "home.zoom": "Overwatch Widowmaker, Ana and Ashe zoom sensitivity, and ADS or scope matching for any game from FOV and magnification.",
-  "home.popularH": "Popular conversions"
+  "home.popularH": "Popular conversions",
+  "play.cardCaption": "Preview of the image you share.",
+  "play.cardAlt": "Result card: game age {age}, {type}"
 }

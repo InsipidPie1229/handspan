@@ -62,6 +62,8 @@
 .banner{border-left:3px solid var(--warn);padding:6px 0 6px 14px;color:var(--ink-2);font-size:.92rem}
 .share{display:flex;flex-wrap:wrap;gap:10px}
 .share-status{min-height:1.4em;margin:0}
+.cardfig{margin:0;display:grid;gap:8px;max-width:360px}
+.cardfig img{width:100%;height:auto;border:1px solid var(--rule);border-radius:var(--r)}
 details.rules{border-top:1px solid var(--rule);padding-top:16px}
 details.rules summary{cursor:pointer;font-weight:600;min-height:32px}
 details.rules table{border-collapse:collapse;font-size:.85rem;margin-top:10px}
@@ -117,6 +119,7 @@ details.rules p{color:var(--ink-2);font-size:.9rem;max-width:70ch}
       <button class="btn" id="againBtn" type="button">{{play.again}}</button>
     </div>
     <p class="small share-status" id="shareStatus" role="status"></p>
+    <figure class="cardfig" id="cardFig" hidden><img id="cardImg" alt="" width="1080" height="1350"><figcaption class="small">{{play.cardCaption}}</figcaption></figure>
     <details class="rules">
       <summary>{{play.rulesH}}</summary>
       <p>{{play.rulesBody}}</p>

@@ -591,5 +591,7 @@
   "home.ctaConvert": "감도 변환하기",
   "home.ctaPlay": "게임 나이 테스트",
   "home.zoom": "오버워치 위도우·아나·애쉬 줌 감도와, 어떤 게임이든 FOV·배율로 조준·스코프 감도를 맞춰요.",
-  "home.popularH": "많이 찾는 변환"
+  "home.popularH": "많이 찾는 변환",
+  "play.cardCaption": "공유되는 이미지 미리보기예요.",
+  "play.cardAlt": "게임 나이 {age}살, {type} 결과 카드"
 }
