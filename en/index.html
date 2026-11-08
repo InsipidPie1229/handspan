@@ -35,6 +35,15 @@
 .tools-list p{margin:0;color:var(--ink-2);grid-column:1}
 .tools-list .go{grid-row:1 / span 2;grid-column:2;font:500 .9rem var(--f-text);color:var(--ink-2);white-space:nowrap}
 .tools-list .tag{font:500 .78rem var(--f-text);color:var(--ink-3)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;margin:4px 0 0;color:var(--ink-2);font-size:.95rem}
+.stats b{font:700 1.15rem var(--f-num);color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.popular{padding-block:40px 8px;display:grid;gap:14px}
+.pairs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 28px;border-top:1px solid var(--rule)}
+.pairs li{border-bottom:1px solid var(--rule)}
+.pairs a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;text-decoration:none;color:var(--ink);font:500 .98rem var(--f-text)}
+.pairs a:hover{background:var(--tape-soft)}
+.pairs span{font:500 .9rem var(--f-mono);color:var(--ink-2);white-space:nowrap}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:40px 64px}
 .notes h2{font-size:1rem;margin-bottom:4px}.notes p{margin:0;color:var(--ink-2);font-size:.92rem}
 @media (max-width:640px){.tools-list a{grid-template-columns:minmax(0,1fr)}.tools-list .go{grid-row:auto;grid-column:1}}
@@ -51,21 +60,29 @@
 
 <main class="wrap">
   <section class="hero">
-    <h1>Match mouse sensitivity by the numbers, then check it by hand</h1>
-    <p class="lede">Convert sensitivity between games at the same turn distance, narrow down a range that suits your hand with a short test, and practice cursor control. No install or sign-up.</p>
+    <h1>Match your sensitivity across games, then check it by hand</h1>
+    <p class="lede">Valorant, CS2, Overwatch 2, Apex, Fortnite, Roblox and more. Convert your sensitivity so every game feels the same, match zoom sensitivity, and check your hands with mini-games. No install or sign-up.</p>
+    <p class="stats"><span><b>59</b> games to convert</span><span><b>12</b> game-to-game tables</span><span>free · no ads</span></p>
+    <div class="cta"><a class="btn go" href="/handspan/en/convert/">Convert sensitivity</a><a class="btn" href="/handspan/en/play/">Game age test</a></div>
   </section>
 
   <ul class="tools-list">
     <li><a href="/handspan/en/play/"><h2>Game age</h2><p>Six reaction, aim and decision mini-games give a just-for-fun game age and gamer type, with a shareable result card.</p><span class="go">Open →</span></a></li>
     <li><a href="/handspan/en/convert/"><h2>Sensitivity converter</h2><p>Enter a game, DPI and sensitivity to see the mouse distance for one full turn (cm/360°) and the matching sensitivity in other games.</p><span class="go">Open →</span></a></li>
+    <li><a href="/handspan/en/zoom/"><h2>Zoom sens</h2><p>Overwatch Widowmaker, Ana and Ashe zoom sensitivity, and ADS or scope matching for any game from FOV and magnification.</p><span class="go">Open →</span></a></li>
     <li><a href="/handspan/en/find/"><h2>Find sensitivity <span class="tag">Desktop only</span></h2><p>Keep your current DPI and shoot alternating candidate sensitivities to narrow a cm/360° range that suits your hand.</p><span class="go">Open →</span></a></li>
     <li><a href="/handspan/en/click/"><h2>Click accuracy <span class="tag">Desktop only</span></h2><p>Click targets of different sizes and distances, with accuracy, missed clicks and time to acquire shown separately.</p><span class="go">Open →</span></a></li>
     <li><a href="/handspan/en/kite/"><h2>Move and attack alternation <span class="tag">Desktop only</span></h2><p>Practice the order and accuracy of alternating move and attack clicks. It does not recreate any real game.</p><span class="go">Open →</span></a></li>
   </ul>
 
+  <section class="popular" aria-labelledby="h-pop">
+    <h2 id="h-pop">Popular conversions</h2>
+    <ul class="pairs"><li><a href="/handspan/en/sens/valorant-to-cs2/">Valorant → CS2<span>× 3.182</span></a></li><li><a href="/handspan/en/sens/cs2-to-valorant/">CS2 → Valorant<span>× 0.3143</span></a></li><li><a href="/handspan/en/sens/overwatch-2-to-valorant/">Overwatch 2 → Valorant<span>× 0.09429</span></a></li><li><a href="/handspan/en/sens/valorant-to-overwatch-2/">Valorant → Overwatch 2<span>× 10.61</span></a></li><li><a href="/handspan/en/sens/apex-legends-to-valorant/">Apex Legends → Valorant<span>× 0.3143</span></a></li><li><a href="/handspan/en/sens/cs2-to-overwatch-2/">CS2 → Overwatch 2<span>× 3.333</span></a></li><li><a href="/handspan/en/sens/fortnite-to-valorant/">Fortnite → Valorant<span>× 0.07936</span></a></li><li><a href="/handspan/en/sens/valorant-to-fortnite/">Valorant → Fortnite<span>× 12.6</span></a></li><li><a href="/handspan/en/sens/apex-legends-to-cs2/">Apex Legends → CS2<span>× 1</span></a></li><li><a href="/handspan/en/sens/overwatch-2-to-cs2/">Overwatch 2 → CS2<span>× 0.3</span></a></li><li><a href="/handspan/en/sens/rainbow-six-siege-to-valorant/">Rainbow Six Siege (multiplier 0.02) → Valorant<span>× 0.08185</span></a></li><li><a href="/handspan/en/sens/call-of-duty-to-valorant/">Call of Duty: Warzone · MW3 · BO6 (legacy) → Valorant<span>× 0.09429</span></a></li></ul>
+  </section>
+
   <section class="notes">
     <div><h2>Calculation and measurement</h2><p>Conversions use published game coefficients. Measurements include browser, mouse and display latency, so try a result in the real game for a few days before settling on it.</p></div>
-    <div><h2>Game coefficients</h2><p>Each game shows how many sources its coefficient has and whether it was checked in the real game. No game has been checked in-game yet.</p></div>
+    <div><h2>Game coefficients</h2><p>Each game shows its source count and in-game check status; single-source games are marked experimental. No game has been measured in game yet.</p></div>
     <div><h2>Records</h2><p>Practice records stay in this browser. Nothing is sent to a server.</p></div>
   </section>
 </main>

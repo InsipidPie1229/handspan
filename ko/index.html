@@ -35,6 +35,15 @@
 .tools-list p{margin:0;color:var(--ink-2);grid-column:1}
 .tools-list .go{grid-row:1 / span 2;grid-column:2;font:500 .9rem var(--f-text);color:var(--ink-2);white-space:nowrap}
 .tools-list .tag{font:500 .78rem var(--f-text);color:var(--ink-3)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;margin:4px 0 0;color:var(--ink-2);font-size:.95rem}
+.stats b{font:700 1.15rem var(--f-num);color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.popular{padding-block:40px 8px;display:grid;gap:14px}
+.pairs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 28px;border-top:1px solid var(--rule)}
+.pairs li{border-bottom:1px solid var(--rule)}
+.pairs a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;text-decoration:none;color:var(--ink);font:500 .98rem var(--f-text)}
+.pairs a:hover{background:var(--tape-soft)}
+.pairs span{font:500 .9rem var(--f-mono);color:var(--ink-2);white-space:nowrap}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 48px;padding-block:40px 64px}
 .notes h2{font-size:1rem;margin-bottom:4px}.notes p{margin:0;color:var(--ink-2);font-size:.92rem}
 @media (max-width:640px){.tools-list a{grid-template-columns:minmax(0,1fr)}.tools-list .go{grid-row:auto;grid-column:1}}
@@ -51,21 +60,29 @@
 
 <main class="wrap">
   <section class="hero">
-    <h1>마우스 감도를 숫자로 맞추고, 손으로 확인해요</h1>
-    <p class="lede">게임마다 다른 감도를 같은 회전 거리로 바꾸고, 짧은 테스트로 손에 맞는 범위를 찾고, 커서 조작을 연습해요. 설치나 가입은 필요 없어요.</p>
+    <h1>게임 감도, 한 번에 맞추고 손으로 확인해요</h1>
+    <p class="lede">발로란트, CS2, 오버워치 2, 에이펙스, 포트나이트, 로블록스까지. 게임을 바꿔도 같은 손맛이 나도록 감도를 바꾸고, 줌 감도를 맞추고, 미니게임으로 손을 점검해요. 설치나 가입은 필요 없어요.</p>
+    <p class="stats"><span><b>59</b>개 게임 변환</span><span><b>12</b>개 게임별 변환표</span><span>무료 · 광고 없음</span></p>
+    <div class="cta"><a class="btn go" href="/handspan/ko/convert/">감도 변환하기</a><a class="btn" href="/handspan/ko/play/">게임 나이 테스트</a></div>
   </section>
 
   <ul class="tools-list">
     <li><a href="/handspan/ko/play/"><h2>게임 나이</h2><p>반응속도·에임·판단 미니게임 6종목으로 재미로 보는 게임 나이와 게이머 유형을 알아보고 결과 카드를 공유해요.</p><span class="go">열기 →</span></a></li>
     <li><a href="/handspan/ko/convert/"><h2>감도 변환</h2><p>게임·DPI·감도를 넣으면 한 바퀴에 필요한 마우스 거리(cm/360°)와 다른 게임의 같은 감도를 보여 줘요.</p><span class="go">열기 →</span></a></li>
+    <li><a href="/handspan/ko/zoom/"><h2>줌 감도</h2><p>오버워치 위도우·아나·애쉬 줌 감도와, 어떤 게임이든 FOV·배율로 조준·스코프 감도를 맞춰요.</p><span class="go">열기 →</span></a></li>
     <li><a href="/handspan/ko/find/"><h2>감도 찾기 <span class="tag">PC 전용</span></h2><p>지금 DPI를 그대로 두고 후보 감도를 번갈아 쏴 보며 손에 맞는 cm/360° 범위를 좁혀요.</p><span class="go">열기 →</span></a></li>
     <li><a href="/handspan/ko/click/"><h2>클릭 정확도 <span class="tag">PC 전용</span></h2><p>크기와 거리가 다른 목표를 누르며 명중률, 빗나간 클릭, 목표를 잡는 시간을 따로 봐요.</p><span class="go">열기 →</span></a></li>
     <li><a href="/handspan/ko/kite/"><h2>이동·공격 교대 <span class="tag">PC 전용</span></h2><p>이동 지점과 공격 목표를 번갈아 누르는 순서와 정확도를 연습해요. 실제 게임 화면을 재현하지는 않아요.</p><span class="go">열기 →</span></a></li>
   </ul>
 
+  <section class="popular" aria-labelledby="h-pop">
+    <h2 id="h-pop">많이 찾는 변환</h2>
+    <ul class="pairs"><li><a href="/handspan/ko/sens/valorant-to-cs2/">발로란트 → CS2<span>× 3.182</span></a></li><li><a href="/handspan/ko/sens/cs2-to-valorant/">CS2 → 발로란트<span>× 0.3143</span></a></li><li><a href="/handspan/ko/sens/overwatch-2-to-valorant/">오버워치 2 → 발로란트<span>× 0.09429</span></a></li><li><a href="/handspan/ko/sens/valorant-to-overwatch-2/">발로란트 → 오버워치 2<span>× 10.61</span></a></li><li><a href="/handspan/ko/sens/apex-legends-to-valorant/">Apex 레전드 → 발로란트<span>× 0.3143</span></a></li><li><a href="/handspan/ko/sens/cs2-to-overwatch-2/">CS2 → 오버워치 2<span>× 3.333</span></a></li><li><a href="/handspan/ko/sens/fortnite-to-valorant/">포트나이트 → 발로란트<span>× 0.07936</span></a></li><li><a href="/handspan/ko/sens/valorant-to-fortnite/">발로란트 → 포트나이트<span>× 12.6</span></a></li><li><a href="/handspan/ko/sens/apex-legends-to-cs2/">Apex 레전드 → CS2<span>× 1</span></a></li><li><a href="/handspan/ko/sens/overwatch-2-to-cs2/">오버워치 2 → CS2<span>× 0.3</span></a></li><li><a href="/handspan/ko/sens/rainbow-six-siege-to-valorant/">레인보우 식스 시즈 (배율 0.02) → 발로란트<span>× 0.08185</span></a></li><li><a href="/handspan/ko/sens/call-of-duty-to-valorant/">콜 오브 듀티: 워존 · MW3 · BO6 (레거시) → 발로란트<span>× 0.09429</span></a></li></ul>
+  </section>
+
   <section class="notes">
     <div><h2>계산과 측정</h2><p>변환은 공개된 게임 계수로 계산한 값이에요. 측정 결과는 브라우저·마우스·화면 지연이 포함된 값이라 실제 게임에서 며칠 써 보고 정하는 게 좋아요.</p></div>
-    <div><h2>게임 계수</h2><p>게임마다 출처 수와 실게임 확인 여부를 따로 표시해요. 아직 실제 게임에서 확인한 게임은 없어요.</p></div>
+    <div><h2>게임 계수</h2><p>게임마다 출처 수와 실게임 확인 여부를 따로 표시하고, 출처가 한 곳뿐인 게임은 '실험 지원'으로 구분해요. 아직 실제 게임에서 확인한 게임은 없어요.</p></div>
     <div><h2>기록</h2><p>연습 기록은 이 브라우저에만 저장돼요. 서버로 보내지 않아요.</p></div>
   </section>
 </main>
