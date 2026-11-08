@@ -79,6 +79,7 @@ function sourceText(game) {
 
 function statusText(game) {
   if (game.custom) return t('status.custom');
+  if (game.experimental) return t('status.experimental');
   const verified = game.inGameVerified ? game.inGameVerified.date : t('status.unverified');
   return verified + ' · ' + sourceText(game);
 }
@@ -138,16 +139,20 @@ function calc() {
     const g = byId.get(row.id);
     const one = !g.custom && g.sources.length === 1;
     const st = statusText(g);
-    const off = Math.abs(row.errPct) > TOLERANCE_PCT;
+    const off = !row.unrounded && Math.abs(row.errPct) > TOLERANCE_PCT;
     let offNote = '';
     if (off) {
       const alt = altDpi(cm, g.yaw, g.decimals, toDpi);
       const fmt = (v) => (v > 0 ? '+' : '') + v.toFixed(1);
       offNote = `<span class="off">${t('convert.offTarget', { err: fmt(row.errPct) })} · ${alt ? t('convert.offTargetAlt', { dpi: alt.dpi, sens: alt.sens.toFixed(g.decimals), err: fmt(alt.errPct) }) : t('convert.offTargetNone')}</span>`;
     }
-    return `<tr data-name="${esc(g.name[LANG].toLowerCase())}" class="${mode === 'sens' && row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.sens.toFixed(g.decimals)}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
+    return `<tr data-name="${esc(g.name[LANG].toLowerCase())}" class="${mode === 'sens' && row.id === id ? 'from' : ''}${off ? ' offrow' : ''}"><td class="g">${esc(g.name[LANG])}<span class="st-m ${one ? 'one' : ''}">${st}</span>${offNote}${caveatNote(g)}</td><td class="s">${row.unrounded ? fmtExact(row.sens) : row.sens.toFixed(g.decimals)}${row.unrounded ? `<span class="st-m unr">${t('convert.stepUnverified')}</span>` : ''}</td><td class="hide-m">${row.edpi}</td><td class="hide-m">${g.yaw}</td><td class="hide-m"><span class="st ${one ? 'one' : ''}">${st}</span></td></tr>`;
   }).join('');
   applyFilter();
+}
+
+function fmtExact(v) {
+  return String(+v.toPrecision(4));
 }
 
 function applyFilter() {
@@ -164,7 +169,10 @@ function applyFilter() {
 
 function loadGames() {
   const { list, status: st } = customs.load();
-  const custom = list.map((c) => ({ id: c.id, name: { ko: c.name, en: c.name }, yaw: c.yaw, decimals: 3, sources: [], custom: true }));
+  const custom = list.map((c) => ({
+    id: c.id, name: { ko: c.name, en: c.name }, yaw: c.yaw, decimals: 3, sources: [], custom: true, stepUnverified: true,
+    caveat: { [LANG]: t('convert.customCaveat', { dpi: c.measured.dpi, sens: c.measured.sens, cm: c.measured.cm }) },
+  }));
   games = [...baseGames, ...custom];
   byId = new Map(games.map((g) => [g.id, g]));
   const cur = $('g').value;
@@ -177,7 +185,7 @@ function loadGames() {
     const b = document.createElement('b');
     b.textContent = c.name;
     const yaw = document.createElement('span');
-    yaw.textContent = `yaw ${+c.yaw.toPrecision(5)}`;
+    yaw.textContent = t('convert.customMeasured', { dpi: c.measured.dpi, sens: c.measured.sens, cm: c.measured.cm, yaw: +c.yaw.toPrecision(5) });
     const del = document.createElement('button');
     del.type = 'button';
     del.textContent = t('convert.profDel');
@@ -198,9 +206,9 @@ function setupCustom() {
   $('cName').maxLength = MAX_NAME;
   $('customForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    const yaw = yawFromMeasurement(Number($('cDpi').value), Number($('cSens').value), Number($('cCm').value));
-    if (yaw === null) { $('customStatus').textContent = t('convert.customErr'); return; }
-    const r = customs.add($('cName').value, yaw);
+    const measured = { dpi: Number($('cDpi').value), sens: Number($('cSens').value), cm: Number($('cCm').value) };
+    if (yawFromMeasurement(measured.dpi, measured.sens, measured.cm) === null) { $('customStatus').textContent = t('convert.customErr'); return; }
+    const r = customs.add($('cName').value, measured);
     if (!r.ok) { $('customStatus').textContent = PROFILE_ERRORS[r.error](); return; }
     $('cName').value = '';
     $('customStatus').textContent = t('convert.customAdded', { name: r.item.name });
@@ -211,7 +219,11 @@ function setupCustom() {
 }
 
 function readState() {
-  return { mode, g: $('g').value, dpi: $('dpi').value, s: $('sens').value, to: $('dpi2').value, cm: $('cmIn').value };
+  const st = { mode, g: $('g').value, dpi: $('dpi').value, s: $('sens').value, to: $('dpi2').value, cm: $('cmIn').value };
+  // A game measured in this browser does not exist elsewhere: save and share its distance instead.
+  const game = byId.get(st.g);
+  if (mode === 'sens' && game && game.custom && Number.isFinite(lastCm)) return { ...st, mode: 'cm', cm: String(lastCm) };
+  return st;
 }
 
 function syncUrl() {
@@ -291,9 +303,10 @@ function setupProfiles() {
     const name = $('profList').value;
     const p = renderProfiles(name).find((x) => x.name === name);
     if (!p) return status(t('convert.profPick'));
-    applyState(parseState(p.q, games.map((g) => g.id), $('g').value));
+    const st = parseState(p.q, games.map((g) => g.id), $('g').value);
+    applyState(st);
     update();
-    status(t('convert.profLoaded', { name: p.name }));
+    status(st.missing ? t('convert.missingGame') : t('convert.profLoaded', { name: p.name }));
   });
   $('profDel').addEventListener('click', () => {
     const name = $('profList').value;
@@ -322,12 +335,14 @@ function setupProfiles() {
 }
 
 async function init() {
-  const res = await fetch('/handspan/data/182209a801/games.json');
+  const res = await fetch('/handspan/data/79680a8682/games.json');
   baseGames = await res.json();
   loadGames();
   setupCustom();
-  applyState(parseState(location.search, games.map((g) => g.id)));
+  const st0 = parseState(location.search, games.map((g) => g.id));
+  applyState(st0);
   update();
+  if (st0.missing) { $('warn').hidden = false; $('warn').textContent = t('convert.missingGame'); }
   ['g', 'dpi', 'sens', 'dpi2', 'cmIn'].forEach((id) => $(id).addEventListener('input', update));
   document.querySelectorAll('#modeSeg button').forEach((b) => b.addEventListener('click', () => {
     // Carry the current distance over so switching to cm mode keeps the same target.

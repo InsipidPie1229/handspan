@@ -914,7 +914,7 @@ function onDown(event) {
 
 async function init() {
   try {
-    const response = await fetch('/handspan/data/182209a801/games.json');
+    const response = await fetch('/handspan/data/79680a8682/games.json');
     games = await response.json();
   } catch (error) {
     games = [];

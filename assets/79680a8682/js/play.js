@@ -1,6 +1,6 @@
 import {
   AREAS, TABLES, RULES_VERSION, MEMORY_MAX, scoreAll, totalScore, gameAge, gamerType, median, mean, rng,
-  memorySequence, encodeResult, decodeResult,
+  memorySequence, encodeResult, decodeResult, quantize, createTimingRun,
 } from './lib/physical.js';
 
 const I18N = JSON.parse(document.getElementById('i18n').textContent);
@@ -262,14 +262,16 @@ const TESTS = {
     el.className = 'tgt track';
     el.style.width = el.style.height = `${R * 2}px`;
     stage.append(el);
-    const p = { x: -1e4, y: -1e4, down: false, type: 'mouse' };
+    // inside: the pointer is over the arena with a known position. Leaving or cancelling clears it.
+    const p = { x: 0, y: 0, down: false, inside: false, type: 'mouse' };
     const ph = [Math.random() * 6, Math.random() * 6, Math.random() * 6, Math.random() * 6];
     let start = 0;
     let last = 0;
     let on = 0;
-    s.on(stage, 'pointermove', (e) => { const r = rect(); p.x = e.clientX - r.left; p.y = e.clientY - r.top; p.type = e.pointerType; });
-    s.on(stage, 'pointerdown', (e) => { const r = rect(); p.x = e.clientX - r.left; p.y = e.clientY - r.top; p.down = true; p.type = e.pointerType; });
-    for (const ev of ['pointerup', 'pointercancel', 'pointerleave']) s.on(stage, ev, () => { p.down = false; });
+    s.on(stage, 'pointermove', (e) => { const r = rect(); p.x = e.clientX - r.left; p.y = e.clientY - r.top; p.type = e.pointerType; p.inside = true; });
+    s.on(stage, 'pointerdown', (e) => { const r = rect(); p.x = e.clientX - r.left; p.y = e.clientY - r.top; p.down = true; p.type = e.pointerType; p.inside = true; });
+    s.on(stage, 'pointerup', () => { p.down = false; });
+    for (const ev of ['pointercancel', 'pointerleave']) s.on(stage, ev, () => { p.down = false; p.inside = false; });
     msg(t('play.trackGetReady'));
     s.later(() => {
       msg('');
@@ -283,7 +285,7 @@ const TESTS = {
         el.style.left = `${cx}px`;
         el.style.top = `${cy}px`;
         // Touch counts only while the finger is down; a lifted or cancelled touch is never "on".
-        const active = p.type === 'touch' ? p.down : true;
+        const active = p.inside && (p.type === 'touch' ? p.down : true);
         const isOn = active && Math.hypot(p.x - cx, p.y - cy) <= R;
         el.classList.toggle('on', isOn);
         const dt = Math.min(ts - last, 100);
@@ -301,13 +303,7 @@ const TESTS = {
 
   timing(s, done) {
     const TRIALS = 5;
-    const SWEEP = 1400;
-    const errs = [];
-    let misses = 0;
-    let trial = 0;
-    let startAt = 0;
-    let targetAt = 0;
-    let pressed = false;
+    const tr = createTimingRun({ trials: TRIALS, sweep: 1400 });
     const bar = document.createElement('div');
     bar.className = 'bar';
     bar.innerHTML = '<div class="zone"></div><div class="needle"></div>';
@@ -315,40 +311,34 @@ const TESTS = {
     const zone = bar.querySelector('.zone');
     const needle = bar.querySelector('.needle');
     function next() {
-      pressed = false;
       const frac = 0.55 + Math.random() * 0.3;
       zone.style.left = `${frac * 100}%`;
-      hud(t('play.trial', { n: trial + 1, of: TRIALS }));
-      startAt = 0;
+      needle.style.left = '0%';
+      hud(t('play.trial', { n: tr.round + 1, of: TRIALS }));
+      let started = false;
       s.frame((ts) => {
-        if (!startAt) { startAt = ts; targetAt = startAt + frac * SWEEP; }
-        const k = (ts - startAt) / SWEEP;
-        needle.style.left = `${Math.min(1, k) * 100}%`;
-        if (pressed) return false;
-        if (k >= 1.15) {
-          misses++;
-          errs.push(150);
-          end();
-          return false;
-        }
+        if (!started) { started = tr.start(ts, frac); if (!started) return false; }
+        if (tr.state !== 'running') return false;
+        needle.style.left = `${Math.min(1, tr.progress(ts)) * 100}%`;
+        const r = tr.tick(ts);
+        if (r) { after(r); return false; }
         return true;
       });
     }
-    function end() {
-      trial++;
-      if (trial >= TRIALS) s.later(() => done({ meanErrMs: mean(errs), misses }), 700);
+    function after(r) {
+      // Runs exactly once per round: the core ignores any later press or tick for that round.
+      if (!r.missed) {
+        msg(`${r.err > 0 ? '+' : ''}${Math.round(r.err)} ms`);
+        s.later(() => msg(''), 700);
+      }
+      if (r.done) s.later(() => done(tr.result()), 700);
       else s.later(next, 800);
     }
     function press(e) {
       if (e.type === 'keydown' && (e.repeat || e.code !== 'Space')) return;
       if (e.type === 'keydown') e.preventDefault();
-      if (pressed || !startAt) return;
-      pressed = true;
-      const err = (e.timeStamp || now()) - targetAt;
-      errs.push(Math.min(150, Math.abs(err)));
-      msg(`${err > 0 ? '+' : ''}${Math.round(err)} ms`);
-      s.later(() => msg(''), 700);
-      end();
+      const r = tr.press(e.timeStamp || now());
+      if (r) after(r);
     }
     s.on(stage, 'pointerdown', press);
     s.on(window, 'keydown', press);
@@ -461,32 +451,57 @@ function finish() {
   stage.innerHTML = '';
   const kind = inputKind();
   showPanel(`<h2>${esc(t('play.doneH'))}</h2><p>${esc(t('play.doneBody'))}</p>`, [[t('play.again'), startRun, false]]);
-  render(run.raw, kind, false);
-  history.replaceState(null, '', location.pathname + '?r=' + encodeResult(run.raw, kind));
+  const r = run.raw;
+  const measured = {
+    ...r,
+    meta: {
+      falseStarts: r.reaction.falseStarts, aimHits: r.aim.hits, aimMisses: r.aim.misses,
+      timingN: r.timing.n, timingMisses: r.timing.misses, colorCorrect: r.color.correct, colorN: r.color.n,
+    },
+  };
+  // Score exactly what the share link carries, so the page, link and card always agree.
+  let shown = null;
+  try { shown = quantize(measured, kind); } catch { shown = null; }
+  if (shown) {
+    const code = encodeResult(shown.raw, kind);
+    render(shown.raw, kind, false, code);
+    history.replaceState(null, '', location.pathname + '?r=' + code);
+  } else {
+    render(measured, kind, false, null);
+  }
   $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function fmtRaw(key, raw) {
+  const m = raw.meta;
+  const na = t('play.noInfo');
   switch (key) {
-    case 'reaction': return t('play.rawReaction', { ms: Math.round(raw.reaction.medianMs), n: raw.reaction.n });
-    case 'aim': return t('play.rawAim', { ms: Math.round(raw.aim.meanMs), pct: Math.round(raw.aim.hitRate * 100) });
+    case 'reaction': return t('play.rawReaction', { ms: Math.round(raw.reaction.medianMs), n: raw.reaction.n, fs: m ? m.falseStarts : na });
+    case 'aim': return t('play.rawAim', { ms: Math.round(raw.aim.meanMs), pct: Math.round(raw.aim.hitRate * 100), hits: m ? m.aimHits : na, misses: m ? m.aimMisses : na });
     case 'track': return t('play.rawTrack', { pct: Math.round(raw.track.pct) });
-    case 'timing': return t('play.rawTiming', { ms: Math.round(raw.timing.meanErrMs) });
-    case 'color': return raw.color.accuracy > 0
-      ? t('play.rawColor', { ms: Math.round(raw.color.medianMs), pct: Math.round(raw.color.accuracy * 100) })
-      : t('play.rawColorNone');
+    case 'timing': return t('play.rawTiming', { ms: Math.round(raw.timing.meanErrMs), miss: m ? m.timingMisses : na, n: m ? m.timingN : na });
+    case 'color': {
+      const cnt = m ? `${m.colorCorrect}/${m.colorN}` : na;
+      return raw.color.accuracy > 0
+        ? t('play.rawColor', { ms: Math.round(raw.color.medianMs), pct: Math.round(raw.color.accuracy * 100), cnt })
+        : t('play.rawColorNone', { cnt });
+    }
     default: return t('play.rawMemory', { n: raw.memory.longest });
   }
 }
 
 let current = null;
 
-function render(raw, kind, shared) {
+/** code: the share code for this result (null when it cannot be shared). */
+function render(raw, kind, shared, code) {
+  const shareable = code !== null;
   const scores = scoreAll(raw);
   const total = totalScore(scores);
   const age = gameAge(total);
   const type = gamerType(scores);
-  current = { raw, kind, scores, total, age, type };
+  current = { raw, kind, scores, total, age, type, shareable, code };
+  for (const id of ['shareBtn', 'copyBtn']) $(id).disabled = !shareable;
+  $('xBtn').hidden = !shareable;
   $('result').hidden = false;
   $('sharedBanner').hidden = !shared;
   $('ageNum').textContent = String(age);
@@ -494,13 +509,14 @@ function render(raw, kind, shared) {
   $('typeDesc').textContent = TYPES[type][1];
   $('areas').innerHTML = AREAS.map((k) => `<li><span class="lbl">${esc(NAMES[k])}<small>${esc(fmtRaw(k, raw))}</small></span><span class="track"><i style="width:${scores[k]}%"></i></span><span class="num">${scores[k]}</span></li>`).join('');
   $('inputNote').textContent = t('play.inputNote', { input: INPUT_NAMES[kind], total, v: RULES_VERSION });
+  $('shareStatus').textContent = shareable ? '' : t('play.cannotShare');
+  if (!shareable) return;
   const url = shareUrl();
   $('xBtn').href = 'https://twitter.com/intent/tweet?' + new URLSearchParams({ text: shareText(), url }).toString();
-  $('shareStatus').textContent = '';
 }
 
 function shareUrl() {
-  return location.origin + location.pathname + '?r=' + encodeResult(current.raw, current.kind);
+  return location.origin + location.pathname + '?r=' + current.code;
 }
 
 function shareText() {
@@ -626,6 +642,7 @@ rulesTable();
 const r = new URLSearchParams(location.search).get('r');
 if (r !== null) {
   const decoded = decodeResult(r);
-  if (decoded) render(decoded.raw, decoded.input, true);
+  // A shared link is passed on unchanged (older v1 links have no counts to re-encode).
+  if (decoded) { render(decoded.raw, decoded.input, true, r); $('result').scrollIntoView({ block: 'start' }); }
   else showPanel(`<h2>${esc(t('play.badLinkH'))}</h2><p>${esc(t('play.badLinkBody'))}</p>`, [[t('play.start'), startRun, true]]);
 }

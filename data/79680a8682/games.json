@@ -538,7 +538,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "cs16",
@@ -570,7 +571,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "css",
@@ -602,7 +604,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "hl2",
@@ -640,7 +643,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "gmod",
@@ -673,7 +677,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "l4d2",
@@ -705,7 +710,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "portal2",
@@ -732,7 +738,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "ql",
@@ -759,7 +766,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "doom",
@@ -791,7 +799,8 @@
       }
     ],
     "inGameVerified": null,
-    "independence": "unverified"
+    "independence": "unverified",
+    "stepUnverified": true
   },
   {
     "id": "tarkov",
@@ -827,7 +836,8 @@
     "caveat": {
       "ko": "맨몸 기준 값이에요. 타르코프는 장비 무게·헬멧·무기 인체공학에 따라 회전 속도가 달라져서, 실제 레이드에서는 체감이 달라질 수 있어요.",
       "en": "Base value without gear. In Tarkov, armor, helmets and weapon ergonomics change turn speed, so it can feel different in raid."
-    }
+    },
+    "stepUnverified": true
   },
   {
     "id": "rust",
@@ -877,7 +887,8 @@
         "status": "unsupported",
         "note": "no basis given"
       }
-    ]
+    ],
+    "stepUnverified": true
   },
   {
     "id": "roblox",
@@ -908,7 +919,8 @@
     "caveat": {
       "ko": "기본 카메라 기준이에요. 두 출처는 0.39783과 0.4로 0.5% 차이예요. 게임(경험)마다 카메라를 직접 만들면 감도가 다를 수 있어요.",
       "en": "For the default camera. The two sources give 0.39783 and 0.4, a 0.5% difference. Experiences with a custom camera can behave differently."
-    }
+    },
+    "stepUnverified": true
   },
   {
     "id": "codcw",
@@ -932,9 +944,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "codvg",
@@ -958,9 +972,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "codmw19",
@@ -985,9 +1001,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "sg2",
@@ -1011,9 +1029,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "sg",
@@ -1037,9 +1057,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "paladins",
@@ -1063,9 +1085,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "smite2",
@@ -1089,9 +1113,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "hunt",
@@ -1115,9 +1141,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "squad",
@@ -1141,9 +1169,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "ins",
@@ -1167,9 +1197,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "ron",
@@ -1193,9 +1225,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "abi",
@@ -1219,9 +1253,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "drg",
@@ -1245,9 +1281,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "cp2077",
@@ -1271,9 +1309,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "hd2",
@@ -1297,9 +1337,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "strinova",
@@ -1323,9 +1365,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "spectre",
@@ -1349,9 +1393,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "fragpunk",
@@ -1375,9 +1421,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "farlight",
@@ -1401,9 +1449,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "bloodstrike",
@@ -1427,9 +1477,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "warface",
@@ -1453,9 +1505,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "dayz",
@@ -1479,9 +1533,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "palworld",
@@ -1505,9 +1561,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "payday3",
@@ -1531,9 +1589,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "bl3",
@@ -1557,9 +1617,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "combat",
@@ -1583,9 +1645,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "otg",
@@ -1609,9 +1673,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "gzw",
@@ -1635,9 +1701,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "b4b",
@@ -1661,9 +1729,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "doomtda",
@@ -1687,9 +1757,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "unturned",
@@ -1713,9 +1785,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "ror2",
@@ -1739,9 +1813,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "dune",
@@ -1765,9 +1841,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "ark",
@@ -1791,9 +1869,11 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   },
   {
     "id": "7dtd",
@@ -1817,8 +1897,10 @@
     "inGameVerified": null,
     "independence": "unverified",
     "caveat": {
-      "ko": "한 곳(frameratetest.com)에서만 확인한 값이에요. 게임에서 감도를 몇째 자리까지 입력할 수 있는지도 확인하지 않아서, 표의 반올림 단위는 추정이에요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
-      "en": "Checked on one site only (frameratetest.com). The number of decimals the game accepts was not checked either, so the rounding step is a guess. Measure one full turn before relying on it."
-    }
+      "ko": "한 곳(frameratetest.com)에서만 확인한 실험 지원 값이에요. 게임의 감도 입력 단위도 확인하지 않아서 반올림하지 않은 값을 보여 줘요. 쓰기 전에 한 바퀴 거리를 직접 재 보세요.",
+      "en": "Experimental: checked on one site only (frameratetest.com). The game's input step was not checked either, so the value is shown unrounded. Measure one full turn before relying on it."
+    },
+    "stepUnverified": true,
+    "experimental": true
   }
 ]

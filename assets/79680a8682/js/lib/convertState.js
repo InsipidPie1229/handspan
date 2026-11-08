@@ -22,7 +22,7 @@ export function parseState(search, gameIds, fallbackGame = DEFAULTS.g) {
   const wanted = field(params, 'g', DEFAULTS.g);
   const g = ids.has(wanted) ? wanted : ids.has(fallbackGame) ? fallbackGame : (gameIds[0] ?? DEFAULTS.g);
   const mode = params.get('m') === 'cm' ? 'cm' : 'sens';
-  return {
+  const st = {
     mode,
     g,
     dpi: field(params, 'dpi', DEFAULTS.dpi),
@@ -30,6 +30,10 @@ export function parseState(search, gameIds, fallbackGame = DEFAULTS.g) {
     to: field(params, 'to', DEFAULTS.to),
     cm: field(params, 'cm', DEFAULTS.cm),
   };
+  // A sensitivity-mode state that names a game we don't have must not be silently recomputed
+  // with another game: report it so the page can say so.
+  if (mode === 'sens' && params.has('g') && g !== wanted) st.missing = wanted;
+  return st;
 }
 
 /** Finite numbers are written in their shortest exact form (any length typed reads back the same). */
@@ -140,7 +144,11 @@ export function createProfiles(getStorage) {
 }
 
 // ---- Games the user measured themselves -------------------------------------------------------
-export const CUSTOM_KEY = 'hs.convert.custom.v1';
+export const CUSTOM_KEY = 'hs.convert.custom.v2';
+const CUSTOM_ID = /^c[0-9a-z]{6,20}$/;
+function newId() {
+  return 'c' + Date.now().toString(36) + Math.floor(Math.random() * 36 ** 4).toString(36).padStart(4, '0');
+}
 export const MAX_CUSTOM = 20;
 const K = 914.4;
 
@@ -164,33 +172,41 @@ export function createCustomGames(getStorage) {
     const list = [];
     const ids = new Set();
     for (const item of Array.isArray(data) ? data : []) {
-      if (!item || typeof item.name !== 'string' || typeof item.id !== 'string' || !/^c\d{1,6}$/.test(item.id)) continue;
+      if (!item || typeof item.name !== 'string' || typeof item.id !== 'string' || !CUSTOM_ID.test(item.id)) continue;
       const name = cleanName(item.name).slice(0, MAX_NAME);
-      if (!name || ids.has(item.id) || !(Number.isFinite(item.yaw) && item.yaw >= 1e-6 && item.yaw <= 100)) continue;
+      const m = item.measured;
+      const yaw = m ? yawFromMeasurement(m.dpi, m.sens, m.cm) : null;
+      if (!name || ids.has(item.id) || yaw === null) continue;
       ids.add(item.id);
-      list.push({ id: item.id, name, yaw: item.yaw });
+      list.push({ id: item.id, name, yaw, measured: { dpi: m.dpi, sens: m.sens, cm: m.cm } });
       if (list.length >= MAX_CUSTOM) break;
     }
     const bad = status === 'ok' && data !== null && (!Array.isArray(data) || list.length !== data.length);
     return { list, status: bad ? 'corrupt' : status };
   }
-  function add(name, yaw) {
+  /** measured: { dpi, sens, cm } from one in-game turn; the yaw is derived and never stored alone. */
+  function add(name, measured, makeId = newId) {
     const n = cleanName(name);
     if (!n || n.length > MAX_NAME) return { ok: false, error: 'name' };
-    if (!(Number.isFinite(yaw) && yaw >= 1e-6 && yaw <= 100)) return { ok: false, error: 'value' };
+    const m = measured || {};
+    const yaw = yawFromMeasurement(m.dpi, m.sens, m.cm);
+    if (yaw === null) return { ok: false, error: 'value' };
     const cur = load();
     if (cur.status === 'unavailable') return { ok: false, error: 'unavailable' };
     if (cur.list.length >= MAX_CUSTOM) return { ok: false, error: 'full' };
-    let k = 1;
-    while (cur.list.some((g) => g.id === 'c' + k)) k++;
-    const item = { id: 'c' + k, name: n, yaw };
-    const err = store.write([...cur.list, item]);
+    // Ids are never reused, so a saved setting can't silently point at a different game.
+    let id = makeId();
+    while (cur.list.some((g) => g.id === id)) id = makeId();
+    if (!CUSTOM_ID.test(id)) return { ok: false, error: 'value' };
+    const item = { id, name: n, yaw, measured: { dpi: m.dpi, sens: m.sens, cm: m.cm } };
+    const err = store.write([...cur.list.map(({ id: i, name: nm, measured: ms }) => ({ id: i, name: nm, measured: ms })),
+      { id, name: n, measured: item.measured }]);
     return err ? { ok: false, error: err } : { ok: true, item };
   }
   function remove(id) {
     const cur = load();
     if (cur.status === 'unavailable') return { ok: false, error: 'unavailable' };
-    const err = store.write(cur.list.filter((g) => g.id !== id));
+    const err = store.write(cur.list.filter((g) => g.id !== id).map(({ id: i, name: nm, measured: ms }) => ({ id: i, name: nm, measured: ms })));
     return err ? { ok: false, error: err } : { ok: true };
   }
   return { load, add, remove };
