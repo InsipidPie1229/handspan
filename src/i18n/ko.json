@@ -593,5 +593,6 @@
   "home.zoom": "오버워치 위도우·아나·애쉬 줌 감도와, 어떤 게임이든 FOV·배율로 조준·스코프 감도를 맞춰요.",
   "home.popularH": "많이 찾는 변환",
   "play.cardCaption": "공유되는 이미지 미리보기예요.",
-  "play.cardAlt": "게임 나이 {age}살, {type} 결과 카드"
+  "play.cardAlt": "게임 나이 {age}살, {type} 결과 카드",
+  "convert.customLegacy": "이전 버전에서 저장한 게임 {n}개({names})는 측정한 DPI·감도·거리가 함께 저장되지 않아 불러오지 못했어요. 저장된 원본은 지우지 않았어요. 게임에서 한 바퀴 거리를 다시 재서 추가해 주세요."
 }

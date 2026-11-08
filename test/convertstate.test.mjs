@@ -196,7 +196,7 @@ test('custom games: stable ids, measurement kept, limit, corrupt and blocked sto
   assert.deepEqual(r.list.map((g) => g.id), ['cabcdef2']);
   assert.equal(createCustomGames(() => memStorage({ [CUSTOM_KEY]: '{' })).load().status, 'corrupt');
   const blocked = createCustomGames(() => { throw new Error('blocked'); });
-  assert.deepEqual(blocked.load(), { list: [], status: 'unavailable' });
+  assert.deepEqual(blocked.load(), { list: [], status: 'unavailable', legacy: [] });
   assert.equal(blocked.add('a', m(30)).error, 'unavailable');
 });
 
@@ -213,4 +213,18 @@ test('games with an unverified input step are shown unrounded', () => {
   assert.ok(Math.abs(r.sens - 0.0005) < 1e-15, 'review repro: 0.0005 at 40 cm stays 0.0005');
   assert.equal(r.errPct, 0);
   assert.equal(r.unrounded, true);
+});
+
+test('games saved under the old v1 key are reported, kept and not loaded (OpenClaw P2)', async () => {
+  const { LEGACY_CUSTOM_KEY } = await import('../src/assets/js/lib/convertState.js');
+  const old = JSON.stringify([{ id: 'c1', name: 'Old Game', yaw: 0.02 }, { id: 'c2', name: '  ', yaw: 0.02 }]);
+  const st = memStorage({ [LEGACY_CUSTOM_KEY]: old });
+  const c = createCustomGames(() => st);
+  const r = c.load();
+  assert.deepEqual(r.list, []);
+  assert.equal(r.status, 'ok');
+  assert.deepEqual(r.legacy, ['Old Game']);
+  assert.ok(c.add('New', { dpi: 800, sens: 1, cm: 40 }).ok);
+  assert.equal(st.getItem(LEGACY_CUSTOM_KEY), old, 'old data is never rewritten');
+  assert.deepEqual(createCustomGames(() => memStorage()).load().legacy, []);
 });

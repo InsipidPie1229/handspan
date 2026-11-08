@@ -593,5 +593,6 @@
   "home.zoom": "Overwatch Widowmaker, Ana and Ashe zoom sensitivity, and ADS or scope matching for any game from FOV and magnification.",
   "home.popularH": "Popular conversions",
   "play.cardCaption": "Preview of the image you share.",
-  "play.cardAlt": "Result card: game age {age}, {type}"
+  "play.cardAlt": "Result card: game age {age}, {type}",
+  "convert.customLegacy": "{n} game(s) saved by an earlier version ({names}) could not be loaded because the measured DPI, sensitivity and distance were not kept. The saved data was not deleted. Measure one turn in the game again and add it."
 }

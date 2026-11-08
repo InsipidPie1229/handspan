@@ -104,7 +104,13 @@ function hud(info) {
   $('hudInfo').textContent = info ?? '';
 }
 
+// The address bar only ever carries the result on screen: drop any older ?r= when it no longer applies.
+function clearResultParam() {
+  if (location.search) history.replaceState(null, '', location.pathname);
+}
+
 function startRun() {
+  clearResultParam();
   inputs.clear();
   run = { idx: 0, raw: {}, ctrl: null };
   $('result').hidden = true;
@@ -467,6 +473,7 @@ function finish() {
     render(shown.raw, kind, false, code);
     history.replaceState(null, '', location.pathname + '?r=' + code);
   } else {
+    clearResultParam();
     render(measured, kind, false, null);
   }
   $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
