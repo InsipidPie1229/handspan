@@ -145,6 +145,8 @@ export function createProfiles(getStorage) {
 
 // ---- Games the user measured themselves -------------------------------------------------------
 export const CUSTOM_KEY = 'hs.convert.custom.v2';
+/** Games saved by the first version (yaw only, no measurement). Read for a notice only, never changed. */
+export const LEGACY_CUSTOM_KEY = 'hs.convert.custom.v1';
 const CUSTOM_ID = /^c[0-9a-z]{6,20}$/;
 function newId() {
   return 'c' + Date.now().toString(36) + Math.floor(Math.random() * 36 ** 4).toString(36).padStart(4, '0');
@@ -167,6 +169,13 @@ export function yawFromMeasurement(dpi, sens, cm) {
 /** Custom games as converter entries: { id: 'c1'.., name, yaw, decimals: 3, custom: true }. */
 export function createCustomGames(getStorage) {
   const store = createProfilesLike(getStorage, CUSTOM_KEY);
+  const legacyStore = createProfilesLike(getStorage, LEGACY_CUSTOM_KEY);
+  /** Names of games left in the old key. They cannot be loaded: no measured DPI, sens and cm were kept. */
+  function legacy() {
+    const { data } = legacyStore.read();
+    if (!Array.isArray(data)) return [];
+    return data.filter((it) => it && typeof it.name === 'string').map((it) => cleanName(it.name).slice(0, MAX_NAME)).filter(Boolean).slice(0, MAX_CUSTOM);
+  }
   function load() {
     const { data, status } = store.read();
     const list = [];
@@ -182,7 +191,7 @@ export function createCustomGames(getStorage) {
       if (list.length >= MAX_CUSTOM) break;
     }
     const bad = status === 'ok' && data !== null && (!Array.isArray(data) || list.length !== data.length);
-    return { list, status: bad ? 'corrupt' : status };
+    return { list, status: bad ? 'corrupt' : status, legacy: legacy() };
   }
   /** measured: { dpi, sens, cm } from one in-game turn; the yaw is derived and never stored alone. */
   function add(name, measured, makeId = newId) {

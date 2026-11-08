@@ -168,7 +168,7 @@ function applyFilter() {
 }
 
 function loadGames() {
-  const { list, status: st } = customs.load();
+  const { list, status: st, legacy: old } = customs.load();
   const custom = list.map((c) => ({
     id: c.id, name: { ko: c.name, en: c.name }, yaw: c.yaw, decimals: 3, sources: [], custom: true, stepUnverified: true,
     caveat: { [LANG]: t('convert.customCaveat', { dpi: c.measured.dpi, sens: c.measured.sens, cm: c.measured.cm }) },
@@ -198,6 +198,8 @@ function loadGames() {
     li.append(b, yaw, del);
     ul.append(li);
   }
+  $('customLegacy').hidden = !old.length;
+  $('customLegacy').textContent = old.length ? t('convert.customLegacy', { n: old.length, names: old.join(', ') }) : '';
   $('cAdd').disabled = st === 'unavailable';
   if (st === 'unavailable') $('customStatus').textContent = t('convert.profUnavailable');
 }
@@ -335,7 +337,7 @@ function setupProfiles() {
 }
 
 async function init() {
-  const res = await fetch('/handspan/data/e856d446e9/games.json');
+  const res = await fetch('/handspan/data/420ff8b2e4/games.json');
   baseGames = await res.json();
   loadGames();
   setupCustom();
